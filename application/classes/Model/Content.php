@@ -7,7 +7,8 @@ class Model_Content extends Kohana_Model
 {
     public function getTemplate()
     {
-        $template = View::factory("template");
+        $template = View::factory("template")
+            ->set('news', $this->getNews());
 
         return $template;
     }
@@ -23,9 +24,9 @@ class Model_Content extends Kohana_Model
 
 	public function getPage($params = [])
 	{
-		$idSql = !empty(Arr::get($params, 'id', 0)) ? 'where `slug` = :id' : '';
+		$idSql = !empty(Arr::get($params, 'id')) ? 'where `slug` = :id' : '';
 		return DB::query(Database::SELECT, "select * from `pages` $idSql")
-			->param(':id', Arr::get($params, 'id', 0))
+			->param(':id', Arr::get($params, 'id'))
 			->execute()
 			->as_array();
 	}
@@ -38,5 +39,18 @@ class Model_Content extends Kohana_Model
 			->execute()
 			->as_array();
 	}
+
+
+    public function getNews($params = [])
+    {
+        $idSql = !empty(Arr::get($params, 'id', 0)) ? 'and `slug` = :id' : '';
+        $viewedSql = !empty(Arr::get($params, 'viewed', true)) ? 'and `viewed` = 1' : '';
+
+        return DB::query(Database::SELECT, "select * from `news` where 1 $idSql $viewedSql order by `date` desc")
+            ->param(':id', Arr::get($params, 'id'))
+            ->execute()
+            ->as_array();
+    }
+
 }
 ?>

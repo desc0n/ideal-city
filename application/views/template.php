@@ -22,6 +22,13 @@
     </div>
     <div class="container content">
         <?=$content;?>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
+            <div class="news-title">Новости</div>
+            <?foreach ($news as $newsData) {?>
+            <div class="news-date"><?=Date::convertStrDateToFormat($newsData['date'], 'd.m.Y');?> г.</div>
+            <div class="news-content"><?=$newsData['content'];?></div>
+            <?}?>
+        </div>
     </div>
     <div class="container footer">
 
