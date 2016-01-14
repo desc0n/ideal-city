@@ -21,20 +21,7 @@
     <div class="container header">
     </div>
     <div class="container content">
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 menu">
-            <div class="menu-item">о нас</div>
-            <div class="menu-item">сфера деятельности</div>
-            <div class="menu-item">портфолио</div>
-            <div class="menu-item">документы</div>
-            <div class="menu-item">вакансии</div>
-            <div class="menu-item">новости</div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        </div>
+        <?=$content;?>
     </div>
     <div class="container footer">
 

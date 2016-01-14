@@ -23,7 +23,6 @@ body {
 }
 
 .menu-item {
-    color: #E31E24;
     text-transform: uppercase;
     font-family: "Calibri";
     font: 16px sans-serif;
@@ -33,4 +32,11 @@ body {
     text-align: center;
     padding: 10px 2px;
     margin-bottom: 10px;
+}
+
+.menu-item a,
+.menu-item a:hover,
+.menu-item a:visited {
+    color: #E31E24;
+    text-decoration: none;
 }

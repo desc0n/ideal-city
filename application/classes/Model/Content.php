@@ -5,6 +5,12 @@
  */
 class Model_Content extends Kohana_Model
 {
+    public function getTemplate()
+    {
+        $template = View::factory("template");
+
+        return $template;
+    }
 
 	public function getCategory($params = [])
 	{

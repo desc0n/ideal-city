@@ -1,15 +1,35 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Index extends Controller {
+class Controller_Index extends Controller
+{
+    /**
+     * @var View
+     */
+    private $template;
 
-	public function action_index()
+    /**
+     * @var Model_Content
+     */
+    private $contentModel;
+
+    public function __construct(Request $request, Response $response)
+    {
+        parent::__construct($request, $response);
+
+        $this->contentModel = Model::factory('Content');
+        $this->template = $this->contentModel->getTemplate();
+    }
+
+    public function action_index()
 	{
-		$template=View::factory("template")
-			->set('get', $_GET)
-			->set('post', $_POST);
+        $content = View::factory("index")
+            ->set('pages', $this->contentModel->getPage());
 
-		$template->content = View::factory("index");
-		$this->response->body($template);
+        $this
+            ->template
+            ->set('content', $content);
+
+		$this->response->body($this->template);
 	}
 
 	public function action_page()
