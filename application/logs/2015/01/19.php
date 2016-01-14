@@ -1,0 +1,26 @@
+<?php defined('SYSPATH') OR die('No direct script access.'); ?>
+
+2015-01-19 16:53:11 --- CRITICAL: Database_Exception [ 1064 ]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':id and `status_id` = 1' at line 1 [ select * from `products_group_1` where `id` = :id and `status_id` = 1 ] ~ MODPATH\database\classes\Kohana\Database\MySQL.php [ 194 ] in Z:\home\teleantenna.lan\www\modules\database\classes\Kohana\Database\Query.php:251
+2015-01-19 16:53:11 --- DEBUG: #0 Z:\home\teleantenna.lan\www\modules\database\classes\Kohana\Database\Query.php(251): Kohana_Database_MySQL->query(1, 'select * from `...', false, Array)
+#1 Z:\home\teleantenna.lan\www\application\classes\Model\Product.php(14): Kohana_Database_Query->execute()
+#2 Z:\home\teleantenna.lan\www\application\views\catalog_menu.php(9): Model_Product->getProductGroup(1)
+#3 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(61): include('Z:\home\teleant...')
+#4 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(348): Kohana_View::capture('Z:\home\teleant...', Array)
+#5 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(228): Kohana_View->render()
+#6 Z:\home\teleantenna.lan\www\application\views\catalog.php(1): Kohana_View->__toString()
+#7 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(61): include('Z:\home\teleant...')
+#8 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(348): Kohana_View::capture('Z:\home\teleant...', Array)
+#9 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(228): Kohana_View->render()
+#10 Z:\home\teleantenna.lan\www\application\views\template.php(366): Kohana_View->__toString()
+#11 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(61): include('Z:\home\teleant...')
+#12 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(348): Kohana_View::capture('Z:\home\teleant...', Array)
+#13 Z:\home\teleantenna.lan\www\system\classes\Kohana\View.php(228): Kohana_View->render()
+#14 Z:\home\teleantenna.lan\www\system\classes\Kohana\Response.php(160): Kohana_View->__toString()
+#15 Z:\home\teleantenna.lan\www\application\classes\Controller\Catalog.php(14): Kohana_Response->body(Object(View))
+#16 Z:\home\teleantenna.lan\www\system\classes\Kohana\Controller.php(84): Controller_Catalog->action_index()
+#17 [internal function]: Kohana_Controller->execute()
+#18 Z:\home\teleantenna.lan\www\system\classes\Kohana\Request\Client\Internal.php(97): ReflectionMethod->invoke(Object(Controller_Catalog))
+#19 Z:\home\teleantenna.lan\www\system\classes\Kohana\Request\Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#20 Z:\home\teleantenna.lan\www\system\classes\Kohana\Request.php(990): Kohana_Request_Client->execute(Object(Request))
+#21 Z:\home\teleantenna.lan\www\index.php(118): Kohana_Request->execute()
+#22 {main} in Z:\home\teleantenna.lan\www\modules\database\classes\Kohana\Database\Query.php:251

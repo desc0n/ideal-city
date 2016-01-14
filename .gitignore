@@ -1,0 +1,4 @@
+application/config/*
+public/i/*
+public/img
+vendor/*

@@ -1,0 +1,36 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+    background-color: #000;
+    background-image: url('/public/i/bg.jpg');
+    background-position: top center;
+    background-size: contain;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+body {
+    font-family: 'Century Gothic', sans-serif;
+    background: none;
+}
+
+.header {
+    height: 200px;
+}
+
+.menu {
+
+}
+
+.menu-item {
+    color: #E31E24;
+    text-transform: uppercase;
+    font-family: "Calibri";
+    font: 16px sans-serif;
+    text-shadow: 1px 1px 1px black;
+    background-image: url('/public/i/menu_item_bg.png');
+    background-repeat: repeat;
+    text-align: center;
+    padding: 10px 2px;
+    margin-bottom: 10px;
+}
