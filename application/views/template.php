@@ -28,6 +28,50 @@
             <div class="news-date"><?=Date::convertStrDateToFormat($newsData['date'], 'd.m.Y');?> г.</div>
             <div class="news-content"><?=$newsData['content'];?></div>
             <?}?>
+            <table style="border-collapse: collapse; height: 25%; width: 25%;">
+                <tbody>
+                <tr>
+                    <td style="border: 0 solid rgb(0, 0, 0);">
+                        <script type="text/javascript" src="/tagcloud/swfobject.js"></script>
+                        <div id="3dcloud_block" style="text-align:center;font-size:12pt;">
+                            Для отображения блока требуется
+                            <noindex>
+                                <a href="http://get.adobe.com/flashplayer" rel="nofollow" target="_blank" title="Скачать Flash Player бесплатно">
+                                    Flash Player
+                                </a>
+                            </noindex>
+                            <br><br>
+                            $MYINF_0$
+                        </div>
+                        <script type="text/javascript">
+                            var rnumber = Math.floor(Math.random()*9999999);
+                            var so = new SWFObject("/tagcloud/tagcloud.swf?r="+rnumber, "tagcloudflash", "285", "285", "9");
+                            var tags = "" +
+                            <?foreach ($cloudTag as $tag) {?>
+                            "<a href='/page/<?=$tag['slug'];?>' style='font-size:8px;'><?=$tag['title'];?></a>" +
+                            <?}?>
+                            "";
+                            tags = tags.replace(/"/g,"‘");
+                            tags = tags.replace(/<noindex>/gi,"");
+                            tags = tags.replace(/<\/noindex>/gi,"");
+                            tags = "<tags>" + tags + "</tags>";
+                            so.addParam("wmode", "transparent");
+                            so.addParam("allowScriptAccess", "always");
+                            so.addVariable("minFontSize", "1");
+                            so.addVariable("maxFontSize", "2");
+                            so.addVariable("tcolor", "0xE31E24");
+                            so.addVariable("tcolor2", "0xE31E24");
+                            so.addVariable("hicolor", "0xE31E24");
+                            so.addVariable("tspeed", "100");
+                            so.addVariable("distr", "true");
+                            so.addVariable("mode", "tags");
+                            so.addVariable("tagcloud", tags);
+                            so.write("3dcloud_block");
+                        </script>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="container footer">

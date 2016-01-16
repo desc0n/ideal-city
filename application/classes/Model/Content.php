@@ -8,7 +8,8 @@ class Model_Content extends Kohana_Model
     public function getTemplate()
     {
         $template = View::factory("template")
-            ->set('news', $this->getNews());
+            ->set('news', $this->getNews())
+            ->set('cloudTag', $this->getCloudTag());
 
         return $template;
     }
@@ -26,6 +27,16 @@ class Model_Content extends Kohana_Model
 	{
 		$idSql = !empty(Arr::get($params, 'id')) ? 'where `slug` = :id' : '';
 		return DB::query(Database::SELECT, "select * from `pages` $idSql")
+			->param(':id', Arr::get($params, 'id'))
+			->execute()
+			->as_array();
+	}
+
+
+	public function getCloudTag($params = [])
+	{
+		$idSql = !empty(Arr::get($params, 'id')) ? 'where `slug` = :id' : '';
+		return DB::query(Database::SELECT, "select * from `cloud_tags` $idSql")
 			->param(':id', Arr::get($params, 'id'))
 			->execute()
 			->as_array();
