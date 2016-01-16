@@ -120,6 +120,7 @@ body {
     color: #434343;
     min-height: 400px;
     text-align: center;
+    padding: 5px;
 }
 
 .hit-title {
@@ -132,7 +133,11 @@ body {
 }
 
 .hit-content {
-    min-height: 160px;
+    min-height: 165px;
+}
+
+.hit-img {
+    padding: 5px;
 }
 
 .hit-img img {
