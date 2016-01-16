@@ -26,6 +26,9 @@ body {
     text-transform: uppercase;
     font-size: 13px;
     text-shadow: 1px 1px 1px black;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     text-align: center;
@@ -36,11 +39,14 @@ body {
 .menu-item a,
 .menu-item a:hover,
 .menu-item a:visited {
-    color: #E31E24;
+    color: #ff2228;
     text-decoration: none;
 }
 
 .news {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     color: #434343;
@@ -49,7 +55,7 @@ body {
 }
 
 .news-title {
-    color: #E31E24;
+    color: #ff1f25;
     text-transform: uppercase;
     font-size: 13px;
     text-shadow: 1px 1px 1px black;
@@ -65,10 +71,31 @@ body {
     margin-bottom: 30px;
 }
 
-.hits {
+.hit {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     color: #434343;
-    padding: 5px;
     min-height: 400px;
+    text-align: center;
+}
+
+.hit-title {
+    font-size: 18px;
+    text-shadow: 1px 1px 1px black;
+    color: #0073ad;
+    width: 50%;
+    margin: 20px auto;
+    min-height: 50px;
+}
+
+.hit-content {
+    min-height: 200px;
+}
+
+.hit-img img {
+    width: 100%;
+    height: 100px;
 }

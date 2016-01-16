@@ -23,7 +23,8 @@ class Controller_Index extends Controller
     public function action_index()
 	{
         $content = View::factory("index")
-            ->set('pages', $this->contentModel->getPage());
+            ->set('pages', $this->contentModel->getPage())
+            ->set('hit', $this->contentModel->getRandomHit());
 
         $this
             ->template

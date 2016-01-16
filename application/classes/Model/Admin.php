@@ -26,13 +26,12 @@ class Model_Admin extends Kohana_Model
 		}
 		foreach ($filesData as $files) {
 			$sql = "insert into `page_imgs` (`page_id`) values (:id)";
-			$query = DB::query(Database::INSERT,$sql);
-			$query->param(':id', $page_id);
-			$query->execute();
-			$sql = "select last_insert_id() as `new_id` from `page_imgs`";
-			$query = DB::query(Database::SELECT,$sql);
-			$res = $query->execute()->as_array();
-			$new_id = $res[0]['new_id'];
+            $res = DB::query(Database::INSERT,$sql)
+                ->param(':id', $page_id)
+                ->execute();
+
+			$new_id = Arr::get($res, 0);
+
 			$imageName = preg_replace("/[^0-9a-z.]+/i", "0", Arr::get($files,'name',''));
 			$file_name = 'public/img/original/'.$new_id.'_'.$imageName;
 			if (copy($files['tmp_name'], $file_name))	{
@@ -44,7 +43,7 @@ class Model_Admin extends Kohana_Model
 					$thumb_image=Image::factory($thumb_file_name);
 					$thumb_image->resize(150, NULL);
 					$thumb_image->save($thumb_file_name,100);
-					$sql = "update `page_imgs` set `src` = :src,`status_id` = 1 where `id` = :id";
+					$sql = "update `pages__imgs` set `src` = :src,`enabled` = 1 where `id` = :id";
 					$query=DB::query(Database::UPDATE,$sql);
 					$query->param(':id', $new_id);
 					$query->param(':src', $new_id.'_'.$imageName);
@@ -57,7 +56,7 @@ class Model_Admin extends Kohana_Model
 	public function setPage($params = [])
 	{
 		$id = Arr::get($params, 'redactpage', 0);
-		DB::query(Database::UPDATE, "update `pages` set `content` = :text where `id` = :id")
+		DB::query(Database::UPDATE, "update `pages__pages` set `content` = :text where `id` = :id")
 			->param(':id', $id)
 			->param(':text', Arr::get($params, 'text', ''))
 			->execute();
@@ -65,7 +64,7 @@ class Model_Admin extends Kohana_Model
 
 	public function removePageImg($params = [])
 	{
-		$sql = "update `page_imgs` set `status_id` = 0 where `id` = :id";
+		$sql = "update `pages__imgs` set `enabled` = 0 where `id` = :id";
 		DB::query(Database::UPDATE,$sql)
 			->param(':id', Arr::get($params,'removeimg',0))
 			->execute();
