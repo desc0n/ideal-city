@@ -22,7 +22,7 @@
     </div>
     <div class="container content">
         <?=$content;?>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 news">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 news">
             <div class="news-title">Новости</div>
             <?foreach ($news as $newsData) {?>
             <div class="news-date"><?=Date::convertStrDateToFormat($newsData['date'], 'd.m.Y');?> г.</div>
@@ -45,7 +45,7 @@
                         </div>
                         <script type="text/javascript">
                             var rnumber = Math.floor(Math.random()*9999999);
-                            var so = new SWFObject("/tagcloud/tagcloud.swf?r="+rnumber, "tagcloudflash", "285", "285", "9");
+                            var so = new SWFObject("/tagcloud/tagcloud.swf?r="+rnumber, "tagcloudflash", "185", "185", "9");
                             var tags = "" +
                             <?foreach ($cloudTag as $tag) {?>
                             "<a href='/page/<?=$tag['slug'];?>' style='font-size:8px;'><?=$tag['title'];?></a>" +
@@ -58,7 +58,7 @@
                             so.addParam("wmode", "transparent");
                             so.addParam("allowScriptAccess", "always");
                             so.addVariable("minFontSize", "1");
-                            so.addVariable("maxFontSize", "2");
+                            so.addVariable("maxFontSize", "2.5");
                             so.addVariable("tcolor", "0xE31E24");
                             so.addVariable("tcolor2", "0xE31E24");
                             so.addVariable("hicolor", "0xE31E24");

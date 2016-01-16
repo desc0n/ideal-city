@@ -19,12 +19,12 @@ body {
 }
 
 .menu {
-
+    padding: 0;
 }
 
 .menu-item {
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 13px;
     text-shadow: 1px 1px 1px black;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
@@ -45,13 +45,13 @@ body {
     background-repeat: repeat;
     color: #434343;
     padding: 5px;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .news-title {
     color: #E31E24;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 13px;
     text-shadow: 1px 1px 1px black;
     text-align: center;
     padding: 10px 2px;
@@ -63,4 +63,12 @@ body {
 
 .news-content {
     margin-bottom: 30px;
+}
+
+.hits {
+    background-image: url('/public/i/menu_item_bg.png');
+    background-repeat: repeat;
+    color: #434343;
+    padding: 5px;
+    min-height: 400px;
 }
