@@ -15,7 +15,45 @@ body {
 }
 
 .header {
-    height: 200px;
+    height: 150px;
+    width: 100%;
+    margin: 20px 0;
+    background-image: url('/public/i/menu_item_bg.png');
+    background-repeat: repeat;
+}
+
+.header-container {
+    padding: 0 60px;
+    text-align: center;
+}
+
+.header-title {
+    color: #ff2228;
+}
+
+.header-links {
+    color: #0073ad;
+    text-transform: uppercase;
+    font-weight: bolder;
+    border-bottom: 2px solid #0073ad;
+}
+
+.header-point {
+    padding: 0 20px;
+    color: #ff2228;
+}
+
+.header-contacts {
+    text-align: center;
+    color: #434343;
+    font-size: 11px;
+    width: 50%;
+    margin: 10px auto;
+}
+
+.header-contacts p {
+    padding: 0;
+    margin: 0;
 }
 
 .menu {
@@ -26,6 +64,7 @@ body {
     text-transform: uppercase;
     font-size: 13px;
     text-shadow: 1px 1px 1px black;
+    font-weight: bolder;
     border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -59,6 +98,7 @@ body {
     text-transform: uppercase;
     font-size: 13px;
     text-shadow: 1px 1px 1px black;
+    font-weight: bolder;
     text-align: center;
     padding: 10px 2px;
 }
@@ -84,15 +124,15 @@ body {
 
 .hit-title {
     font-size: 18px;
-    text-shadow: 1px 1px 1px black;
+    font-weight: bolder;
     color: #0073ad;
-    width: 50%;
+    width: 60%;
     margin: 20px auto;
-    min-height: 50px;
+    min-height: 75px;
 }
 
 .hit-content {
-    min-height: 200px;
+    min-height: 160px;
 }
 
 .hit-img img {

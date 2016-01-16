@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Идеальный город</title>
-
+    <link rel="icon" href="/public/i/fav.png" sizes="38x38" type="image/png">
     <!-- Bootstrap -->
     <link href="/public/css/bootstrap.css" rel="stylesheet">
     <link href="/public/css/custom.css" rel="stylesheet">
@@ -19,6 +19,22 @@
 </head>
 <body>
     <div class="container header">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 header-container">
+            <h1 class="header-title">ООО АПК "ИДЕАЛЬНЫЙ ГОРОД"</h1>
+            <div class="header-links">
+                ПРОЕКТИРОВАНИЕ  <span class="header-point"> &#149; </span>
+                ДЕВЕЛОПМЕНТ <span class="header-point"> &#149; </span>
+                ЗЕМЕЛЬНЫЙ КОНСАЛТИНГ <span class="header-point"> &#149; </span>
+                ЭНЕРГОАУДИТ
+            </div>
+            <div class="header-contacts">
+                <p>690035 Приморский край, г. Владивосток, ул. Калинина 17 В, 2 эт. оф. 200</p>
+                <p>тел.: +7(423) 230-20-36; +7(423) 266-66-15</p>
+                <p>ideal-gorod@bk.ru www.ideal-gorod.ru</p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
     </div>
     <div class="container content">
         <?=$content;?>
