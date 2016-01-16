@@ -73,11 +73,12 @@ body {
     text-align: center;
     padding: 10px 2px;
     margin-bottom: 10px;
+    display: block;
 }
 
-.menu-item a,
-.menu-item a:hover,
-.menu-item a:visited {
+.menu-item,
+.menu-item:hover,
+.menu-item:visited {
     color: #ff2228;
     text-decoration: none;
 }
