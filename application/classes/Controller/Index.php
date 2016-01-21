@@ -43,6 +43,8 @@ class Controller_Index extends Controller
 
 		if ($id == 'main') {
 			HTTP::redirect('/');
+		} elseif ($id == 'portfolio') {
+			HTTP::redirect('/portfolio/1');
 		}
 
 		$_GET['id'] = $id;
@@ -56,6 +58,31 @@ class Controller_Index extends Controller
 
 		$footer = View::factory('footer')
 			->set('pagesImgs', $this->contentModel->getPageImgs(['id' => Arr::get($pageData, 'id')]))
+		;
+
+		$this
+			->template
+			->set('content', $content)
+			->set('footer', $footer);
+
+		$this->response->body($this->template);
+	}
+
+	public function action_portfolio()
+	{
+		$id = $this->request->param('id');
+
+		$_GET['id'] = $id;
+		$pageData = Arr::get($this->contentModel->getPortfolioPage($_GET), 0, []);
+
+		$content = View::factory('portfolio')
+			->set('pages', $this->contentModel->getPortfolioPage())
+			->set('pageData', $pageData)
+			->set('get', $_GET)
+		;
+
+		$footer = View::factory('footer')
+			->set('pagesImgs', $this->contentModel->getPortfolioPageImgs(['id' => Arr::get($pageData, 'id')]))
 		;
 
 		$this

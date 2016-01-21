@@ -32,6 +32,15 @@ class Model_Content extends Kohana_Model
 			->as_array();
 	}
 
+	public function getPortfolioPage($params = [])
+	{
+		$idSql = !empty(Arr::get($params, 'id')) ? 'where `id` = :id' : '';
+		return DB::query(Database::SELECT, "select * from `portfolio__pages` $idSql")
+			->param(':id', Arr::get($params, 'id'))
+			->execute()
+			->as_array();
+	}
+
 	public function getCloudTag($params = [])
 	{
 		$idSql = !empty(Arr::get($params, 'id')) ? 'where `slug` = :id' : '';
@@ -45,6 +54,15 @@ class Model_Content extends Kohana_Model
     {
         $idSql = !empty(Arr::get($params, 'id', 0)) ? 'and `page_id` = :id' : '';
         return DB::query(Database::SELECT, "select * from `pages__imgs` where `enabled` = 1 $idSql")
+            ->param(':id', Arr::get($params, 'id', 0))
+            ->execute()
+            ->as_array();
+    }
+
+    public function getPortfolioPageImgs($params = [])
+    {
+        $idSql = !empty(Arr::get($params, 'id', 0)) ? 'and `page_id` = :id' : '';
+        return DB::query(Database::SELECT, "select * from `portfolio__imgs` where `enabled` = 1 $idSql")
             ->param(':id', Arr::get($params, 'id', 0))
             ->execute()
             ->as_array();

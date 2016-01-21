@@ -10,6 +10,6 @@
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page">
         <div class="page-title"><?=Arr::get($pageData, 'title');?></div>
-        <div class="page-content"><?=Arr::get($pageData, 'content');?></div>
+        <div class="page-content col-lg-12 col-md-12 col-sm-12 col-xs-12"><?=Arr::get($pageData, 'content');?></div>
     </div>
 </div>
