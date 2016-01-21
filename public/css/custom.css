@@ -13,6 +13,7 @@
 body {
     font-family: 'Calibri', sans-serif;
     background: none;
+    min-height: 100%;
 }
 
 .header {
@@ -145,4 +146,27 @@ body {
 .hit-img img {
     width: 100%;
     height: 100px;
+}
+
+.footer {
+    width: 100%;
+    background-image: url('/public/i/menu_item_bg.png');
+    background-repeat: repeat;
+    padding: 10px 0;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.footer-container {
+    margin: auto;
+    float: none;
+}
+
+.footer-container img {
+    height: 130px;
+    padding: 2px;
+    background-color: #747575;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
 }

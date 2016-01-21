@@ -9,13 +9,20 @@
     <!-- Bootstrap -->
     <link href="/public/css/bootstrap.css" rel="stylesheet">
     <link href="/public/css/custom.css" rel="stylesheet">
+    <link href="/public/css/slick.css" rel="stylesheet">
+    <link href="/public/css/slick-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/font-awesome.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/slick.js"></script>
 </head>
 <body>
     <div class="container header">
@@ -91,11 +98,7 @@
         </div>
     </div>
     <div class="container footer">
-
+        <?=$footer;?>
     </div>
 </body>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/public/js/bootstrap.min.js"></script>
 </html>

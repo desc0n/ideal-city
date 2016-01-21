@@ -22,13 +22,18 @@ class Controller_Index extends Controller
 
     public function action_index()
 	{
-        $content = View::factory("index")
+        $content = View::factory('index')
             ->set('pages', $this->contentModel->getPage())
+            ->set('hit', $this->contentModel->getRandomHit());
+
+		$footer = View::factory('footer')
+            ->set('pagesImgs', $this->contentModel->getPageImgs(['page_id' => 1]))
             ->set('hit', $this->contentModel->getRandomHit());
 
         $this
             ->template
-            ->set('content', $content);
+            ->set('content', $content)
+            ->set('footer', $footer);
 
 		$this->response->body($this->template);
 	}
