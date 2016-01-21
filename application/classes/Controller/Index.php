@@ -27,8 +27,7 @@ class Controller_Index extends Controller
             ->set('hit', $this->contentModel->getRandomHit());
 
 		$footer = View::factory('footer')
-            ->set('pagesImgs', $this->contentModel->getPageImgs(['page_id' => 1]))
-            ->set('hit', $this->contentModel->getRandomHit());
+            ->set('pagesImgs', $this->contentModel->getPageImgs(['id' => 1]));
 
         $this
             ->template
@@ -40,22 +39,31 @@ class Controller_Index extends Controller
 
 	public function action_page()
 	{
-        /**
-         * @var $contentModel Model_Content
-         */
-        $contentModel = Model::factory('Content');
-
 		$id = $this->request->param('id');
+
+		if ($id == 'main') {
+			HTTP::redirect('/');
+		}
+
 		$_GET['id'] = $id;
+		$pageData = Arr::get($this->contentModel->getPage($_GET), 0, []);
 
-		$template=View::factory("template")
-			->set('get', $_GET);
+		$content = View::factory('page')
+			->set('pages', $this->contentModel->getPage())
+			->set('pageData', $pageData)
+			->set('get', $_GET)
+		;
 
-		$pageData = $contentModel->getPage($_GET);
-		$template->content = View::factory("page")
-			->set('title', Arr::get(Arr::get($pageData, 0, []), 'title', ''))
-			->set('content', Arr::get(Arr::get($pageData, 0, []), 'content', ''));
-		$this->response->body($template);
+		$footer = View::factory('footer')
+			->set('pagesImgs', $this->contentModel->getPageImgs(['id' => Arr::get($pageData, 'id')]))
+		;
+
+		$this
+			->template
+			->set('content', $content)
+			->set('footer', $footer);
+
+		$this->response->body($this->template);
 	}
 
 }

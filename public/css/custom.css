@@ -78,6 +78,10 @@ body {
     display: block;
 }
 
+.menu-item.active {
+    background-image: url('/public/i/menu_item_active_bg.png');
+}
+
 .menu-item,
 .menu-item:hover,
 .menu-item:visited {
@@ -146,6 +150,45 @@ body {
 .hit-img img {
     width: 100%;
     height: 100px;
+}
+
+.page {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    background-image: url('/public/i/menu_item_bg.png');
+    background-repeat: repeat;
+    color: #434343;
+    min-height: 400px;
+    text-align: center;
+    padding: 5px;
+}
+
+.page-title {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #0073ad;
+    width: 60%;
+    margin: 20px auto;
+    min-height: 25px;
+    text-transform: uppercase;
+}
+
+.page-content {
+    min-height: 165px;
+}
+
+.scope-img {
+    padding: 10px;
+}
+
+.scope-img img {
+    width: 100%;
+    padding: 3px;
+    background-color: #747575;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
 }
 
 .footer {
