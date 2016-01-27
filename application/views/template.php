@@ -55,7 +55,10 @@
             <div class="news-title">Новости</div>
             <?foreach ($news as $newsData) {?>
             <div class="news-date"><?=Date::convertStrDateToFormat($newsData['date'], 'd.m.Y');?> г.</div>
-            <div class="news-content"><?=$newsData['content'];?></div>
+            <div class="news-content">
+                <?=mb_substr($newsData['content'], 0, mb_strpos($newsData['content'], '.'));?>...
+                <a href="#" class="news-link">Подробнее</a>
+            </div>
             <?}?>
             <table style="border-collapse: collapse; height: 25%; width: 25%;">
                 <tbody>
