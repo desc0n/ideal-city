@@ -11,7 +11,7 @@
 }
 
 body {
-    font-family: 'Calibri', sans-serif;
+    font-family: 'Century Gothic', sans-serif;
     background: none;
     min-height: 100%;
 }
@@ -25,12 +25,13 @@ body {
 }
 
 .header-container {
-    padding: 0 60px;
+    padding: 0 20px;
     text-align: center;
 }
 
 .header-title {
     color: #ff2228;
+    text-shadow: 2px 2px 1px black;
 }
 
 .header-links {
@@ -48,8 +49,8 @@ body {
 .header-contacts {
     text-align: center;
     color: #434343;
-    font-size: 11px;
-    width: 50%;
+    font-size: 12px;
+    width: 80%;
     margin: 10px auto;
 }
 
@@ -245,7 +246,6 @@ body {
 }
 
 .logo {
-    float: right;
     height: 150px;
     margin-top: 10px;
 }

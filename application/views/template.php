@@ -27,7 +27,9 @@
 <body>
     <div class="header">
         <div class="container">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding text-center">
+                <a href="/" target="_self"><img src="/public/i/logo.png" class="logo"></a>
+            </div>
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 header-container">
                 <h1 class="header-title">ООО АПК "ИДЕАЛЬНЫЙ ГОРОД"</h1>
                 <div class="header-links">
@@ -42,8 +44,8 @@
                     <p>office@ideal-gorod.ru</p>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
-                <a href="/" target="_self"><img src="/public/i/logo.png" class="logo"></a>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
             </div>
         </div>
     </div>
