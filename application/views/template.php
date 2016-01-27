@@ -37,13 +37,13 @@
                     ЭНЕРГОАУДИТ
                 </div>
                 <div class="header-contacts">
-                    <p>690035 Приморский край, г. Владивосток, ул. Калинина 17 В, 2 эт. оф. 200</p>
-                    <p>тел.: +7(423) 230-20-36; +7(423) 266-66-15</p>
-                    <p>ideal-gorod@bk.ru www.ideal-gorod.ru</p>
+                    <p>690091 Приморский край, г. Владивосток, ул. Луцкого 16, 1 эт.</p>
+                    <p>тел.: +7(423) 220-99-54; +7(423) 266-66-15</p>
+                    <p>office@ideal-gorod.ru</p>
                 </div>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
-                <img src="/public/i/logo.png" class="logo">
+                <a href="/" target="_self"><img src="/public/i/logo.png" class="logo"></a>
             </div>
         </div>
     </div>
