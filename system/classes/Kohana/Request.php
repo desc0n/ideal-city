@@ -1328,4 +1328,39 @@ class Kohana_Request implements HTTP_Request {
 		return $this;
 	}
 
+	/**
+	 * Gets or sets HTTP GET parameters to the request.
+	 *
+	 * @param   mixed  $key    Key or key value pairs to set
+	 * @param   string $value  Value to set to a key
+	 * @return  mixed
+	 * @uses    Arr::path
+	 */
+	public function get($key = NULL, $value = NULL)
+	{
+		if (is_array($key))
+		{
+			// Act as a setter, replace all fields
+			$this->_get = $key;
+
+			return $this;
+		}
+
+		if ($key === NULL)
+		{
+			// Act as a getter, all fields
+			return $this->_get;
+		}
+		elseif ($value === NULL)
+		{
+			// Act as a getter, single field
+			return Arr::path($this->_get, $key);
+		}
+
+		// Act as a setter, single field
+		$this->_get[$key] = $value;
+
+		return $this;
+	}
+
 } // End Request

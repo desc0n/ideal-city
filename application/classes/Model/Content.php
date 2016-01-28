@@ -7,11 +7,31 @@ class Model_Content extends Kohana_Model
 {
     public function getTemplate()
     {
-        $template = View::factory("template")
+        return View::factory("template")
             ->set('news', $this->getNews())
-            ->set('cloudTag', $this->getCloudTag());
+            ->set('cloudTag', $this->getCloudTag())
+        ;
+    }
 
-        return $template;
+    public function getContent($view, $pageData)
+    {
+        return View::factory($view)
+            ->set('menu', $this->getMenu())
+            ->set('pages', $this->getPage())
+            ->set('portfolioPages', $this->getPortfolioPage())
+            ->set('pageData', $pageData)
+            ->set('hit', $this->getRandomHit())
+            ->set('get', Request::initial()->get())
+        ;
+    }
+
+    public function getMenu()
+    {
+        return View::factory('menu')
+            ->set('pages', $this->getPage())
+            ->set('portfolioPages', $this->getPortfolioPage())
+            ->set('get', Request::initial()->get())
+        ;
     }
 
 	public function getCategory($params = [])

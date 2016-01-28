@@ -15,16 +15,13 @@ class Controller_Index extends Controller
     public function __construct(Request $request, Response $response)
     {
         parent::__construct($request, $response);
-
         $this->contentModel = Model::factory('Content');
         $this->template = $this->contentModel->getTemplate();
     }
 
     public function action_index()
 	{
-        $content = View::factory('index')
-            ->set('pages', $this->contentModel->getPage())
-            ->set('hit', $this->contentModel->getRandomHit());
+		$content = $this->contentModel->getContent('index', []);
 
 		$footer = View::factory('footer')
             ->set('pagesImgs', $this->contentModel->getPageImgs(['id' => 1]));
@@ -49,12 +46,9 @@ class Controller_Index extends Controller
 
 		$_GET['id'] = $id;
 		$pageData = Arr::get($this->contentModel->getPage($_GET), 0, []);
+		$view = $id == 'scope' ? 'scope' : 'page';
 
-		$content = View::factory('page')
-			->set('pages', $this->contentModel->getPage())
-			->set('pageData', $pageData)
-			->set('get', $_GET)
-		;
+		$content = $this->contentModel->getContent($view, $pageData);
 
 		$footer = View::factory('footer')
 			->set('pagesImgs', $this->contentModel->getPageImgs(['id' => Arr::get($pageData, 'id')]))
@@ -75,11 +69,7 @@ class Controller_Index extends Controller
 		$_GET['id'] = $id;
 		$pageData = Arr::get($this->contentModel->getPortfolioPage($_GET), 0, []);
 
-		$content = View::factory('portfolio')
-			->set('pages', $this->contentModel->getPortfolioPage())
-			->set('pageData', $pageData)
-			->set('get', $_GET)
-		;
+		$content = $this->contentModel->getContent('portfolio', $pageData);
 
 		$footer = View::factory('footer')
 			->set('pagesImgs', $this->contentModel->getPortfolioPageImgs(['id' => Arr::get($pageData, 'id')]))

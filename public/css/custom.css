@@ -85,13 +85,16 @@ body {
 
 .menu-item,
 .menu-item:hover,
-.menu-item:visited {
+.menu-item:visited,
+#portfolio a,
+#portfolio a:hover,
+#portfolio a:visited {
     color: #ff2228;
     text-decoration: none;
 }
 
 .portfolio-menu {
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 .portfolio-menu-item {
@@ -161,7 +164,7 @@ body {
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     color: #434343;
-    max-height: 500px;
+    height: 500px;
     text-align: center;
     padding: 5px;
 }
@@ -196,7 +199,7 @@ body {
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     color: #434343;
-    min-height: 400px;
+    height: 500px;
     text-align: center;
     padding: 5px;
 }
@@ -213,6 +216,7 @@ body {
 
 .page-content {
     min-height: 165px;
+    padding: 5px 20px;
 }
 
 .scope-img {
