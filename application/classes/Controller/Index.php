@@ -69,10 +69,31 @@ class Controller_Index extends Controller
 		$_GET['id'] = $id;
 		$pageData = Arr::get($this->contentModel->getPortfolioPage($_GET), 0, []);
 
-		$content = $this->contentModel->getContent('portfolio', $pageData);
+		$content = $this->contentModel->getContent('page', $pageData);
 
 		$footer = View::factory('footer')
 			->set('pagesImgs', $this->contentModel->getPortfolioPageImgs(['id' => Arr::get($pageData, 'id')]))
+		;
+
+		$this
+			->template
+			->set('content', $content)
+			->set('footer', $footer);
+
+		$this->response->body($this->template);
+	}
+
+	public function action_scope()
+	{
+		$id = $this->request->param('id');
+
+		$_GET['id'] = $id;
+		$pageData = Arr::get($this->contentModel->getScopePage($_GET), 0, []);
+
+		$content = $this->contentModel->getContent('page', $pageData);
+
+		$footer = View::factory('footer')
+			->set('pagesImgs', $this->contentModel->getScopePageImgs(['id' => Arr::get($pageData, 'id')]))
 		;
 
 		$this

@@ -88,16 +88,21 @@ body {
 .menu-item:visited,
 #portfolio a,
 #portfolio a:hover,
-#portfolio a:visited {
+#portfolio a:visited,
+#scope a,
+#scope a:hover,
+#scope a:visited {
     color: #ff2228;
     text-decoration: none;
 }
 
-.portfolio-menu {
+.portfolio-menu,
+.scope-menu {
     margin: 20px 0;
 }
 
-.portfolio-menu-item {
+.portfolio-menu-item,
+.scope-menu-item {
     text-transform: lowercase;
     font-size: 10px;
     font-weight: bolder;
@@ -112,13 +117,17 @@ body {
     display: block;
 }
 
-.portfolio-menu-item.active {
+.portfolio-menu-item.active,
+.scope-menu-item.active {
     background-image: url('/public/i/menu_item_active_bg.png');
 }
 
 .portfolio-menu-item,
 .portfolio-menu-item:hover,
-.portfolio-menu-item:visited {
+.portfolio-menu-item:visited,
+.scope-menu-item,
+.scope-menu-item:hover,
+.scope-menu-item:visited {
     color: #0073ad;
     text-decoration: none;
 }
@@ -132,6 +141,7 @@ body {
     color: #434343;
     padding: 5px;
     font-size: 9px;
+    min-height: 500px;
 }
 
 .news-title {

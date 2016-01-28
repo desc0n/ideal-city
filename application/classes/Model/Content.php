@@ -19,6 +19,7 @@ class Model_Content extends Kohana_Model
             ->set('menu', $this->getMenu())
             ->set('pages', $this->getPage())
             ->set('portfolioPages', $this->getPortfolioPage())
+            ->set('scopePages', $this->getScopePage())
             ->set('pageData', $pageData)
             ->set('hit', $this->getRandomHit())
             ->set('get', Request::initial()->get())
@@ -30,6 +31,7 @@ class Model_Content extends Kohana_Model
         return View::factory('menu')
             ->set('pages', $this->getPage())
             ->set('portfolioPages', $this->getPortfolioPage())
+            ->set('scopePages', $this->getScopePage())
             ->set('get', Request::initial()->get())
         ;
     }
@@ -61,6 +63,15 @@ class Model_Content extends Kohana_Model
 			->as_array();
 	}
 
+	public function getScopePage($params = [])
+	{
+		$idSql = !empty(Arr::get($params, 'id')) ? 'where `id` = :id' : '';
+		return DB::query(Database::SELECT, "select * from `scope__pages` $idSql")
+			->param(':id', Arr::get($params, 'id'))
+			->execute()
+			->as_array();
+	}
+
 	public function getCloudTag($params = [])
 	{
 		$idSql = !empty(Arr::get($params, 'id')) ? 'where `slug` = :id' : '';
@@ -83,6 +94,15 @@ class Model_Content extends Kohana_Model
     {
         $idSql = !empty(Arr::get($params, 'id', 0)) ? 'and `page_id` = :id' : '';
         return DB::query(Database::SELECT, "select * from `portfolio__imgs` where `enabled` = 1 $idSql")
+            ->param(':id', Arr::get($params, 'id', 0))
+            ->execute()
+            ->as_array();
+    }
+
+    public function getScopePageImgs($params = [])
+    {
+        $idSql = !empty(Arr::get($params, 'id', 0)) ? 'and `page_id` = :id' : '';
+        return DB::query(Database::SELECT, "select * from `scope__imgs` where `enabled` = 1 $idSql")
             ->param(':id', Arr::get($params, 'id', 0))
             ->execute()
             ->as_array();
