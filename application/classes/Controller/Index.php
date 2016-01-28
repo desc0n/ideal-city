@@ -21,7 +21,7 @@ class Controller_Index extends Controller
 
     public function action_index()
 	{
-		$content = $this->contentModel->getContent('index', []);
+		$content = $this->contentModel->getContent('scope', []);
 
 		$footer = View::factory('footer')
             ->set('pagesImgs', $this->contentModel->getPageImgs(['id' => 1]));
