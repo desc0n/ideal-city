@@ -9,11 +9,5 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hit">
         <div class="hit-title"><?=Arr::get($hit, 'title');?></div>
         <div class="hit-content"><?=Arr::get($hit, 'content');?></div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 hit-img">
-            <img src="/public/img/thumb/<?=Arr::get(Arr::get(Arr::get($hit, 'imgs', []), 0), 'src');?>">
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 hit-img">
-            <img src="/public/img/thumb/<?=Arr::get(Arr::get(Arr::get($hit, 'imgs', []), 1), 'src');?>">
-        </div>
     </div>
 </div>

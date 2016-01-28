@@ -12,6 +12,7 @@
     <link href="/public/css/slick.css" rel="stylesheet">
     <link href="/public/css/slick-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/font-awesome.css">
+    <link rel="stylesheet" href="/public/css/jquery.rollbar.css">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,6 +24,29 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/public/js/bootstrap.min.js"></script>
     <script src="/public/js/slick.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.rollbar.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.hit').rollbar({zIndex:80});
+            $('body').rollbar({zIndex:100});
+        });
+    </script>
+    <script type="text/javascript">
+        $(function(){
+            var base = 'body';
+            $('a[href^="#"]').each(function(){
+                var name = $(this).attr('href').substr(1);
+                var anchor = document.getElementById(name) || document.getElementsByName(name);
+                if(anchor = (anchor.item)?anchor.item(0):anchor){
+                    var offset = $(base+' > .rollbar-content').height() - $(anchor).offset().top;
+                    $(this).click(function(){
+                        $(base).trigger('rollbar',-offset);
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="header">
@@ -56,7 +80,7 @@
             <?foreach ($news as $newsData) {?>
             <div class="news-date"><?=Date::convertStrDateToFormat($newsData['date'], 'd.m.Y');?> г.</div>
             <div class="news-content">
-                <?=mb_substr($newsData['content'], 0, mb_strpos($newsData['content'], '.'));?>...
+                <?=mb_substr($newsData['content'], 0, 100);?>...
                 <a href="#" class="news-link">Подробнее</a>
             </div>
             <?}?>

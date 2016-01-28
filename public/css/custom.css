@@ -146,7 +146,7 @@ body {
 }
 
 .news-content {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .news-link {
@@ -161,7 +161,7 @@ body {
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     color: #434343;
-    min-height: 400px;
+    max-height: 500px;
     text-align: center;
     padding: 5px;
 }
@@ -177,6 +177,7 @@ body {
 
 .hit-content {
     min-height: 165px;
+    padding: 5px 20px;
 }
 
 .hit-img {
