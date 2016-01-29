@@ -1,6 +1,8 @@
 html {
     position: relative;
-    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
     width: 100%;
     background-color: #000;
     background-image: url('/public/i/bg.png');
@@ -13,7 +15,9 @@ html {
 body {
     font-family: 'Century Gothic', sans-serif;
     background: none;
-    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 .header {
@@ -263,13 +267,21 @@ overflow-y: auto;
     -moz-border-radius: 2px;
 }
 
+.container-bottom {
+    width: 100%;
+    padding: 10px 0;
+    height: 160px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 .footer {
     width: 100%;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     padding: 10px 0;
     height: 150px;
-    margin-top: 20px;
 }
 
 .footer-container {
@@ -293,4 +305,9 @@ overflow-y: auto;
 
 .no-padding {
     padding: 0;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
 }
