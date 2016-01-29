@@ -34,10 +34,17 @@ body {
     text-shadow: 2px 2px 1px black;
 }
 
-.header-links {
+.header-links,
+.header-links a,
+.header-links a:hover,
+.header-links a:visited {
     color: #0073ad;
     text-transform: uppercase;
     font-weight: bolder;
+    text-decoration: none;
+}
+
+.header-links {
     border-bottom: 2px solid #0073ad;
 }
 

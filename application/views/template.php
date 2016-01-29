@@ -57,10 +57,10 @@
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 header-container">
                 <h1 class="header-title">ООО АПК "ИДЕАЛЬНЫЙ ГОРОД"</h1>
                 <div class="header-links">
-                    ПРОЕКТИРОВАНИЕ  <span class="header-point"> &#149; </span>
-                    ДЕВЕЛОПМЕНТ <span class="header-point"> &#149; </span>
-                    ЗЕМЕЛЬНЫЙ КОНСАЛТИНГ <span class="header-point"> &#149; </span>
-                    ЭНЕРГОАУДИТ
+                    <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>  <span class="header-point"> &#149; </span>
+                    <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a> <span class="header-point"> &#149; </span>
+                    <a href="/scope/3">КАДАСТР НЕДВИЖИМОСТИ</a> <span class="header-point"> &#149; </span>
+                    <a href="/scope/4">ИЗЫСКАНИЕ</a>
                 </div>
                 <div class="header-contacts">
                     <p>690091 Приморский край, г. Владивосток, ул. Луцкого 16, 1 эт.</p>
