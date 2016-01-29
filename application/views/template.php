@@ -55,7 +55,8 @@
                 <a href="/" target="_self"><img src="/public/i/logo.png" class="logo"></a>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 header-container">
-                <h1 class="header-title">ООО АПК "ИДЕАЛЬНЫЙ ГОРОД"</h1>
+                <div class="header-top">П Р О Е К Т Н О   -   Д Е В Е Л О П Е Р С К А Я    Г Р У П П А</div>
+                <h1 class="header-title">ИДЕАЛЬНЫЙ ГОРОД</h1>
                 <div class="header-links">
                     <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>  <span class="header-point"> &#149; </span>
                     <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a> <span class="header-point"> &#149; </span>

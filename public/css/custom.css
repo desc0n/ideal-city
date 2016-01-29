@@ -19,7 +19,7 @@ body {
 .header {
     height: 170px;
     width: 100%;
-    margin: 20px 0;
+    margin: 10px 0;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
 }
@@ -30,8 +30,11 @@ body {
 }
 
 .header-title {
+    margin-top: 5px;
     color: #ff2228;
     text-shadow: 2px 2px 1px black;
+    letter-spacing: 6px;
+    font-size: 38px;
 }
 
 .header-links,
@@ -51,6 +54,15 @@ body {
 .header-point {
     padding: 0 20px;
     color: #ff2228;
+}
+
+.header-top {
+    color: #0073ad;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-weight: bolder;
 }
 
 .header-contacts {
