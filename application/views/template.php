@@ -131,10 +131,10 @@
                 </table>
             </div>
         </div>
-        <div class="container container-bottom">
-             <div class="footer">
-                <?=$footer;?>
-            </div>
+    </div>
+    <div class="container container-bottom">
+        <div class="footer">
+            <?=$footer;?>
         </div>
     </div>
 </body>

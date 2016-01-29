@@ -82,6 +82,10 @@ body {
     margin: 0;
 }
 
+.content {
+    min-height: 100%;
+}
+
 .menu {
     padding: 0;
 }
@@ -270,10 +274,6 @@ overflow-y: auto;
 .container-bottom {
     width: 100%;
     padding: 10px 0;
-    height: 160px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 }
 
 .footer {
@@ -309,5 +309,9 @@ overflow-y: auto;
 
 #wrapper {
     min-height: 100%;
-    position: relative;
+    margin-bottom: -170px;
+}
+
+.container-bottom, #wrapper:after {
+    height: 170px;
 }
