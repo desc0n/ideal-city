@@ -54,19 +54,21 @@
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding text-center">
                     <a href="/" target="_self"><img src="/public/i/logo.png" class="logo"></a>
                 </div>
-                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 header-container">
-                    <div class="header-top">П Р О Е К Т Н О   -   Д Е В Е Л О П Е Р С К А Я    Г Р У П П А</div>
-                    <h1 class="header-title">ИДЕАЛЬНЫЙ ГОРОД</h1>
-                    <div class="header-links">
-                        <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>  <span class="header-point"> &#149; </span>
-                        <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a> <span class="header-point"> &#149; </span>
-                        <a href="/scope/3">КАДАСТР НЕДВИЖИМОСТИ</a> <span class="header-point"> &#149; </span>
-                        <a href="/scope/4">ИЗЫСКАНИЕ</a>
-                    </div>
-                    <div class="header-contacts">
-                        <p>690091 Приморский край, г. Владивосток, ул. Луцкого 16, 1 эт.</p>
-                        <p>тел.: +7(423) 220-99-54; +7(423) 266-66-15</p>
-                        <p>office@ideal-gorod.ru</p>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <div class="header-container">
+                        <div class="header-top">П Р О Е К Т Н О   -   Д Е В Е Л О П Е Р С К А Я    Г Р У П П А</div>
+                        <h1 class="header-title">ИДЕАЛЬНЫЙ ГОРОД</h1>
+                        <div class="header-links">
+                            <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>  <span class="header-point"> &#149; </span>
+                            <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a> <span class="header-point"> &#149; </span>
+                            <a href="/scope/3">КАДАСТР НЕДВИЖИМОСТИ</a> <span class="header-point"> &#149; </span>
+                            <a href="/scope/4">ИЗЫСКАНИЕ</a>
+                        </div>
+                        <div class="header-contacts">
+                            <p>690091 Приморский край, г. Владивосток, ул. Луцкого 16, 1 эт.</p>
+                            <p>тел.: +7(423) 220-99-54; +7(423) 266-66-15</p>
+                            <p>office@ideal-gorod.ru</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">

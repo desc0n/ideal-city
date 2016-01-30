@@ -21,7 +21,8 @@ body {
 }
 
 .header {
-    height: 170px;
+    display: table;
+    height: 175px;
     width: 100%;
     margin: 20px 0;
     background-image: url('/public/i/menu_item_bg.png');
@@ -31,13 +32,15 @@ body {
 .header-container {
     padding: 0 20px;
     text-align: center;
+    width: 580px;
+    margin: auto;
 }
 
 .header-title {
     margin-top: 5px;
     color: #ff2228;
-    text-shadow: 2px 2px 1px black;
-    letter-spacing: 6px;
+    text-shadow: 2px 2px 2px #424242;
+    letter-spacing: 10px;
     font-size: 38px;
 }
 
@@ -49,6 +52,7 @@ body {
     text-transform: uppercase;
     font-weight: bolder;
     text-decoration: none;
+    font-size: 12px;
 }
 
 .header-links {
@@ -56,14 +60,14 @@ body {
 }
 
 .header-point {
-    padding: 0 20px;
+    padding: 0 11px;
     color: #ff2228;
 }
 
 .header-top {
     color: #0073ad;
     font-size: 12px;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     margin-top: 10px;
     font-weight: bolder;
@@ -73,7 +77,6 @@ body {
     text-align: center;
     color: #434343;
     font-size: 12px;
-    width: 80%;
     margin: 10px auto;
 }
 
@@ -83,7 +86,8 @@ body {
 }
 
 .content {
-    min-height: 100%;
+    min-height: 500px;
+    display: table;
 }
 
 .menu {
@@ -272,6 +276,7 @@ overflow-y: auto;
 }
 
 .footer {
+    display: table;
     width: 100%;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
