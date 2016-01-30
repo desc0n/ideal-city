@@ -32,7 +32,7 @@ body {
 .header-container {
     padding: 0 20px;
     text-align: center;
-    width: 580px;
+    width: 585px;
     margin: auto;
 }
 
@@ -60,14 +60,14 @@ body {
 }
 
 .header-point {
-    padding: 0 8px;
+    padding: 0 7px;
     color: #ff2228;
 }
 
 .header-top {
     color: #0073ad;
     font-size: 12px;
-    letter-spacing: 11px;
+    letter-spacing: 10px;
     text-transform: uppercase;
     margin-top: 10px;
     font-weight: bolder;
