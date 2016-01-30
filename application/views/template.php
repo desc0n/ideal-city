@@ -131,9 +131,7 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div class="container container-bottom">
-        <div class="footer">
+        <div class="container footer">
             <?=$footer;?>
         </div>
     </div>

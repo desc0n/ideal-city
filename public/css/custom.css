@@ -23,7 +23,7 @@ body {
 .header {
     height: 170px;
     width: 100%;
-    margin: 10px 0;
+    margin: 20px 0;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
 }
@@ -271,17 +271,13 @@ overflow-y: auto;
     -moz-border-radius: 2px;
 }
 
-.container-bottom {
-    width: 100%;
-    padding: 10px 0;
-}
-
 .footer {
     width: 100%;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     padding: 10px 0;
     height: 150px;
+    margin: 20px 0;
 }
 
 .footer-container {
@@ -309,9 +305,4 @@ overflow-y: auto;
 
 #wrapper {
     min-height: 100%;
-    margin-bottom: -170px;
-}
-
-.container-bottom, #wrapper:after {
-    height: 170px;
 }
