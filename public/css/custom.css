@@ -33,6 +33,7 @@ body {
     padding: 0 20px;
     text-align: center;
     margin: auto;
+    width: 600px;
 }
 
 .header-title {
@@ -41,6 +42,7 @@ body {
     text-shadow: 1px 1px 2px #424242;
     letter-spacing: 10px;
     font-size: 38px;
+    text-align-last: justify;
 }
 
 .header-links,
@@ -56,50 +58,34 @@ body {
 
 .header-links {
     border-bottom: 2px solid #0073ad;
+    width: 100%;
 }
 
 .header-point {
     color: #ff2228;
 }
 
-@media (max-width: 3000px) {
-    .header-point {
-        padding: 0 7px;
-    }
-
-    .header-container {
-        width: 590px;
-    }
+.links-td-small {
+    width: 90px;
 }
 
-@media (max-width: 1200px) {
-    .header-point {
-        padding: 0 4px;
-    }
-
-    .header-container {
-        width: 650px;
-    }
+.links-td {
+    width: 150px;
 }
 
-@media (max-width: 992px) {
-    .header-point {
-        padding: 0 2px;
-    }
-
-    .header-container {
-        width: 650px;
-    }
-
+.point-td {
+    width: 30px;
 }
 
 .header-top {
     color: #0073ad;
     font-size: 12px;
-    letter-spacing: 10px;
+    letter-spacing: 11px;
     text-transform: uppercase;
     margin-top: 10px;
     font-weight: bolder;
+    text-align-last: justify;
+    padding-left: 5px;
 }
 
 .header-contacts {

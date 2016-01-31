@@ -59,10 +59,31 @@
                         <div class="header-top">ПРОЕКТНО-ДЕВЕЛОПЕРСКАЯ ГРУППА</div>
                         <h1 class="header-title">ИДЕАЛЬНЫЙ ГОРОД</h1>
                         <div class="header-links">
-                            <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>  <span class="header-point"> &#149; </span>
-                            <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a> <span class="header-point"> &#149; </span>
-                            <a href="/scope/3">КАДАСТР НЕДВИЖИМОСТИ</a> <span class="header-point"> &#149; </span>
-                            <a href="/scope/4">ИЗЫСКАНИЕ</a>
+                            <table>
+                                <tr>
+                                    <td class="text-left links-td-small no-padding">
+                                        <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>
+                                    </td>
+                                    <td class="no-padding point-td text-right">
+                                        <span class="header-point"> &#149; </span>
+                                    </td>
+                                    <td class="text-center links-td no-padding">
+                                        <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a>
+                                    </td>
+                                    <td class="no-padding point-td text-left">
+                                        <span class="header-point"> &#149; </span>
+                                    </td>
+                                    <td class="text-center links-td no-padding">
+                                        <a href="/scope/3">КАДАСТР НЕДВИЖИМОСТИ</a>
+                                    </td>
+                                    <td class="no-padding point-td text-right">
+                                        <span class="header-point"> &#149; </span>
+                                    </td>
+                                    <td class="text-right links-td-small no-padding">
+                                        <a href="/scope/4">ИЗЫСКАНИЕ</a>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="header-contacts">
                             <p>690091 Приморский край, г. Владивосток, ул. Луцкого 16, 1 эт.</p>
