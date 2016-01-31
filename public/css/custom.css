@@ -32,7 +32,6 @@ body {
 .header-container {
     padding: 0 20px;
     text-align: center;
-    width: 590px;
     margin: auto;
 }
 
@@ -67,11 +66,19 @@ body {
     .header-point {
         padding: 0 7px;
     }
+
+    .header-container {
+        width: 590px;
+    }
 }
 
 @media (max-width: 1200px) {
     .header-point {
         padding: 0 4px;
+    }
+
+    .header-container {
+        width: 650px;
     }
 }
 
@@ -79,6 +86,11 @@ body {
     .header-point {
         padding: 0 2px;
     }
+
+    .header-container {
+        width: 650px;
+    }
+
 }
 
 .header-top {
