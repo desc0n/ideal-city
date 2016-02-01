@@ -22,9 +22,9 @@ body {
 
 .header {
     display: table;
-    height: 175px;
+    height: 150px;
     width: 100%;
-    margin: 20px 0;
+    margin: 0 0 20px 0;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
 }
@@ -33,11 +33,11 @@ body {
     padding: 0 20px;
     text-align: center;
     margin: auto;
-    width: 600px;
+    width: 650px;
 }
 
 .header-title {
-    margin-top: 5px;
+    margin: 5px 0;
     color: #ff2228;
     text-shadow: 1px 1px 2px #424242;
     letter-spacing: 10px;
@@ -53,7 +53,7 @@ body {
     text-transform: uppercase;
     font-weight: bolder;
     text-decoration: none;
-    font-size: 7pt;
+    font-size: 7.5pt;
 }
 
 .header-links {
@@ -65,12 +65,20 @@ body {
     color: #ff2228;
 }
 
+.header-links .header-point.first {
+    margin-right: 9px;
+}
+
+.header-links .header-point.last {
+    margin-right: 1px;
+}
+
 .links-td-small {
-    width: 90px;
+    width: 100px;
 }
 
 .links-td {
-    width: 150px;
+    width: 160px;
 }
 
 .point-td {
@@ -82,7 +90,7 @@ body {
     font-size: 12px;
     letter-spacing: 11px;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin: 5px 0;
     font-weight: bolder;
     text-align-last: justify;
     padding-left: 5px;
@@ -91,8 +99,8 @@ body {
 .header-contacts {
     text-align: center;
     color: #434343;
-    font-size: 12px;
-    margin: 10px auto;
+    font-size: 11px;
+    margin: 5px auto;
 }
 
 .header-contacts p {
@@ -101,7 +109,7 @@ body {
 }
 
 .content {
-    min-height: 500px;
+    min-height: 440px;
     display: table;
 }
 
@@ -187,7 +195,7 @@ body {
     color: #434343;
     padding: 5px;
     font-size: 9px;
-    min-height: 500px;
+    min-height: 440px;
 }
 
 .news-title {
@@ -221,7 +229,7 @@ body {
     background-repeat: repeat;
     color: #434343;
     height: 500px;
-overflow-y: auto;
+    overflow-y: auto;
     text-align: center;
     padding: 5px;
 }
@@ -257,7 +265,7 @@ overflow-y: auto;
     background-repeat: repeat;
     color: #434343;
     height: 500px;
-overflow-y: auto;
+    overflow-y: auto;
     text-align: center;
     padding: 5px;
 }
@@ -291,18 +299,25 @@ overflow-y: auto;
 }
 
 .footer {
-    display: table;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     width: 100%;
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     padding: 10px 0;
     height: 150px;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
 }
 
 .footer-container {
     margin: auto;
     float: none;
+}
+
+.footer-push {
+    width: 100%;
+    height: 150px;
 }
 
 .footer-container img {
@@ -315,7 +330,7 @@ overflow-y: auto;
 }
 
 .logo {
-    height: 150px;
+    height: 125px;
     margin-top: 10px;
 }
 

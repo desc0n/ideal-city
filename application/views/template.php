@@ -65,7 +65,7 @@
                                         <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>
                                     </td>
                                     <td class="no-padding point-td text-right">
-                                        <span class="header-point"> &#149; </span>
+                                        <span class="header-point first"> &#149; </span>
                                     </td>
                                     <td class="text-center links-td no-padding">
                                         <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a>
@@ -77,7 +77,7 @@
                                         <a href="/scope/3">КАДАСТР НЕДВИЖИМОСТИ</a>
                                     </td>
                                     <td class="no-padding point-td text-right">
-                                        <span class="header-point"> &#149; </span>
+                                        <span class="header-point last"> &#149; </span>
                                     </td>
                                     <td class="text-right links-td-small no-padding">
                                         <a href="/scope/4">ИЗЫСКАНИЕ</a>
@@ -154,6 +154,7 @@
                 </table>
             </div>
         </div>
+        <div class="footer-push"></div>
         <div class="container footer">
             <?=$footer;?>
         </div>
