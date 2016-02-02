@@ -40,7 +40,7 @@ body {
     margin: 5px 0;
     color: #ff2228;
     text-shadow: 1px 1px 2px #424242;
-    letter-spacing: 10px;
+    letter-spacing: 15px;
     font-size: 38px;
     text-align-last: justify;
 }
@@ -88,7 +88,7 @@ body {
 .header-top {
     color: #0073ad;
     font-size: 12px;
-    letter-spacing: 11px;
+    letter-spacing: 13px;
     text-transform: uppercase;
     margin: 5px 0;
     font-weight: bolder;
