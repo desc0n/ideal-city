@@ -8,7 +8,7 @@
     <link rel="icon" href="/public/i/fav.png" sizes="38x38" type="image/png">
     <!-- Bootstrap -->
     <link href="/public/css/bootstrap.css" rel="stylesheet">
-    <link href="/public/css/custom.css?v=1" rel="stylesheet">
+    <link href="/public/css/custom.css?v=2" rel="stylesheet">
     <link href="/public/css/slick.css" rel="stylesheet">
     <link href="/public/css/slick-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/font-awesome.css">
@@ -61,25 +61,25 @@
                         <div class="header-links">
                             <table>
                                 <tr>
-                                    <td class="text-left links-td-small no-padding">
+                                    <td class="text-left links-td-first no-padding">
                                         <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>
                                     </td>
                                     <td class="no-padding point-td text-right">
                                         <span class="header-point first"> &#149; </span>
                                     </td>
-                                    <td class="text-center links-td no-padding">
+                                    <td class="text-center links-td-second no-padding">
                                         <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a>
                                     </td>
                                     <td class="no-padding point-td text-left">
                                         <span class="header-point"> &#149; </span>
                                     </td>
-                                    <td class="text-center links-td no-padding">
+                                    <td class="text-center links-td-third no-padding">
                                         <a href="/scope/3">КАДАСТР НЕДВИЖИМОСТИ</a>
                                     </td>
                                     <td class="no-padding point-td text-right">
                                         <span class="header-point last"> &#149; </span>
                                     </td>
-                                    <td class="text-right links-td-small no-padding">
+                                    <td class="text-right links-td-fourth no-padding">
                                         <a href="/scope/4">ИЗЫСКАНИЕ</a>
                                     </td>
                                 </tr>

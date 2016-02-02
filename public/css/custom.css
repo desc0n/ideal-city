@@ -54,6 +54,7 @@ body {
     font-weight: bolder;
     text-decoration: none;
     font-size: 7.5pt;
+    letter-spacing: 4px;
 }
 
 .header-links {
@@ -66,23 +67,31 @@ body {
 }
 
 .header-links .header-point.first {
-    margin-right: 9px;
+
 }
 
 .header-links .header-point.last {
-    margin-right: 1px;
+
 }
 
-.links-td-small {
-    width: 100px;
+.links-td-first {
+
 }
 
-.links-td {
-    width: 160px;
+.links-td-second {
+
+}
+
+.links-td-third {
+
+}
+
+.links-td-fourth {
+
 }
 
 .point-td {
-    width: 30px;
+
 }
 
 .header-top {
