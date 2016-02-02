@@ -58,41 +58,21 @@ body {
 }
 
 .header-links {
-    border-bottom: 2px solid #0073ad;
     width: 100%;
+}
+
+.header-links table tr td {
+    border-bottom: 2px solid #0073ad;
+}
+
+.links-td-fourth a {
+    margin-right: -3px;
 }
 
 .header-point {
     color: #ff2228;
 }
 
-.header-links .header-point.first {
-
-}
-
-.header-links .header-point.last {
-
-}
-
-.links-td-first {
-
-}
-
-.links-td-second {
-
-}
-
-.links-td-third {
-
-}
-
-.links-td-fourth {
-
-}
-
-.point-td {
-
-}
 
 .header-top {
     color: #0073ad;

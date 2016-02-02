@@ -80,7 +80,7 @@
                                         <span class="header-point last"> &#149; </span>
                                     </td>
                                     <td class="text-right links-td-fourth no-padding">
-                                        <a href="/scope/4">ИЗЫСКАНИЕ</a>
+                                        <a href="/scope/4">ИЗЫСКАНИЯ</a>
                                     </td>
                                 </tr>
                             </table>
