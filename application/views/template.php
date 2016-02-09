@@ -8,7 +8,7 @@
     <link rel="icon" href="/public/i/fav.png" sizes="38x38" type="image/png">
     <!-- Bootstrap -->
     <link href="/public/css/bootstrap.css" rel="stylesheet">
-    <link href="/public/css/custom.css?v=3" rel="stylesheet">
+    <link href="/public/css/custom.css?v=4" rel="stylesheet">
     <link href="/public/css/slick.css" rel="stylesheet">
     <link href="/public/css/slick-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/font-awesome.css">
@@ -98,7 +98,7 @@
             </div>
         </div>
         <div class="metro-container">
-            <marquee behavior="scroll" loop="-1" direction="left" height="54"  scrollamount="10">
+            <marquee behavior="scroll" loop="-1" direction="left" height="39"  scrollamount="10">
                 <table class="metro">
                     <tr>
                         <td>выбор участка</td>
