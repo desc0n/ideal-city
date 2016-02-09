@@ -97,6 +97,60 @@
                 </div>
             </div>
         </div>
+        <div class="metro-container">
+            <marquee behavior="scroll" loop="-1" direction="left" height="54"  scrollamount="10">
+                <table class="metro">
+                    <tr>
+                        <td>выбор участка</td>
+                        <td></td>
+                        <td>геология</td>
+                        <td></td>
+                        <td>технические условия</td>
+                        <td></td>
+                        <td>согласование проекта</td>
+                        <td></td>
+                        <td>разрешение на строительство</td>
+                        <td></td>
+                        <td>технический план</td>
+                        <td></td>
+                        <td>кадастровый учет</td>
+                        <td></td>
+                    </tr>
+                    <tr class="middle-row">
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>топография</td>
+                        <td></td>
+                        <td>концепция</td>
+                        <td></td>
+                        <td>проектирование</td>
+                        <td></td>
+                        <td>экспертиза</td>
+                        <td></td>
+                        <td>сопровождение строительства</td>
+                        <td></td>
+                        <td>ввод в эксплуатацию</td>
+                        <td></td>
+                        <td>регистрация прав</td>
+                    </tr>
+                </table>
+            </marquee>
+        </div>
         <div class="container content">
             <?=$content;?>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 news">

@@ -300,8 +300,8 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-image: url('/public/i/menu_item_bg.png');
-    background-repeat: repeat;
+    /*background-image: url('/public/i/menu_item_bg.png');*/
+    /*background-repeat: repeat;*/
     padding: 10px 0;
     height: 150px;
     margin: 20px 0 0 0;
@@ -337,4 +337,24 @@ body {
 
 #wrapper {
     min-height: 100%;
+}
+
+.metro tr,
+.metro tr td {
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 13px;
+}
+
+.metro-container {
+    background-image: url('/public/i/metro_line.jpg');
+    background-repeat: repeat-x;
+    background-position: left center;
+}
+
+
+.metro .middle-row td img {
+    width: 10px;
 }
