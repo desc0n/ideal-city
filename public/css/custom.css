@@ -352,6 +352,7 @@ body {
     background-image: url('/public/i/metro_line.jpg');
     background-repeat: repeat-x;
     background-position: left center;
+    margin-bottom: 20px;
 }
 
 
