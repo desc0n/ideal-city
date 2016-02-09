@@ -98,8 +98,108 @@
             </div>
         </div>
         <div class="metro-container">
-            <marquee behavior="scroll" loop="-1" direction="left" height="39"  scrollamount="10">
-                <table class="metro">
+            <marquee id="metro-marq" behavior="scroll" loop="-1" direction="left" height="39"  scrollamount="4">
+                <table class="metro" id="metro1">
+                    <tr>
+                        <td>выбор участка</td>
+                        <td></td>
+                        <td>геология</td>
+                        <td></td>
+                        <td>технические условия</td>
+                        <td></td>
+                        <td>согласование проекта</td>
+                        <td></td>
+                        <td>разрешение на строительство</td>
+                        <td></td>
+                        <td>технический план</td>
+                        <td></td>
+                        <td>кадастровый учет</td>
+                        <td></td>
+                    </tr>
+                    <tr class="middle-row">
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>топография</td>
+                        <td></td>
+                        <td>концепция</td>
+                        <td></td>
+                        <td>проектирование</td>
+                        <td></td>
+                        <td>экспертиза</td>
+                        <td></td>
+                        <td>сопровождение строительства</td>
+                        <td></td>
+                        <td>ввод в эксплуатацию</td>
+                        <td></td>
+                        <td>регистрация прав</td>
+                    </tr>
+                </table>
+                <table class="metro" id="metro2">
+                    <tr>
+                        <td>выбор участка</td>
+                        <td></td>
+                        <td>геология</td>
+                        <td></td>
+                        <td>технические условия</td>
+                        <td></td>
+                        <td>согласование проекта</td>
+                        <td></td>
+                        <td>разрешение на строительство</td>
+                        <td></td>
+                        <td>технический план</td>
+                        <td></td>
+                        <td>кадастровый учет</td>
+                        <td></td>
+                    </tr>
+                    <tr class="middle-row">
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                        <td><img src="/public/i/metro_point.png" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>топография</td>
+                        <td></td>
+                        <td>концепция</td>
+                        <td></td>
+                        <td>проектирование</td>
+                        <td></td>
+                        <td>экспертиза</td>
+                        <td></td>
+                        <td>сопровождение строительства</td>
+                        <td></td>
+                        <td>ввод в эксплуатацию</td>
+                        <td></td>
+                        <td>регистрация прав</td>
+                    </tr>
+                </table>
+                <table class="metro" id="metro3">
                     <tr>
                         <td>выбор участка</td>
                         <td></td>
@@ -214,4 +314,44 @@
         </div>
     </div>
 </body>
+<script>
+    /*
+    function addMetro(id, html) {
+        $('#metro-marq').find($('#metro' + id)).remove();
+
+        $('#metro-marq').append('<table class="metro" id="metro' + id + '">' + html + '</table>');
+    }
+
+    function rewriteMetro (){
+        if ($('#metro-marq').find($('#metro1')).offset()['left'] < 0 && $('#metro-marq').find($('#metro3')).offset()['left'] < 0) {
+            html = $('#metro-marq').find($('#metro3')).html();
+            id = 3;
+
+            addMetro(id, html);
+
+            return true;
+        }
+
+        if ($('#metro-marq').find($('#metro2')).offset()['left'] < 0 && $('#metro-marq').find($('#metro1')).offset()['left'] < 0) {
+            html = $('#metro-marq').find($('#metro1')).html();
+            id = 1;
+
+            addMetro(id, html);
+
+            return true;
+        }
+
+        if ($('#metro-marq').find($('#metro3')).offset()['left'] < 0 && $('#metro-marq').find($('#metro2')).offset()['left'] < 0) {
+            html = $('#metro-marq').find($('#metro2')).html();
+            id = 2;
+
+            addMetro(id, html);
+
+            return true;
+        }
+    }
+
+    setInterval('rewriteMetro()', 1000);
+    */
+</script>
 </html>

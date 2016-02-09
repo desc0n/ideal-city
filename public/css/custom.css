@@ -339,6 +339,10 @@ body {
     min-height: 100%;
 }
 
+.metro {
+    display: inline-block;
+}
+
 .metro tr,
 .metro tr td {
     padding: 0;
