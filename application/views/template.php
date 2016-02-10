@@ -320,10 +320,13 @@
         $('#metro-marq').find($('#metro' + id)).remove();
 
         $('#metro-marq').append('<table class="metro" id="metro' + id + '">' + html + '</table>');
-    }
+    }*/
 
     function rewriteMetro (){
-        if ($('#metro-marq').find($('#metro1')).offset()['left'] < 0 && $('#metro-marq').find($('#metro3')).offset()['left'] < 0) {
+        if ($('#metro2').offset()['left'] < 0) {
+            $('#metro1').css('margin-left', '0');
+        }
+        /*if ($('#metro-marq').find($('#metro1')).offset()['left'] < 0 && $('#metro-marq').find($('#metro3')).offset()['left'] < 0) {
             html = $('#metro-marq').find($('#metro3')).html();
             id = 3;
 
@@ -348,10 +351,9 @@
             addMetro(id, html);
 
             return true;
-        }
+        }*/
     }
 
     setInterval('rewriteMetro()', 1000);
-    */
 </script>
 </html>
