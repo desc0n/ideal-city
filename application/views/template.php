@@ -99,7 +99,7 @@
         </div>
         <div class="metro-container">
             <marquee id="metro-marq" behavior="scroll" loop="-1" direction="left" height="39"  scrollamount="4">
-                <table class="metro" id="metro1">
+                <table class="metro" data-key="1" id="metro1">
                     <tr>
                         <td>выбор участка</td>
                         <td></td>
@@ -149,7 +149,7 @@
                         <td>регистрация прав</td>
                     </tr>
                 </table>
-                <table class="metro" id="metro2">
+                <table class="metro" data-key="2" id="metro2">
                     <tr>
                         <td>выбор участка</td>
                         <td></td>
@@ -199,7 +199,7 @@
                         <td>регистрация прав</td>
                     </tr>
                 </table>
-                <table class="metro" id="metro3">
+                <table class="metro" data-key="3" id="metro3">
                     <tr>
                         <td>выбор участка</td>
                         <td></td>
@@ -315,45 +315,6 @@
     </div>
 </body>
 <script>
-    /*
-    function addMetro(id, html) {
-        $('#metro-marq').find($('#metro' + id)).remove();
 
-        $('#metro-marq').append('<table class="metro" id="metro' + id + '">' + html + '</table>');
-    }*/
-
-    function rewriteMetro (){
-        if ($('#metro2').offset()['left'] < 0) {
-            $('#metro1').css('margin-left', '0');
-        }
-        /*if ($('#metro-marq').find($('#metro1')).offset()['left'] < 0 && $('#metro-marq').find($('#metro3')).offset()['left'] < 0) {
-            html = $('#metro-marq').find($('#metro3')).html();
-            id = 3;
-
-            addMetro(id, html);
-
-            return true;
-        }
-
-        if ($('#metro-marq').find($('#metro2')).offset()['left'] < 0 && $('#metro-marq').find($('#metro1')).offset()['left'] < 0) {
-            html = $('#metro-marq').find($('#metro1')).html();
-            id = 1;
-
-            addMetro(id, html);
-
-            return true;
-        }
-
-        if ($('#metro-marq').find($('#metro3')).offset()['left'] < 0 && $('#metro-marq').find($('#metro2')).offset()['left'] < 0) {
-            html = $('#metro-marq').find($('#metro2')).html();
-            id = 2;
-
-            addMetro(id, html);
-
-            return true;
-        }*/
-    }
-
-    setInterval('rewriteMetro()', 1000);
 </script>
 </html>
