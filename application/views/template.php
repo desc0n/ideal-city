@@ -8,7 +8,7 @@
     <link rel="icon" href="/public/i/fav.png" sizes="38x38" type="image/png">
     <!-- Bootstrap -->
     <link href="/public/css/bootstrap.css" rel="stylesheet">
-    <link href="/public/css/custom.css?v=5" rel="stylesheet">
+    <link href="/public/css/custom.css?v=6" rel="stylesheet">
     <link href="/public/css/slick.css" rel="stylesheet">
     <link href="/public/css/slick-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/font-awesome.css">
