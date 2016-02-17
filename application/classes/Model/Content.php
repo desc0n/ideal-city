@@ -10,6 +10,7 @@ class Model_Content extends Kohana_Model
         return View::factory("template")
             ->set('news', $this->getNews())
             ->set('cloudTag', $this->getCloudTag())
+            ->set('metroData', $this->getMetroData())
         ;
     }
 
@@ -157,5 +158,24 @@ class Model_Content extends Kohana_Model
             ->as_array();
     }
 
+    public function getMetroData()
+    {
+        return [
+            1 => ['выбор участка', null],
+            2 => [null, 'топография'],
+            3 => ['геология', null],
+            4 => [null, 'концепция'],
+            5 => ['технические условия', null],
+            6 => [null, 'проектирование'],
+            7 => ['согласование проекта', null],
+            8 => [null, 'экспертиза'],
+            9 => ['разрешение на строительство', null],
+            10 => [null, 'сопровождение строительства'],
+            11 => ['технический план', null],
+            12 => [null, 'ввод в эксплуатацию'],
+            13 => ['кадастровый учет', null],
+            14 => [null, 'регистрация прав'],
+        ];
+    }
 }
 ?>
