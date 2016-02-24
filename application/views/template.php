@@ -56,200 +56,76 @@
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                     <div class="header-container">
-                        <div class="header-top">ПРОЕКТНО-ДЕВЕЛОПЕРСКАЯ ГРУППА</div>
-                        <h1 class="header-title">ИДЕАЛЬНЫЙ ГОРОД</h1>
-                        <div class="header-links">
-                            <table>
-                                <tr>
-                                    <td class="text-left links-td-first no-padding">
-                                        <a href="/scope/1">ДЕВЕЛОПМЕНТ</a>
-                                    </td>
-                                    <td class="no-padding point-td text-center">
-                                        <span class="header-point first"> &#149; </span>
-                                    </td>
-                                    <td class="text-center links-td-second no-padding">
-                                        <a href="/scope/2">ПРОЕКТИРОВАНИЕ</a>
-                                    </td>
-                                    <td class="no-padding point-td text-center">
-                                        <span class="header-point"> &#149; </span>
-                                    </td>
-                                    <td class="text-center links-td-third no-padding">
-                                        <a href="/scope/3">КАДАСТР НЕДВИЖИМОСТИ</a>
-                                    </td>
-                                    <td class="no-padding point-td text-center">
-                                        <span class="header-point last"> &#149; </span>
-                                    </td>
-                                    <td class="text-right links-td-fourth no-padding">
-                                        <a href="/scope/4">ИЗЫСКАНИЯ</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="header-contacts">
-                            <p>690091 Приморский край, г. Владивосток, ул. Луцкого 16, 1 эт.</p>
-                            <p>тел.: +7(423) 220-99-54; +7(423) 266-66-15</p>
-                            <p>office@ideal-gorod.ru</p>
-                        </div>
+                        <img src="/public/i/header_text.png" />
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 search-container">
+                    <p>ООО АПК «Идеальный Город»</p>
+                    <p>ООО «Идеал-Кадастр»</p>
+                    <p>ГК «БГК Инвест»</p>
+                    <p>ООО «СтИГ»</p>
+                    <form class="navbar-form navbar-right" action="/">
+                        <div class="input-group nav-search">
+                            <input type="text" class="form-control" name="name" placeholder="искать" value="">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="metro-container">
-            <marquee id="metro-marq" behavior="scroll" loop="-1" direction="left" height="39"  scrollamount="4">
-                <table class="metro" data-key="1" id="metro1">
-                    <tr>
-                        <td>выбор участка</td>
-                        <td></td>
-                        <td>геология</td>
-                        <td></td>
-                        <td>технические условия</td>
-                        <td></td>
-                        <td>согласование проекта</td>
-                        <td></td>
-                        <td>разрешение на строительство</td>
-                        <td></td>
-                        <td>технический план</td>
-                        <td></td>
-                        <td>кадастровый учет</td>
-                        <td></td>
-                    </tr>
-                    <tr class="middle-row">
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>топография</td>
-                        <td></td>
-                        <td>концепция</td>
-                        <td></td>
-                        <td>проектирование</td>
-                        <td></td>
-                        <td>экспертиза</td>
-                        <td></td>
-                        <td>сопровождение строительства</td>
-                        <td></td>
-                        <td>ввод в эксплуатацию</td>
-                        <td></td>
-                        <td>регистрация прав</td>
-                    </tr>
-                </table>
-                <table class="metro" data-key="2" id="metro2">
-                    <tr>
-                        <td>выбор участка</td>
-                        <td></td>
-                        <td>геология</td>
-                        <td></td>
-                        <td>технические условия</td>
-                        <td></td>
-                        <td>согласование проекта</td>
-                        <td></td>
-                        <td>разрешение на строительство</td>
-                        <td></td>
-                        <td>технический план</td>
-                        <td></td>
-                        <td>кадастровый учет</td>
-                        <td></td>
-                    </tr>
-                    <tr class="middle-row">
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>топография</td>
-                        <td></td>
-                        <td>концепция</td>
-                        <td></td>
-                        <td>проектирование</td>
-                        <td></td>
-                        <td>экспертиза</td>
-                        <td></td>
-                        <td>сопровождение строительства</td>
-                        <td></td>
-                        <td>ввод в эксплуатацию</td>
-                        <td></td>
-                        <td>регистрация прав</td>
-                    </tr>
-                </table>
-                <table class="metro" data-key="3" id="metro3">
-                    <tr>
-                        <td>выбор участка</td>
-                        <td></td>
-                        <td>геология</td>
-                        <td></td>
-                        <td>технические условия</td>
-                        <td></td>
-                        <td>согласование проекта</td>
-                        <td></td>
-                        <td>разрешение на строительство</td>
-                        <td></td>
-                        <td>технический план</td>
-                        <td></td>
-                        <td>кадастровый учет</td>
-                        <td></td>
-                    </tr>
-                    <tr class="middle-row">
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                        <td><img src="/public/i/metro_point.png" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>топография</td>
-                        <td></td>
-                        <td>концепция</td>
-                        <td></td>
-                        <td>проектирование</td>
-                        <td></td>
-                        <td>экспертиза</td>
-                        <td></td>
-                        <td>сопровождение строительства</td>
-                        <td></td>
-                        <td>ввод в эксплуатацию</td>
-                        <td></td>
-                        <td>регистрация прав</td>
-                    </tr>
-                </table>
-            </marquee>
+            <table class="metro">
+                <tr>
+                    <td>выбор участка</td>
+                    <td></td>
+                    <td>геология</td>
+                    <td></td>
+                    <td>технические условия</td>
+                    <td></td>
+                    <td>согласование проекта</td>
+                    <td></td>
+                    <td>разрешение на строительство</td>
+                    <td></td>
+                    <td>технический план</td>
+                    <td></td>
+                    <td>кадастровый учет</td>
+                    <td></td>
+                </tr>
+                <tr class="middle-row">
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td><img src="/public/i/metro_point.png" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>топография</td>
+                    <td></td>
+                    <td>концепция</td>
+                    <td></td>
+                    <td>проектирование</td>
+                    <td></td>
+                    <td>экспертиза</td>
+                    <td></td>
+                    <td>сопровождение строительства</td>
+                    <td></td>
+                    <td>ввод в эксплуатацию</td>
+                    <td></td>
+                    <td>регистрация прав</td>
+                </tr>
+            </table>
         </div>
         <div class="container content">
             <?=$content;?>

@@ -4,9 +4,9 @@ html {
     padding: 0;
     height: 100%;
     width: 100%;
-    background-color: #000;
-    background-image: url('/public/i/bg.png');
-    background-position: top center;
+    background-color: #fff;
+    background-image: url('/public/i/bg.jpg');
+    background-position: bottom center;
     background-size: contain;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -24,9 +24,7 @@ body {
     display: table;
     height: 125px;
     width: 100%;
-    margin: 0 0 20px 0;
-    background-image: url('/public/i/menu_item_bg.png');
-    background-repeat: repeat;
+    margin: 20px 0 20px 0;
 }
 
 .header-container {
@@ -34,6 +32,10 @@ body {
     text-align: center;
     margin: auto;
     width: 700px;
+}
+
+.header-container img {
+    width: 100%;
 }
 
 .header-title {
@@ -281,10 +283,27 @@ body {
     padding: 5px 20px;
 }
 
-.scope-img {
-    padding: 10px;
+.scope-table {
+    border-spacing: 30px;
+    border-collapse: separate;
 }
 
+.scope-cell {
+    width: 315px;
+    height: 220px;
+    text-align: center;
+    vertical-align: top;
+    background-image: url('/public/i/menu_item_bg.png');
+    background-repeat: repeat;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.scope-cell a {
+    display: block;
+    font-size: 14px;
+    margin: 20px 0;
+}
 .scope-img img {
     width: 100%;
     padding: 3px;
@@ -379,8 +398,7 @@ body {
 }
 
 .logo {
-    height: 105px;
-    margin-top: 10px;
+    height: 128px;
 }
 
 .no-padding {
@@ -391,12 +409,9 @@ body {
     min-height: 100%;
 }
 
-#metro1 {
-    margin-left: -50%;
-}
 
 .metro {
-    display: inline-block;
+    margin: auto;
 }
 
 .metro tr,
@@ -404,8 +419,9 @@ body {
     padding: 0;
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
-    font-size: 10px;
+    color: #337ab7;
+    font-size: 8px;
+    font-weight: bolder;
 }
 
 .metro-container {
@@ -427,4 +443,31 @@ body {
     border-radius: 0;
     -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.search-container {
+    text-align: left;
+    color: #ff1f25;
+    font-size: 10px;
+}
+
+.search-container p{
+    margin: 0;
+}
+
+.search-container p:first-child{
+    margin-top: 20px;
+}
+
+.search-container form {
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+
+.search-container .form-control {
+    height: 28px;
+}
+
+.search-container .btn {
+    padding: 3px 10px;
 }
