@@ -94,20 +94,20 @@
                     <td></td>
                 </tr>
                 <tr class="middle-row">
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
-                    <td><img src="/public/i/metro_point.png" /></td>
+                    <td id="point1"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point2"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point3"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point4"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point5"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point6"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point7"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point8"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point9"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point10"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point11"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point12"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point13"><img src="/public/i/metro_point.png" /></td>
+                    <td id="point14"><img src="/public/i/metro_point.png" /></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -189,8 +189,22 @@
             <?=$footer;?>
         </div>
     </div>
+    <input type="hidden" id="point" value="1">
 </body>
 <script>
+    function rideMetro()
+    {
+        var i = $('#point').val() * 1;
 
+        prevPoint = i == 1 ? 14 : i - 1;
+        nextPoint = i == 14 ? 1 : i + 1;
+
+        $('#point' + prevPoint).html('<img src="/public/i/metro_point.png" />');
+        $('#point' + i).html('<img src="/public/i/metro_point_alt.png" />');
+
+        $('#point').val(nextPoint);
+    }
+
+    setInterval('rideMetro()', 2000);
 </script>
 </html>

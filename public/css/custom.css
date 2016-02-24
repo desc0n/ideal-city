@@ -28,7 +28,7 @@ body {
 }
 
 .header-container {
-    padding: 0 20px;
+    padding: 0 40px;
     text-align: center;
     margin: auto;
     width: 700px;
@@ -113,6 +113,7 @@ body {
 
 .menu {
     padding: 0;
+    margin-top: 20px;
 }
 
 .menu-item {
@@ -194,6 +195,7 @@ body {
     padding: 5px;
     font-size: 9px;
     min-height: 440px;
+    margin-top: 20px;
 }
 
 .news-title {
@@ -289,7 +291,7 @@ body {
 }
 
 .scope-cell {
-    width: 315px;
+    width: 355px;
     height: 220px;
     text-align: center;
     vertical-align: top;
