@@ -289,6 +289,10 @@ body {
     text-align: left;
 }
 
+.page-block {
+    margin-top: 20px;
+}
+
 .scope-table {
     border-spacing: 30px;
     border-collapse: separate;
