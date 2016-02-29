@@ -283,6 +283,7 @@ body {
 .page-content {
     min-height: 165px;
     padding: 5px 20px;
+    text-align: left;
 }
 
 .scope-table {

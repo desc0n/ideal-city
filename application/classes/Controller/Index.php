@@ -7,9 +7,7 @@ class Controller_Index extends Controller
      */
     private $template;
 
-    /**
-     * @var Model_Content
-     */
+    /** @var Model_Content */
     private $contentModel;
 
     public function __construct(Request $request, Response $response)

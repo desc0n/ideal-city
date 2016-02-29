@@ -1,4 +1,8 @@
-<script src="/public/js/ckeditor/ckeditor.js"></script>
+<?
+/** @var $contentModel Model_Content */
+$contentModel = Model::factory('Content');
+?>
+<script src="//cdn.ckeditor.com/4.5.7/full/ckeditor.js"></script>
 <div class="row">
 	<p>
 	<form>
@@ -6,15 +10,15 @@
 		<div class="col-sm-6">
 			<select class="form-control" name="id">
 				<option value="0">не выбрано</option>
-				<?foreach (Model::factory('Admin')->getPage() as $page) {?>
-				<option value="<?=$page['id'];?>" <?=(Arr::get($get, 'id', 0) == $page['id'] ? 'selected' : '');?>><?=$page['title'];?></option>
+				<?foreach ($contentModel->getPage(['editable' => true]) as $page) {?>
+				<option value="<?=$page['slug'];?>" <?=(Arr::get($get, 'id', 0) == $page['slug'] ? 'selected' : '');?>><?=$page['title'];?></option>
 				<?}?>
 			</select>
 		</div>
 		<button class="btn btn-default" type="submit">Выбрать</button>
 	</form>
 	</p>
-	<form class="form-horizontal row" style="display:inline-block;margin-left:40px;" method="post" action="/admin/control_panel/redact_page">
+	<form class="form-horizontal row" style="display:inline-block;margin-left:40px;" method="post">
 		<p>
 			<div class="row">
 				<h3>Редактируем страницу</h3>

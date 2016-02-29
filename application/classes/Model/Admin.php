@@ -56,7 +56,8 @@ class Model_Admin extends Kohana_Model
 	public function setPage($params = [])
 	{
 		$id = Arr::get($params, 'redactpage', 0);
-		DB::query(Database::UPDATE, "update `pages__pages` set `content` = :text where `id` = :id")
+
+		DB::query(Database::UPDATE, "update `pages__pages` set `content` = :text where `slug` = :id")
 			->param(':id', $id)
 			->param(':text', Arr::get($params, 'text', ''))
 			->execute();

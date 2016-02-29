@@ -20,6 +20,12 @@ class Controller_Admin extends Controller {
 
 	public function action_control_panel()
 	{
+		/** @var $contentModel Model_Content */
+		$contentModel = Model::factory('Content');
+
+		/** @var $adminModel Model_Admin */
+		$adminModel = Model::factory('Admin');
+
 		if (Auth::instance()->logged_in() && isset($_POST['logout'])) {
 			Auth::instance()->logout();
 			HTTP::redirect('/');
@@ -41,11 +47,13 @@ class Controller_Admin extends Controller {
 					->set('error', '');
 			} else if ($page == 'redact_page') {
 				if (isset($_POST['redactpage'])) {
-					Model::factory('Admin')->setPage($_POST);
+					$adminModel->setPage($_POST);
 					HTTP::redirect('/admin/control_panel/redact_page?id=' . Arr::get($_POST, 'redactpage', 0));
 				}
+
 				$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
 				$filename=Arr::get($_FILES, 'imgname', []);
+
 				if (!empty(Arr::get($_GET, 'id', 0)) != '' && !empty($filename)) {
 					Model::factory('Admin')->loadPageImg($_FILES, $_GET['id']);
 					HTTP::redirect('/admin/control_panel/redact_page?id='.Arr::get($_GET, 'id', 0));
@@ -54,9 +62,10 @@ class Controller_Admin extends Controller {
 					Model::factory('Admin')->removePageImg($_POST);
 					HTTP::redirect('/admin/control_panel/redact_page?id='.Arr::get($_GET, 'id', 0));
 				}
+
 				$admin_content = View::factory('admin_redact_page')
-					->set('pageData', Arr::get(Model::factory('Admin')->getPage($_GET), 0, []))
-					->set('pageImgsData', Model::factory('Admin')->getPageImgs($_GET))
+					->set('pageData', Arr::get($contentModel->getPage($_GET), 0, []))
+					->set('pageImgsData', $contentModel->getPageImgs(['id' => Arr::get($_GET, 'id', -1)]))
 					->set('get', $_GET);
 			}
 		}
