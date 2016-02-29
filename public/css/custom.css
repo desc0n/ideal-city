@@ -7,7 +7,10 @@ html {
     background-color: #fff;
     background-image: url('/public/i/bg.jpg');
     background-position: bottom center;
-    background-size: contain;
+    -moz-background-size: 100%; /* Firefox 3.6+ */
+    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: 100%; /* Opera 9.6+ */
+    background-size: 100%; /* Современные браузеры */
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
@@ -193,8 +196,8 @@ body {
     background-repeat: repeat;
     color: #434343;
     padding: 5px;
-    font-size: 9px;
-    min-height: 440px;
+    font-size: 8px;
+    min-height: 400px;
     margin-top: 20px;
 }
 
@@ -264,7 +267,7 @@ body {
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     color: #434343;
-    height: 500px;
+    height: 428px;
     overflow-y: auto;
     text-align: center;
     padding: 5px;
@@ -293,7 +296,7 @@ body {
 
 .scope-cell {
     width: 355px;
-    height: 220px;
+    height: 180px;
     text-align: center;
     vertical-align: top;
     background-image: url('/public/i/menu_item_bg.png');
@@ -305,7 +308,7 @@ body {
 .scope-cell a {
     display: block;
     font-size: 14px;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 .scope-img img {
     width: 100%;
@@ -324,11 +327,11 @@ body {
     }
 
     .footer-push {
-        height: 150px;
+        height: 190px;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 4096px) {
     .footer {
         position: fixed;
         left: 0;
@@ -336,17 +339,27 @@ body {
     }
 
     .footer-push {
-        height: 150px;
+        height: 190px;
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1280px) {
     .footer {
         position: relative;
     }
 
     .footer-push {
-        height: 10px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .footer {
+        position: relative;
+    }
+
+    .footer-push {
+        height: 50px;
     }
 
 }
@@ -357,7 +370,7 @@ body {
     }
 
     .footer-push {
-        height: 10px;
+        height: 50px;
     }
 
 }
@@ -368,7 +381,7 @@ body {
     }
 
     .footer-push {
-        height: 10px;
+        height: 30px;
     }
 
 }

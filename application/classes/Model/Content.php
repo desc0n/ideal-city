@@ -30,7 +30,7 @@ class Model_Content extends Kohana_Model
     public function getMenu()
     {
         return View::factory('menu')
-            ->set('pages', $this->getPage())
+            ->set('pages', $this->getPage(['showed_in_menu' => true]))
             ->set('portfolioPages', $this->getPortfolioPage())
             ->set('scopePages', $this->getScopePage())
             ->set('get', Request::initial()->get())
@@ -50,11 +50,13 @@ class Model_Content extends Kohana_Model
 	{
 		$idSql = !empty(Arr::get($params, 'id')) ? 'and `slug` = :id' : '';
 		$editableSql = isset($params['editable']) ? 'and `editable` = :editable' : '';
+		$menuSql = isset($params['showed_in_menu']) ? 'and `showed_in_menu` = :showed_in_menu' : '';
 
-		return DB::query(Database::SELECT, "select * from `pages__pages` where 1 $idSql $editableSql")
+		return DB::query(Database::SELECT, "select * from `pages__pages` where 1 $idSql $editableSql $menuSql")
 			->parameters([
                 ':id' => Arr::get($params, 'id'),
                 ':editable' => Arr::get($params, 'editable', true),
+                ':showed_in_menu' => Arr::get($params, 'showed_in_menu', true),
             ])
 			->execute()
 			->as_array();
