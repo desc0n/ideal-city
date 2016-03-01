@@ -110,7 +110,7 @@ body {
 }
 
 .content {
-    min-height: 440px;
+    min-height: 400px;
     display: table;
 }
 
@@ -197,7 +197,7 @@ body {
     color: #434343;
     padding: 5px;
     font-size: 8px;
-    min-height: 400px;
+    min-height: 350px;
     margin-top: 20px;
 }
 
@@ -296,11 +296,12 @@ body {
 .scope-table {
     border-spacing: 30px;
     border-collapse: separate;
+    margin-top: -10px;
 }
 
 .scope-cell {
     width: 355px;
-    height: 180px;
+    height: 140px;
     text-align: center;
     vertical-align: top;
     background-image: url('/public/i/menu_item_bg.png');
@@ -312,7 +313,7 @@ body {
 .scope-cell a {
     display: block;
     font-size: 14px;
-    margin: 10px 0;
+    margin: 2px 0 5px 0;
 }
 .scope-img img {
     width: 100%;
@@ -353,7 +354,7 @@ body {
     }
 
     .footer-push {
-        height: 50px;
+        height: 80px;
     }
 }
 
@@ -363,7 +364,7 @@ body {
     }
 
     .footer-push {
-        height: 50px;
+        height: 10px;
     }
 
 }
@@ -374,7 +375,7 @@ body {
     }
 
     .footer-push {
-        height: 50px;
+        height: 10px;
     }
 
 }

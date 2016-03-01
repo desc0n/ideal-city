@@ -155,7 +155,7 @@
                             </div>
                             <script type="text/javascript">
                                 var rnumber = Math.floor(Math.random()*9999999);
-                                var so = new SWFObject("/tagcloud/tagcloud.swf?r="+rnumber, "tagcloudflash", "185", "185", "9");
+                                var so = new SWFObject("/tagcloud/tagcloud.swf?r="+rnumber, "tagcloudflash", "180", "130", "9");
                                 var tags = "" +
                                     <?foreach ($cloudTag as $tag) {?>
                                     "<a href='/page/<?=$tag['slug'];?>' style='font-size:8px;'><?=$tag['title'];?></a>" +
@@ -206,5 +206,20 @@
     }
 
     setInterval('rideMetro()', 2000);
+
+    $(document).ready(function(){
+       if($(window).height() < 750) {
+           $('.footer').css({
+               "position" : "relative",
+               "left" : "inherit",
+               "top" : "inherit"
+            });
+
+           $('.footer-push').css({
+               "height" : "10px"
+            });
+       }
+    })
+    ;
 </script>
 </html>
