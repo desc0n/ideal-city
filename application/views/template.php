@@ -208,7 +208,7 @@
     setInterval('rideMetro()', 2000);
 
     $(document).ready(function(){
-       if($(window).height() < 750) {
+       /*if($(window).height() < 750) {
            $('.footer').css({
                "position" : "relative",
                "left" : "inherit",
@@ -218,7 +218,7 @@
            $('.footer-push').css({
                "height" : "10px"
             });
-       }
+       }*/
     })
     ;
 </script>
