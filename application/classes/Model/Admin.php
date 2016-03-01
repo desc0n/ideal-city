@@ -25,7 +25,7 @@ class Model_Admin extends Kohana_Model
 			$filesData[$key]['size'] = $filesGlobal['imgname']['size'][$key];
 		}
 		foreach ($filesData as $files) {
-			$sql = "insert into `page_imgs` (`page_id`) values (:id)";
+			$sql = "insert into `pages__imgs` (`page_id`) values (:id)";
             $res = DB::query(Database::INSERT,$sql)
                 ->param(':id', $page_id)
                 ->execute();

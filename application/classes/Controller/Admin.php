@@ -54,18 +54,18 @@ class Controller_Admin extends Controller {
 				$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
 				$filename=Arr::get($_FILES, 'imgname', []);
 
-				if (!empty(Arr::get($_GET, 'id', 0)) != '' && !empty($filename)) {
-					Model::factory('Admin')->loadPageImg($_FILES, $_GET['id']);
+				if (!empty(Arr::get($_POST, 'loadpageimg', 0)) != '' && !empty($filename)) {
+					$adminModel->loadPageImg($_FILES, $_POST['loadpageimg']);
 					HTTP::redirect('/admin/control_panel/redact_page?id='.Arr::get($_GET, 'id', 0));
 				}
 				if ($removeimg != 0) {
-					Model::factory('Admin')->removePageImg($_POST);
+					$adminModel->removePageImg($_POST);
 					HTTP::redirect('/admin/control_panel/redact_page?id='.Arr::get($_GET, 'id', 0));
 				}
 
 				$admin_content = View::factory('admin_redact_page')
 					->set('pageData', Arr::get($contentModel->getPage($_GET), 0, []))
-					->set('pageImgsData', $contentModel->getPageImgs(['id' => Arr::get($_GET, 'id', -1)]))
+					->set('pageImgsData', $contentModel->getPageImgs(['slug' => Arr::get($_GET, 'id')]))
 					->set('get', $_GET);
 			}
 		}

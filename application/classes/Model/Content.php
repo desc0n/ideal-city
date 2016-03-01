@@ -83,6 +83,7 @@ class Model_Content extends Kohana_Model
 	public function getCloudTag($params = [])
 	{
 		$idSql = !empty(Arr::get($params, 'id')) ? 'where `slug` = :id' : '';
+
 		return DB::query(Database::SELECT, "select * from `cloud_tags` $idSql")
 			->param(':id', Arr::get($params, 'id'))
 			->execute()
@@ -92,8 +93,12 @@ class Model_Content extends Kohana_Model
     public function getPageImgs($params = [])
     {
         $idSql = !empty(Arr::get($params, 'id', 0)) ? 'and `page_id` = :id' : '';
-        return DB::query(Database::SELECT, "select * from `pages__imgs` where `enabled` = 1 $idSql")
+
+        $slugSql = !empty(Arr::get($params, 'slug')) ? 'and `page_id` in (select `id` from `pages__pages` where `slug` = :slug)' : '';
+
+        return DB::query(Database::SELECT, "select * from `pages__imgs` where `enabled` = 1 $idSql $slugSql")
             ->param(':id', Arr::get($params, 'id', 0))
+            ->param(':slug', Arr::get($params, 'slug'))
             ->execute()
             ->as_array();
     }

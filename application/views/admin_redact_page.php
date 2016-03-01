@@ -11,13 +11,14 @@ $contentModel = Model::factory('Content');
 			<select class="form-control" name="id">
 				<option value="0">не выбрано</option>
 				<?foreach ($contentModel->getPage(['editable' => true]) as $page) {?>
-				<option value="<?=$page['slug'];?>" <?=(Arr::get($get, 'id', 0) == $page['slug'] ? 'selected' : '');?>><?=$page['title'];?></option>
+				<option value="<?=$page['slug'];?>" <?=(Arr::get($get, 'id') == $page['slug'] ? 'selected' : '');?>><?=mb_strtoupper($page['title']);?></option>
 				<?}?>
 			</select>
 		</div>
 		<button class="btn btn-default" type="submit">Выбрать</button>
 	</form>
 	</p>
+	<?if (!in_array(Arr::get($get, 'id'), ['main'])) {?>
 	<form class="form-horizontal row" style="display:inline-block;margin-left:40px;" method="post">
 		<p>
 			<div class="row">
@@ -36,6 +37,7 @@ $contentModel = Model::factory('Content');
 			</div>
 		</p>
 	</form>
+	<?}?>
 	<div>
 		<h4>Фото</h4>
 		<div>
@@ -57,12 +59,12 @@ $contentModel = Model::factory('Content');
 				<h4 class="modal-title">Загрузка изображения</h4>
 			</div>
 			<div class="modal-body">
-				<form role="form" action="/admin/control_panel/redact_page?id=<?=Arr::get($get, 'id', 0);?>" method="post" enctype='multipart/form-data'>
+				<form role="form" method="post" enctype='multipart/form-data'>
 					<div class="form-group">
 						<label for="exampleInputFile">Выбор файла</label>
 						<input type="file" name="imgname[]" id="exampleInputFile" multiple>
 					</div>
-					<input type="hidden" name="loadpageimg" value="<?=Arr::get($get, 'id', 0);?>">
+					<input type="hidden" name="loadpageimg" value="<?=Arr::get($pageData, 'id', 0);?>">
 					<button type="submit" class="btn btn-default">Загрузить</button>
 				</form>
 			</div>
