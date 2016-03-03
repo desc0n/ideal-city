@@ -324,18 +324,6 @@ body {
     -moz-border-radius: 2px;
 }
 
-@media (max-width: 1400px) {
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-    }
-
-    .footer-push {
-        height: 190px;
-    }
-}
-
 @media (max-width: 4096px) {
     .footer {
         position: fixed;
@@ -346,6 +334,54 @@ body {
     .footer-push {
         height: 190px;
     }
+
+    .scope-table {
+        margin-top: 0;
+    }
+
+    .scope-cell {
+        height: 180px;
+    }
+
+    .scope-cell a {
+        margin: 10px 0;
+    }
+
+    .news {
+        min-height: 400px;
+    }
+
+}
+
+
+@media (max-width: 1400px) {
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+    }
+
+    .footer-push {
+        height: 190px;
+    }
+
+
+    .scope-table {
+        margin-top: 0;
+    }
+
+    .scope-cell {
+        height: 180px;
+    }
+
+
+    .scope-cell a {
+        margin: 10px 0;
+    }
+
+    .news {
+        min-height: 400px;
+    }
 }
 
 @media (max-width: 1280px) {
@@ -355,6 +391,22 @@ body {
 
     .footer-push {
         height: 80px;
+    }
+
+    .scope-table {
+        margin-top: -10px;
+    }
+
+    .scope-cell {
+        height: 140px;
+    }
+
+    .scope-cell a {
+        margin: 2px 0 5px 0;
+    }
+
+    .news {
+        min-height: 350px;
     }
 }
 
@@ -367,6 +419,21 @@ body {
         height: 10px;
     }
 
+    .scope-table {
+        margin-top: -10px;
+    }
+
+    .scope-cell {
+        height: 140px;
+    }
+
+    .scope-cell a {
+        margin: 2px 0 5px 0;
+    }
+
+    .news {
+        min-height: 350px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -378,6 +445,21 @@ body {
         height: 10px;
     }
 
+    .scope-table {
+        margin-top: -10px;
+    }
+
+    .scope-cell {
+        height: 140px;
+    }
+
+    .scope-cell a {
+        margin: 2px 0 5px 0;
+    }
+
+    .news {
+        min-height: 350px;
+    }
 }
 
 @media (max-width: 560px) {
@@ -389,6 +471,21 @@ body {
         height: 30px;
     }
 
+    .scope-table {
+        margin-top: -10px;
+    }
+
+    .scope-cell {
+        height: 140px;
+    }
+
+    .scope-cell a {
+        margin: 2px 0 5px 0;
+    }
+
+    .news {
+        min-height: 350px;
+    }
 }
 
 .footer {
