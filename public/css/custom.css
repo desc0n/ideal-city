@@ -7,10 +7,6 @@ html {
     background-color: #fff;
     background-image: url('/public/i/bg.jpg');
     background-position: bottom center;
-    -moz-background-size: 100%; /* Firefox 3.6+ */
-    -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-    -o-background-size: 100%; /* Opera 9.6+ */
-    background-size: 100%; /* Современные браузеры */
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
@@ -196,7 +192,6 @@ body {
     background-repeat: repeat;
     color: #434343;
     padding: 5px;
-    font-size: 8px;
     min-height: 350px;
     margin-top: 20px;
 }
@@ -267,7 +262,6 @@ body {
     background-image: url('/public/i/menu_item_bg.png');
     background-repeat: repeat;
     color: #434343;
-    height: 428px;
     overflow-y: auto;
     text-align: center;
     padding: 5px;
@@ -325,6 +319,10 @@ body {
 }
 
 @media (max-width: 4096px) {
+    html {
+        background-size: contain;
+    }
+
     .footer {
         position: fixed;
         left: 0;
@@ -340,21 +338,29 @@ body {
     }
 
     .scope-cell {
-        height: 180px;
+        height: 220px;
     }
 
     .scope-cell a {
-        margin: 10px 0;
+        margin: 20px 0;
     }
 
     .news {
-        min-height: 400px;
+        min-height: 440px;
+        font-size: 9px;
     }
 
+    .page {
+        height: 500px;
+    }
 }
 
 
 @media (max-width: 1400px) {
+    html {
+        background-size: contain;
+    }
+
     .footer {
         position: fixed;
         left: 0;
@@ -371,20 +377,32 @@ body {
     }
 
     .scope-cell {
-        height: 180px;
+        height: 220px;
     }
 
 
     .scope-cell a {
-        margin: 10px 0;
+        margin: 20px 0;
     }
 
     .news {
-        min-height: 400px;
+        min-height: 440px;
+        font-size: 9px;
+    }
+
+    .page {
+        height: 500px;
     }
 }
 
 @media (max-width: 1280px) {
+    html {
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        background-size: 100%; /* Современные браузеры */
+    }
+
     .footer {
         position: relative;
     }
@@ -407,10 +425,22 @@ body {
 
     .news {
         min-height: 350px;
+        font-size: 8px;
+    }
+
+    .page {
+        height: 428px;
     }
 }
 
 @media (max-width: 1024px) {
+    html {
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        background-size: 100%; /* Современные браузеры */
+    }
+
     .footer {
         position: relative;
     }
@@ -433,10 +463,22 @@ body {
 
     .news {
         min-height: 350px;
+        font-size: 8px;
+    }
+
+    .page {
+        height: 428px;
     }
 }
 
 @media (max-width: 768px) {
+    html {
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        background-size: 100%; /* Современные браузеры */
+    }
+
     .footer {
         position: relative;
     }
@@ -459,10 +501,22 @@ body {
 
     .news {
         min-height: 350px;
+        font-size: 8px;
+    }
+
+    .page {
+        height: 428px;
     }
 }
 
 @media (max-width: 560px) {
+    html {
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        background-size: 100%; /* Современные браузеры */
+    }
+
     .footer {
         position: relative;
     }
@@ -485,6 +539,11 @@ body {
 
     .news {
         min-height: 350px;
+        font-size: 8px;
+    }
+
+    .page {
+        height: 428px;
     }
 }
 
