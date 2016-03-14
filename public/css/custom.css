@@ -5,10 +5,6 @@ html {
     height: 100%;
     width: 100%;
     background-color: #fff;
-    background-image: url('/public/i/bg.jpg');
-    background-position: bottom center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
 }
 
 body {
@@ -17,6 +13,35 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+}
+
+#layout1 {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+#layout2 {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+#layout1 img{
+    height: 100%;
+    width: 95%;
+    margin: auto;
 }
 
 .header {
@@ -308,6 +333,7 @@ body {
     display: block;
     font-size: 14px;
     margin: 2px 0 5px 0;
+    font-weight: bolder;
 }
 .scope-img img {
     width: 100%;
@@ -319,10 +345,6 @@ body {
 }
 
 @media (max-width: 4096px) {
-    html {
-        background-size: contain;
-    }
-
     .footer {
         position: fixed;
         left: 0;
@@ -357,10 +379,6 @@ body {
 
 
 @media (max-width: 1400px) {
-    html {
-        background-size: contain;
-    }
-
     .footer {
         position: fixed;
         left: 0;
@@ -396,13 +414,6 @@ body {
 }
 
 @media (max-width: 1280px) {
-    html {
-        -moz-background-size: 100%; /* Firefox 3.6+ */
-        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-        -o-background-size: 100%; /* Opera 9.6+ */
-        background-size: 100%; /* Современные браузеры */
-    }
-
     .footer {
         position: relative;
     }
@@ -434,13 +445,6 @@ body {
 }
 
 @media (max-width: 1024px) {
-    html {
-        -moz-background-size: 100%; /* Firefox 3.6+ */
-        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-        -o-background-size: 100%; /* Opera 9.6+ */
-        background-size: 100%; /* Современные браузеры */
-    }
-
     .footer {
         position: relative;
     }
@@ -472,13 +476,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    html {
-        -moz-background-size: 100%; /* Firefox 3.6+ */
-        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-        -o-background-size: 100%; /* Opera 9.6+ */
-        background-size: 100%; /* Современные браузеры */
-    }
-
     .footer {
         position: relative;
     }
@@ -510,13 +507,6 @@ body {
 }
 
 @media (max-width: 560px) {
-    html {
-        -moz-background-size: 100%; /* Firefox 3.6+ */
-        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-        -o-background-size: 100%; /* Opera 9.6+ */
-        background-size: 100%; /* Современные браузеры */
-    }
-
     .footer {
         position: relative;
     }
