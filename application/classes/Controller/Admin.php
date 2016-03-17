@@ -20,6 +20,8 @@ class Controller_Admin extends Controller {
 
 	public function action_control_panel()
 	{
+		/** @var Kohana_View $admin_content */
+
 		/** @var $contentModel Model_Content */
 		$contentModel = Model::factory('Content');
 
@@ -35,8 +37,16 @@ class Controller_Admin extends Controller {
 			HTTP::redirect('/admin/control_panel/');
 		}
 		$page = $this->request->param('id');
-		$template = View::factory("admin_template");
-		$admin_content = "";
+		$template = !Auth::instance()->logged_in() ? View::factory('admin_template') : View::factory('admin/template');
+
+		$admin_content = View::factory('ajax')
+			->set('content', '')
+		;
+
+		$template
+			->set('page', $page)
+		;
+
 		if (Auth::instance()->logged_in('admin')){
 			if (empty($page)){
 				//$admin_content = Auth::instance()->logged_in('admin') ? $admin_content : '';
@@ -46,10 +56,6 @@ class Controller_Admin extends Controller {
 					->set('email', Arr::get($_POST,'email',''))
 					->set('error', '');
 			} else if ($page == 'redact_page') {
-				$template = View::factory("admin/template")
-					->set('page', $page)
-				;
-
 				if (isset($_POST['redactpage'])) {
 					if (Arr::get($_GET, 'id') == 'main') {
 						$adminModel->setScopePageDescription($_POST);
@@ -85,22 +91,30 @@ class Controller_Admin extends Controller {
 				$error = View::factory('error');
 				$error->zag = "Не указан логин!";
 				$error->mess = " Укажите Ваш логин.";
-				$admin_content->error = $error;
+				$admin_content
+					->set('content', $error)
+				;
 			} else if (Arr::get($_POST,'email','')=="") {
 				$error = View::factory('error');
 				$error->zag = "Не указана почта!";
 				$error->mess = " Укажите Вашу почту.";
-				$admin_content->error = $error;
+				$admin_content
+					->set('content', $error)
+				;
 			} else if (Arr::get($_POST,'password','')=="") {
 				$error = View::factory('error');
 				$error->zag = "Не указан пароль!";
 				$error->mess = " Укажите Ваш пароль.";
-				$admin_content->error = $error;
+				$admin_content
+					->set('content', $error)
+				;
 			} else if (Arr::get($_POST,'password','')!=Arr::get($_POST,'password2','')) {
 				$error = View::factory('error');
 				$error->zag = "Пароли не совпадают!";
 				$error->mess = " Проверьте правильность подтверждения пароля.";
-				$admin_content->error = $error;
+				$admin_content
+					->set('content', $error)
+				;
 			} else {
 				$user = ORM::factory('User');
 				$user->values(array(
@@ -137,7 +151,10 @@ class Controller_Admin extends Controller {
 							$error->mess = " Укажите другую почту.";
 						}
 					}
-					$admin_content->error = $error;
+
+					$admin_content
+						->set('content', $error)
+					;
 				}
 			}
 		}

@@ -182,13 +182,13 @@
 <div class="container mainContainer">
 	<div class="container-fluid">
       <div class="row">
-	  <?if(Auth::instance()->logged_in('admin')){?>
+	  <?/*if(Auth::instance()->logged_in('admin')){?>
         <div class="col-xs-4 col-sm-4 col-md-3 sidebar admin-menu">
 			<div class="row">
 				<a class="btn btn-success admin-main-page-link" href="/admin/control_panel/redact_page"><span class="glyphicon glyphicon-pencil"></span> Редактировать страницу</a>
         	</div>
         </div>
-	  <?}?>
+	  <?}*/?>
         <div class="col-xs-8 col-sm-8 col-md-9 main">
 		  <?=$admin_content;?>
         </div>
