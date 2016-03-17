@@ -46,8 +46,16 @@ class Controller_Admin extends Controller {
 					->set('email', Arr::get($_POST,'email',''))
 					->set('error', '');
 			} else if ($page == 'redact_page') {
+				$template = View::factory("admin/template")
+					->set('page', $page)
+				;
+
 				if (isset($_POST['redactpage'])) {
-					$adminModel->setPage($_POST);
+					if (Arr::get($_GET, 'id') == 'main') {
+						$adminModel->setScopePageDescription($_POST);
+					} else {
+						$adminModel->setPage($_POST);
+					}
 					HTTP::redirect('/admin/control_panel/redact_page?id=' . Arr::get($_POST, 'redactpage', 0));
 				}
 
@@ -58,15 +66,18 @@ class Controller_Admin extends Controller {
 					$adminModel->loadPageImg($_FILES, $_POST['loadpageimg']);
 					HTTP::redirect('/admin/control_panel/redact_page?id='.Arr::get($_GET, 'id', 0));
 				}
+
 				if ($removeimg != 0) {
 					$adminModel->removePageImg($_POST);
 					HTTP::redirect('/admin/control_panel/redact_page?id='.Arr::get($_GET, 'id', 0));
 				}
 
 				$admin_content = View::factory('admin_redact_page')
-					->set('pageData', Arr::get($contentModel->getPage($_GET), 0, []))
-					->set('pageImgsData', $contentModel->getPageImgs(['slug' => Arr::get($_GET, 'id')]))
-					->set('get', $_GET);
+					->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPage($_GET), 0, []) : [])
+					->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPageImgs(['slug' => Arr::get($_GET, 'id')]) : [])
+					->set('scopePages', $contentModel->getScopePage())
+					->set('get', $_GET)
+				;
 			}
 		}
 		if (isset($_POST['reg'])) {

@@ -70,5 +70,18 @@ class Model_Admin extends Kohana_Model
 			->param(':id', Arr::get($params,'removeimg',0))
 			->execute();
 	}
+
+	public function setScopePageDescription($params = [])
+	{
+		foreach ($params as $key => $val) {
+			$id = str_replace('scope', '', $key);
+
+			DB::query(Database::UPDATE, "update `scope__pages` set `description` = :text where `id` = :id")
+				->param(':id', $id)
+				->param(':text', $val)
+				->execute();
+		}
+	}
+
 }
 ?>

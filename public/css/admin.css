@@ -40,6 +40,11 @@
 .redact-form .imgs-form .img-link {
     margin-left:10px;
 }
+
+.img-row {
+    margin-top: 20px;
+}
+
 .img-link .glyphicon {
     position: absolute;
     right: 5px;
@@ -58,4 +63,9 @@
 }
 .redact-form .imgs-form img {
     min-height: 70px;
+}
+
+.right-content {
+    padding-left: 20px;
+    padding-top: 20px;
 }

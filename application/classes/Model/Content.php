@@ -73,11 +73,21 @@ class Model_Content extends Kohana_Model
 
 	public function getScopePage($params = [])
 	{
+        $data = [];
+
 		$idSql = !empty(Arr::get($params, 'id')) ? 'where `id` = :id' : '';
-		return DB::query(Database::SELECT, "select * from `scope__pages` $idSql")
+
+		$res = DB::query(Database::SELECT, "select * from `scope__pages` $idSql")
 			->param(':id', Arr::get($params, 'id'))
 			->execute()
-			->as_array();
+			->as_array()
+        ;
+
+        foreach ($res as $row) {
+            $data[$row['id']] = $row;
+        }
+
+        return $data;
 	}
 
 	public function getCloudTag($params = [])

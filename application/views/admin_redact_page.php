@@ -3,42 +3,59 @@
 $contentModel = Model::factory('Content');
 ?>
 <script src="//cdn.ckeditor.com/4.5.7/full/ckeditor.js"></script>
-<div class="row">
-	<p>
-	<form>
-		<div class="text-muted col-sm-12">Страница:</div>
-		<div class="col-sm-6">
-			<select class="form-control" name="id">
+<div class="row right-content">
+	<div class="row">
+		<form class="form-horizontal col-md-4">
+			<label for="id">Страница:</label>
+			<select class="form-control" name="id" id="id" onchange="$(this).parent('form').submit();">
 				<option value="0">не выбрано</option>
 				<?foreach ($contentModel->getPage(['editable' => true]) as $page) {?>
 				<option value="<?=$page['slug'];?>" <?=(Arr::get($get, 'id') == $page['slug'] ? 'selected' : '');?>><?=mb_strtoupper($page['title']);?></option>
 				<?}?>
 			</select>
+		</form>
+	</div>
+	<form class="form-horizontal col-md-12" method="post">
+	<?if (Arr::get($get, 'id') == 'main') {?>
+		<h2>Текст в блоках</h2>
+		<div class="row form-group">
+			<label for="scope1">
+				<?=Arr::get(Arr::get($scopePages, 1, []), 'title');?>
+			</label>
+			<?=Form::textarea('scope1', Arr::get(Arr::get($scopePages, 1, []), 'description'), ['class' => 'form-control', 'id' => 'scope1', 'rows' => 5]);?>
 		</div>
-		<button class="btn btn-default" type="submit">Выбрать</button>
-	</form>
-	</p>
-	<?if (!in_array(Arr::get($get, 'id'), ['main'])) {?>
-	<form class="form-horizontal row" style="display:inline-block;margin-left:40px;" method="post">
-		<p>
-			<div class="row">
-				<h3>Редактируем страницу</h3>
-			</div>
-		</p>
-		<p>
-			<div class="form-group span12">
-				<label for="redact_content_text">Текст страницы</label>
-				<textarea id="redact_content_text" name="text" class="ckeditor"><?=Arr::get($pageData, 'content', '');?></textarea>
-			</div>
-		</p>
-		<p>
-			<div class="row">
-				<button type="submit" class="btn btn-primary" name="redactpage" value="<?=Arr::get($get, 'id', 0);?>">Сохранить</button>
-			</div>
-		</p>
-	</form>
+		<div class="row form-group">
+			<label for="scope2">
+				<?=Arr::get(Arr::get($scopePages, 2, []), 'title');?>
+			</label>
+			<?=Form::textarea('scope2', Arr::get(Arr::get($scopePages, 2, []), 'description'), ['class' => 'form-control', 'id' => 'scope2', 'rows' => 5]);?>
+		</div>
+		<div class="row form-group">
+			<label for="scope3">
+				<?=Arr::get(Arr::get($scopePages, 3, []), 'title');?>
+			</label>
+			<?=Form::textarea('scope3', Arr::get(Arr::get($scopePages, 3, []), 'description'), ['class' => 'form-control', 'id' => 'scope3', 'rows' => 5]);?>
+		</div>
+		<div class="row form-group">
+			<label for="scope4">
+				<?=Arr::get(Arr::get($scopePages, 4, []), 'title');?>
+			</label>
+			<?=Form::textarea('scope4', Arr::get(Arr::get($scopePages, 4, []), 'description'), ['class' => 'form-control', 'id' => 'scope4', 'rows' => 5]);?>
+		</div>
+	<?} else {?>
+		<div class="row">
+			<h3>Редактируем страницу</h3>
+		</div>
+		<div class="row form-group">
+			<label for="redact_content_text">Текст страницы</label>
+			<textarea id="redact_content_text" name="text" class="ckeditor"><?=Arr::get($pageData, 'content', '');?></textarea>
+		</div>
 	<?}?>
-	<div>
+		<div class="row form-group">
+			<button type="submit" class="btn btn-primary" name="redactpage" value="<?=Arr::get($get, 'id', 0);?>">Сохранить</button>
+		</div>
+	</form>
+	<div class="row img-row col-md-12">
 		<h4>Фото</h4>
 		<div>
 			<?foreach($pageImgsData as $img){?>
