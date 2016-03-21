@@ -116,6 +116,7 @@ class Model_Content extends Kohana_Model
     public function getPortfolioPageImgs($params = [])
     {
         $idSql = !empty(Arr::get($params, 'id', 0)) ? 'and `page_id` = :id' : '';
+
         return DB::query(Database::SELECT, "select * from `portfolio__imgs` where `enabled` = 1 $idSql")
             ->param(':id', Arr::get($params, 'id', 0))
             ->execute()

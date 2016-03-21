@@ -13,6 +13,7 @@ $contentModel = Model::factory('Content');
 				<option value="<?=$page['slug'];?>" <?=(Arr::get($get, 'id') == $page['slug'] ? 'selected' : '');?>><?=mb_strtoupper($page['title']);?></option>
 				<?}?>
 			</select>
+			<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 		</form>
 	</div>
 	<form class="form-horizontal col-md-12" method="post">
@@ -54,6 +55,7 @@ $contentModel = Model::factory('Content');
 		<div class="row form-group">
 			<button type="submit" class="btn btn-primary" name="redactpage" value="<?=Arr::get($get, 'id', 0);?>">Сохранить</button>
 		</div>
+		<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 	</form>
 	<div class="row img-row col-md-12">
 		<h4>Фото</h4>
@@ -82,6 +84,8 @@ $contentModel = Model::factory('Content');
 						<input type="file" name="imgname[]" id="exampleInputFile" multiple>
 					</div>
 					<input type="hidden" name="loadpageimg" value="<?=Arr::get($pageData, 'id', 0);?>">
+					<input type="hidden" name="id" value="<?=Arr::get($get, 'id');?>">
+					<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 					<button type="submit" class="btn btn-default">Загрузить</button>
 				</form>
 			</div>
@@ -90,6 +94,8 @@ $contentModel = Model::factory('Content');
 		</div>
 	</div>
 </div>
-<form id="remove_img" action="/admin/control_panel/redact_page?id=<?=Arr::get($get, 'id', 0);?>" method="post">
+<form id="remove_img" method="post">
 	<input type="hidden" id="removeimg" name="removeimg" value="0">
+	<input type="hidden" name="id" value="<?=Arr::get($get, 'id');?>">
+	<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 </form>

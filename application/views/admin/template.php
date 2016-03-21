@@ -65,10 +65,11 @@
                     <li>
                         <a href=""><i class="fa fa-dashboard fa-fw"></i> Панель управления</a>
                     </li>
-                    <li class="<?=($page == 'redact_page' ? 'active' : null);?>">
+                    <li class="<?=($page == 'redact_pages' ? 'active' : null);?>">
                         <a href="#"><i class="fa fa-pencil fa-fw"></i> Редактирование страниц<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="/admin/control_panel/redact_page">Основные страницы</a></li>
+                            <li><a href="/admin/control_panel/redact_pages/?slug=page">Основные страницы</a></li>
+                            <li><a href="/admin/control_panel/redact_pages/?slug=portfolio">Портфолио</a></li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>

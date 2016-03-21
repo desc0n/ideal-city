@@ -55,35 +55,64 @@ class Controller_Admin extends Controller {
 					->set('username', Arr::get($_POST,'username',''))
 					->set('email', Arr::get($_POST,'email',''))
 					->set('error', '');
-			} else if ($page == 'redact_page') {
-				if (isset($_POST['redactpage'])) {
-					if (Arr::get($_GET, 'id') == 'main') {
-						$adminModel->setScopePageDescription($_POST);
-					} else {
-						$adminModel->setPage($_POST);
+			} else if ($page == 'redact_pages') {
+				if (Arr::get($_GET, 'slug') == 'page') {
+					if (isset($_POST['redactpage'])) {
+						if (Arr::get($_GET, 'id') == 'main') {
+							$adminModel->setScopePageDescription($_POST);
+						} else {
+							$adminModel->setPage($_POST);
+						}
+
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'redactpage'), Arr::get($_POST, 'slug')));
 					}
-					HTTP::redirect('/admin/control_panel/redact_page?id=' . Arr::get($_POST, 'redactpage', 0));
+
+					$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
+					$filename=Arr::get($_FILES, 'imgname', []);
+
+					if (!empty(Arr::get($_POST, 'loadpageimg', 0)) != '' && !empty($filename)) {
+						$adminModel->loadPageImg($_FILES, $_POST['loadpageimg']);
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+					}
+
+					if ($removeimg != 0) {
+						$adminModel->removePageImg($_POST);
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+					}
+
+					$admin_content = View::factory('admin/redact_page')
+						->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPage($_GET), 0, []) : [])
+						->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPageImgs(['slug' => Arr::get($_GET, 'id')]) : [])
+						->set('scopePages', $contentModel->getScopePage())
+						->set('get', $_GET)
+					;
+				} else if (Arr::get($_GET, 'slug') == 'portfolio') {
+					if (isset($_POST['redactpage'])) {
+						$adminModel->setPortfolioPage($_POST);
+
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'redactpage'), Arr::get($_POST, 'slug')));
+					}
+
+					$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
+					$filename=Arr::get($_FILES, 'imgname', []);
+
+					if (!empty(Arr::get($_POST, 'loadpageimg', 0)) != '' && !empty($filename)) {
+						$adminModel->loadPortfolioPageImg($_FILES, $_POST['loadpageimg']);
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+					}
+
+					if ($removeimg != 0) {
+						$adminModel->removePortfolioPageImg($_POST);
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+					}
+
+					$admin_content = View::factory('admin/redact_portfolio')
+						->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPortfolioPage($_GET), 0, []) : [])
+						->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPortfolioPageImgs($_GET) : [])
+						->set('portfolioPages', $contentModel->getPortfolioPage())
+						->set('get', $_GET)
+					;
 				}
-
-				$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
-				$filename=Arr::get($_FILES, 'imgname', []);
-
-				if (!empty(Arr::get($_POST, 'loadpageimg', 0)) != '' && !empty($filename)) {
-					$adminModel->loadPageImg($_FILES, $_POST['loadpageimg']);
-					HTTP::redirect('/admin/control_panel/redact_page?id='.Arr::get($_GET, 'id', 0));
-				}
-
-				if ($removeimg != 0) {
-					$adminModel->removePageImg($_POST);
-					HTTP::redirect('/admin/control_panel/redact_page?id='.Arr::get($_GET, 'id', 0));
-				}
-
-				$admin_content = View::factory('admin_redact_page')
-					->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPage($_GET), 0, []) : [])
-					->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPageImgs(['slug' => Arr::get($_GET, 'id')]) : [])
-					->set('scopePages', $contentModel->getScopePage())
-					->set('get', $_GET)
-				;
 			}
 		}
 		if (isset($_POST['reg'])) {

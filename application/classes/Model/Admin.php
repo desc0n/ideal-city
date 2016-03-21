@@ -83,5 +83,73 @@ class Model_Admin extends Kohana_Model
 		}
 	}
 
+
+	public function setPortfolioPage($params = [])
+	{
+		$id = Arr::get($params, 'redactpage');
+
+		DB::query(Database::UPDATE, "update `portfolio__pages` set `content` = :text where `id` = :id")
+			->param(':id', $id)
+			->param(':text', Arr::get($params, 'text', ''))
+			->execute();
+	}
+
+
+	public function loadPortfolioPageImg($filesGlobal, $page_id)
+	{
+		$filesData = [];
+		foreach ($filesGlobal['imgname']['name'] as $key => $data) {
+			$filesData[$key]['name'] = $filesGlobal['imgname']['name'][$key];
+			$filesData[$key]['type'] = $filesGlobal['imgname']['type'][$key];
+			$filesData[$key]['tmp_name'] = $filesGlobal['imgname']['tmp_name'][$key];
+			$filesData[$key]['error'] = $filesGlobal['imgname']['error'][$key];
+			$filesData[$key]['size'] = $filesGlobal['imgname']['size'][$key];
+		}
+		foreach ($filesData as $files) {
+			$res = DB::query(Database::INSERT, 'insert into `portfolio__imgs` (`page_id`) values (:id)')
+				->param(':id', $page_id)
+				->execute();
+
+			$new_id = Arr::get($res, 0);
+
+			$imageName = preg_replace("/[^0-9a-z.]+/i", "0", Arr::get($files,'name',''));
+			$file_name = 'public/img/original/'.$new_id.'_'.$imageName;
+			if (copy($files['tmp_name'], $file_name))	{
+				Image::factory($file_name)
+					->resize(800, NULL)
+					->save($file_name,100)
+				;
+
+				$thumb_file_name = 'public/img/thumb/'.$new_id.'_'.$imageName;
+
+				if (copy($files['tmp_name'], $thumb_file_name))	{
+					Image::factory($thumb_file_name)
+						->resize(150, NULL)
+						->save($thumb_file_name,100)
+					;
+
+					DB::update('portfolio__imgs')
+						->set(['src' => sprintf('%s_%s', $new_id, $imageName), 'enabled' => 1])
+						->where('id', '=', ':id')
+						->param(':id', $new_id)
+						->execute()
+					;
+				}
+			}
+		}
+	}
+
+
+	public function removePortfolioPageImg($params = [])
+	{
+		DB::update('portfolio__imgs')
+			->set(['enabled' => 0])
+			->where('id', '=', ':id')
+			->param(':id', Arr::get($params,'removeimg'))
+			->execute()
+		;
+
+	}
+
 }
 ?>
