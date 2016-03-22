@@ -1,20 +1,33 @@
-function searchAction(val){
-    $('#typeahead').html('');
-    $.ajax({type: 'POST', url: '/ajax/get_typeahead_admin', async: true, data:{searchText: val},
+function removeImg(id){
+    $.ajax({type: 'POST', url: '/ajax/remove_img', async: true, data:{id: id},
         success: function(data) {
-            $('#typeahead').html(data);
+            $('#rowImg' + id).remove();
         }
     });
 }
-$(document).ready(function(){
-    $('#searchField').keyup(function(){
-        searchAction($(this).val());
+
+function hideImg(id){
+    $.ajax({type: 'POST', url: '/ajax/hide_img', async: true, data:{id: id},
+        success: function() {
+            var html =
+            '<button class="btn btn-success" onclick="showImg(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-open"></span> Показать изображение' +
+            '</button>';
+
+            $('#rowImg' + id + ' .rowBtn1').html(html);
+        }
     });
-    $('#searchAction').click(function(){
-        var val = $('#searchField').val();
-        searchAction(val);
+}
+
+function showImg(id){
+    $.ajax({type: 'POST', url: '/ajax/show_img', async: true, data:{id: id},
+        success: function() {
+            var html =
+            '<button class="btn btn-warning" onclick="hideImg(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-close"></span> Скрыть изображение' +
+            '</button>';
+
+            $('#rowImg' + id + ' .rowBtn1').html(html);
+        }
     });
-    $('body').click(function(){
-        $('#typeahead .typeahead').css('display', 'none');
-    });
-});
+}

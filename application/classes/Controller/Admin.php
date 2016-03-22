@@ -82,7 +82,7 @@ class Controller_Admin extends Controller {
 
 					$admin_content = View::factory('admin/redact_page')
 						->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPage($_GET), 0, []) : [])
-						->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPageImgs(['slug' => Arr::get($_GET, 'id')]) : [])
+						->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPageImgs(['slug' => Arr::get($_GET, 'id'), 'enabled' => 'all']) : [])
 						->set('scopePages', $contentModel->getScopePage())
 						->set('get', $_GET)
 					;

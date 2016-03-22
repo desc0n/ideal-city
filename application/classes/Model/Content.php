@@ -102,15 +102,33 @@ class Model_Content extends Kohana_Model
 
     public function getPageImgs($params = [])
     {
-        $idSql = !empty(Arr::get($params, 'id', 0)) ? 'and `page_id` = :id' : '';
+        $query = DB::select('*')
+            ->from('pages__imgs')
+            ->where('', '', 1)
+        ;
 
-        $slugSql = !empty(Arr::get($params, 'slug')) ? 'and `page_id` in (select `id` from `pages__pages` where `slug` = :slug)' : '';
+        if (!empty(Arr::get($params, 'id', 0))) {
+            $query->and_where('page_id', '=', Arr::get($params, 'id'));
+        }
 
-        return DB::query(Database::SELECT, "select * from `pages__imgs` where `enabled` = 1 $idSql $slugSql")
-            ->param(':id', Arr::get($params, 'id', 0))
-            ->param(':slug', Arr::get($params, 'slug'))
+        if (isset($params['enabled'])) {
+            if ($params['enabled'] != 'all') {
+                $query->and_where('enabled', '=', ':enabled');
+            }
+        } else {
+            $query->and_where('enabled', '=', 1);
+        }
+
+        if (!empty(Arr::get($params, 'slug'))) {
+            $query->and_where('page_id', 'in', DB::select('id')->from('pages__pages')->where('slug', '=', Arr::get($params, 'slug')));
+        }
+
+        $result = $query
             ->execute()
-            ->as_array();
+            ->as_array()
+        ;
+
+        return $result;
     }
 
     public function getPortfolioPageImgs($params = [])

@@ -57,17 +57,48 @@ $contentModel = Model::factory('Content');
 		</div>
 		<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 	</form>
-	<div class="row img-row col-md-12">
+	<div class="row form-row col-md-8">
 		<h4>Фото</h4>
-		<div>
-			<?foreach($pageImgsData as $img){?>
-				<div class="img-link" data-toggle="tooltip" data-placement="left" data-html="true" title="<img class='tooltip-img' src='/public/img/original/<?=$img['src'];?>'>">
-					<img src="/public/img/thumb/<?=$img['src'];?>" >
-					<span class="pull-right glyphicon glyphicon-remove" title="удалить" onclick="$('#remove_img > #removeimg').val(<?=$img['id'];?>);$('#remove_img').submit();"></span>
-				</div>
-			<?}?>
-			<button class="btn btn-success" onclick="$('#loadimg_modal').modal('toggle');">Добавить фото <span class="glyphicon glyphicon-plus"></span></button>
+		<div class="dataTable_wrapper">
+			<table class="table table-bordered" id="dataTables-example">
+				<thead>
+					<tr>
+						<td>Изображение</td>
+						<td>Действия</td>
+					</tr>
+				</thead>
+				<tbody>
+					<?foreach($pageImgsData as $img){?>
+					<tr id="rowImg<?=$img['id'];?>" class="gradeA">
+						<td class="text-center">
+							<div class="img-link">
+								<img src="/public/img/thumb/<?=$img['src'];?>" >
+							</div>
+						</td>
+						<td class="text-center">
+							<div class="rowBtn1 btn-row">
+								<?=($img['enabled'] == 1 ? sprintf('
+								<button class="btn btn-warning" onclick="hideImg(%d);">
+									<span class="glyphicon glyphicon-eye-close"></span> Скрыть изображение
+								</button>', $img['id']) : sprintf('
+								<button class="btn btn-success" onclick="showImg(%d);">
+									<span class="glyphicon glyphicon-eye-open"></span> Показать изображение
+								</button>', $img['id']));?>
+							</div>
+							<div class="rowBtn2 btn-row">
+								<button class="btn btn-danger" onclick="removeImg(<?=$img['id'];?>);">
+									<span class="glyphicon glyphicon-remove"></span> Удалить изображение
+								</button>
+							</div>
+						</td>
+					</tr>
+					<?}?>
+				</tbody>
+			</table>
 		</div>
+	</div>
+	<div class="form-row row col-md-12">
+		<button class="btn btn-success" onclick="$('#loadimg_modal').modal('toggle');">Добавить фото <span class="glyphicon glyphicon-plus"></span></button>
 	</div>
 </div>
 <div class="modal fade" id="loadimg_modal">

@@ -63,14 +63,6 @@ class Model_Admin extends Kohana_Model
 			->execute();
 	}
 
-	public function removePageImg($params = [])
-	{
-		$sql = "update `pages__imgs` set `enabled` = 0 where `id` = :id";
-		DB::query(Database::UPDATE,$sql)
-			->param(':id', Arr::get($params,'removeimg',0))
-			->execute();
-	}
-
 	public function setScopePageDescription($params = [])
 	{
 		foreach ($params as $key => $val) {
@@ -151,5 +143,37 @@ class Model_Admin extends Kohana_Model
 
 	}
 
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function removeImg($params = [])
+	{
+		DB::delete('pages__imgs')->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function hideImg($params = [])
+	{
+		DB::update('pages__imgs')->set(['enabled' => 0])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function showImg($params = [])
+	{
+		DB::update('pages__imgs')->set(['enabled' => 1])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
 }
 ?>

@@ -41,26 +41,16 @@
     margin-left:10px;
 }
 
-.img-row {
+.form-row {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.img-link .glyphicon {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    color: #111;
-    text-shadow: 1px 1px 1px #fff;
-    cursor: pointer;
-}
 .img-link {
-    width:300px;
-    position: relative;
-    margin: 10px 0;
+
 }
 .img-link img{
-    width:300px;
+    width: 100%;
 }
 .redact-form .imgs-form img {
     min-height: 70px;
@@ -69,4 +59,8 @@
 .right-content {
     padding-left: 20px;
     padding-top: 20px;
+}
+
+.btn-row {
+    margin: 5px 0;
 }
