@@ -55,12 +55,15 @@ class Model_Admin extends Kohana_Model
 
 	public function setPage($params = [])
 	{
-		$id = Arr::get($params, 'redactpage', 0);
-
-		DB::query(Database::UPDATE, "update `pages__pages` set `content` = :text where `slug` = :id")
-			->param(':id', $id)
-			->param(':text', Arr::get($params, 'text', ''))
-			->execute();
+		DB::update('pages__pages')
+			->set(['content' => ':text'])
+			->where('slug', '=', ':id')
+			->parameters([
+				':text' =>  Arr::get($params, 'text', ''),
+				':id' => Arr::get($params, 'redactpage')
+			])
+			->execute()
+		;
 	}
 
 	public function setScopePageDescription($params = [])
@@ -85,7 +88,6 @@ class Model_Admin extends Kohana_Model
 			->param(':text', Arr::get($params, 'text', ''))
 			->execute();
 	}
-
 
 	public function loadPortfolioPageImg($filesGlobal, $page_id)
 	{
@@ -131,7 +133,6 @@ class Model_Admin extends Kohana_Model
 		}
 	}
 
-
 	public function removePortfolioPageImg($params = [])
 	{
 		DB::update('portfolio__imgs')
@@ -174,6 +175,152 @@ class Model_Admin extends Kohana_Model
 		DB::update('pages__imgs')->set(['enabled' => 1])->where('id', '=',  Arr::get($params,'id'))->execute();
 
 		return true;
+	}
+
+	/**
+	 * @param $text string
+	 *
+	 * @return string
+	 */
+	public function slugify($text)
+	{
+		// replace non letter or digits by -
+		$text = preg_replace('~[^\\pL\d]+~u', '_', $text);
+
+		// trim
+		$text = trim($text, '_');
+
+		// transliterate
+		$map = [
+			'а' => 'a',   'б' => 'b',   'в' => 'v',  'г' => 'g',  'д' => 'd',  'е' => 'e',  'ж' => 'zh', 'з' => 'z',
+			'и' => 'i',   'й' => 'y',   'к' => 'k',  'л' => 'l',  'м' => 'm',  'н' => 'n',  'о' => 'o',  'п' => 'p',
+			'р' => 'r',   'с' => 's',   'т' => 't',  'у' => 'u',  'ф' => 'f',  'х' => 'h',  'ц' => 'ts', 'ч' => 'ch',
+			'ш' => 'sh',  'щ' => 'sht', 'ъ' => 'y',  'ы' => 'y',  'ь' => 'y', 'ю' => 'yu', 'я' => 'ya', 'А' => 'A',
+			'Б' => 'B',   'В' => 'V',   'Г' => 'G',  'Д' => 'D',  'Е' => 'E',  'Ж' => 'ZH', 'З' => 'Z',  'И' => 'I',
+			'Й' => 'Y',   'К' => 'K',   'Л' => 'L',  'М' => 'M',  'Н' => 'N',  'О' => 'O',  'П' => 'P',  'Р' => 'R',
+			'С' => 'S',   'Т' => 'T',   'У' => 'U',  'Ф' => 'F',  'Х' => 'H',  'Ц' => 'TS', 'Ч' => 'CH', 'Ш' => 'SH',
+			'Щ' => 'SHT', 'Ъ' => 'Y',   'Ы' => 'y',  'Ь' => 'Y', 'Ю' => 'Yu', 'Я' => 'YA'
+		];
+		$text = strtr($text, $map);
+
+		// lowercase
+		$text = strtolower($text);
+
+		// remove unwanted characters
+		$text = preg_replace('~[^_\w]+~', '', $text);
+
+		if (empty($text)) {
+			$text = 'na';
+		}
+
+		return $text;
+	}
+
+	/**
+	 * @param string $table
+	 * @param null|int $id
+	 * @param string $text
+	 *
+	 * @return void
+	 */
+	public function setPageContent($table = 'pages__pages', $id = null, $text = '')
+	{
+		DB::update($table)
+			->set(['content' => ':text'])
+			->where('id', '=', ':id')
+			->parameters([
+				':text' =>  $text,
+				':id' => $id
+			])
+			->execute()
+		;
+	}
+
+	/**
+	 * @param string $table
+	 * @param null|int $id
+	 * @param string $title
+	 *
+	 * @return void
+	 */
+	public function setPageTitle($table = 'pages__pages', $id = null, $title = '')
+	{
+		DB::update($table)
+			->set(['title' => ':title'])
+			->where('id', '=', ':id')
+			->parameters([
+				':title' =>  $title,
+				':id' => $id
+			])
+			->execute()
+		;
+	}
+
+	/**
+	 * @param int $page_id
+	 * @param string $title
+	 *
+	 * @return int
+	 *
+	 * @throws Kohana_Exception
+	 */
+	public function addPortfolioProject($page_id, $title)
+	{
+		$slug = $this->slugify($title);
+
+		$result = DB::insert('portfolio__projects')
+			->columns(['page_id', 'title', 'slug'])
+			->values([$page_id, $title, $slug])
+			->execute()
+		;
+
+		return $result[0];
+	}
+
+
+	public function loadPortfolioPprojectImg($filesGlobal, $page_id)
+	{
+		$filesData = [];
+
+		foreach ($filesGlobal['imgname']['name'] as $key => $data) {
+			$filesData[$key]['name'] = $filesGlobal['imgname']['name'][$key];
+			$filesData[$key]['type'] = $filesGlobal['imgname']['type'][$key];
+			$filesData[$key]['tmp_name'] = $filesGlobal['imgname']['tmp_name'][$key];
+			$filesData[$key]['error'] = $filesGlobal['imgname']['error'][$key];
+			$filesData[$key]['size'] = $filesGlobal['imgname']['size'][$key];
+		}
+
+		foreach ($filesData as $files) {
+			$res = DB::insert('portfolio__projects_imgs')->columns(['page_id'])->values([$page_id])->execute();
+
+			$new_id = Arr::get($res, 0);
+
+			$imageName = preg_replace("/[^0-9a-z.]+/i", "0", Arr::get($files,'name',''));
+			$file_name = 'public/img/projects/original/'.$new_id.'_'.$imageName;
+
+			if (copy($files['tmp_name'], $file_name))	{
+				Image::factory($file_name)
+					->resize(800, NULL)
+					->save($file_name,100)
+				;
+
+				$thumb_file_name = 'public/img/projects/thumb/'.$new_id.'_'.$imageName;
+
+				if (copy($files['tmp_name'], $thumb_file_name))	{
+					Image::factory($thumb_file_name)
+						->resize(150, NULL)
+						->save($thumb_file_name,100)
+					;
+
+					DB::update('portfolio__projects_imgs')
+						->set(['src' => sprintf('%s_%s', $new_id, $imageName), 'enabled' => 1])
+						->where('id', '=', ':id')
+						->param(':id', $new_id)
+						->execute()
+					;
+				}
+			}
+		}
 	}
 }
 ?>

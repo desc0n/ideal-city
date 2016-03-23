@@ -103,7 +103,7 @@ class Model_Content extends Kohana_Model
     public function getPageImgs($params = [])
     {
         $query = DB::select('*')
-            ->from('pages__imgs')
+            ->from(Arr::get($params, 'table', 'pages__imgs'))
             ->where('', '', 1)
         ;
 
@@ -218,5 +218,41 @@ class Model_Content extends Kohana_Model
             14 => [null, 'регистрация прав'],
         ];
     }
+
+
+    /**
+     * @param string $table
+     * @param null $id
+     * @param null $slug
+     * @param array $params
+     *
+     * @return array
+     */
+    public function getPageData($table = 'pages__pages', $id = null, $slug = null, $params = [])
+    {
+        $query = DB::select()
+            ->from($table)
+            ->where('', '', 1)
+        ;
+
+        if (null !== $id) {
+            $query->and_where('id', '=', $id);
+        }
+
+        if (null !== $slug) {
+            $query->and_where('slug', '=', $slug);
+        }
+
+        if (isset($params['editable'])) {
+            $query->and_where('editable', '=', $params['editable']);
+        }
+
+        if (isset($params['showed_in_menu'])) {
+            $query->and_where('showed_in_menu', '=', $params['showed_in_menu']);
+        }
+
+        return $query->execute()->as_array();
+    }
+
 }
 ?>

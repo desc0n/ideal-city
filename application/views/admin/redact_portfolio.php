@@ -16,7 +16,7 @@ $contentModel = Model::factory('Content');
 			<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 		</form>
 	</div>
-	<form class="form-horizontal col-md-12" method="post">
+	<form class="form-horizontal col-md-12 <?=(Arr::get($get, 'id') === null ? 'hide' : '');?>" method="post">
 		<div class="row">
 			<h3>Редактируем раздел</h3>
 		</div>
@@ -29,36 +29,64 @@ $contentModel = Model::factory('Content');
 		</div>
 		<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 	</form>
-	<div class="row img-row col-md-12">
-		<h4>Фото</h4>
-		<div>
-			<?foreach($pageImgsData as $img){?>
-				<div class="img-link" data-toggle="tooltip" data-placement="left" data-html="true" title="<img class='tooltip-img' src='/public/img/original/<?=$img['src'];?>'>">
-					<img src="/public/img/thumb/<?=$img['src'];?>" >
-					<span class="pull-right glyphicon glyphicon-remove" title="удалить" onclick="$('#remove_img > #removeimg').val(<?=$img['id'];?>);$('#remove_img').submit();"></span>
-				</div>
-			<?}?>
-			<button class="btn btn-success" onclick="$('#loadimg_modal').modal('toggle');">Добавить фото <span class="glyphicon glyphicon-plus"></span></button>
+	<div class="row form-row col-md-8 <?=(Arr::get($get, 'id') === null ? 'hide' : '');?>">
+		<h4>Проекты</h4>
+		<div class="row">
+			<table class="table table-bordered" id="dataTables-example">
+				<thead>
+				<tr>
+					<td>Название проекта</td>
+					<td>Действия</td>
+				</tr>
+				</thead>
+				<tbody>
+				<?foreach($portfolioProject as $project){?>
+					<tr class="gradeA">
+						<td class="text-center">
+
+						</td>
+						<td class="text-center">
+							<div class="rowBtn1 btn-row">
+								<?=($project['enabled'] == 1 ? sprintf('
+								<button class="btn btn-warning" onclick="hideProject(%d);">
+									<span class="glyphicon glyphicon-eye-close"></span> Скрыть проект
+								</button>', $project['id']) : sprintf('
+								<button class="btn btn-success" onclick="showProject(%d);">
+									<span class="glyphicon glyphicon-eye-open"></span> Показать проект
+								</button>', $project['id']));?>
+							</div>
+							<div class="rowBtn2 btn-row">
+								<button class="btn btn-danger" onclick="removeProject(<?=$project['id'];?>);">
+									<span class="glyphicon glyphicon-remove"></span> Удалить проект
+								</button>
+							</div>
+						</td>
+					</tr>
+				<?}?>
+				</tbody>
+			</table>
+		</div>
+		<div class="form-row row col-md-12">
+			<button class="btn btn-success" onclick="$('#newProjectModal').modal('toggle');">Добавить проект <span class="glyphicon glyphicon-plus"></span></button>
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="loadimg_modal">
+<div class="modal fade" id="newProjectModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Загрузка изображения</h4>
+				<h4 class="modal-title">Добавление проекта</h4>
 			</div>
 			<div class="modal-body">
-				<form role="form" method="post" enctype='multipart/form-data'>
-					<div class="form-group">
-						<label for="exampleInputFile">Выбор файла</label>
-						<input type="file" name="imgname[]" id="exampleInputFile" multiple>
-					</div>
-					<input type="hidden" name="loadpageimg" value="<?=Arr::get($pageData, 'id', 0);?>">
+				<form role="form" method="post">
+					<label for="title">
+						Название проекта
+						<input type="text" name="title" id=title" class="form-control">
+					</label>
 					<input type="hidden" name="id" value="<?=Arr::get($get, 'id');?>">
 					<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
-					<button type="submit" class="btn btn-default">Загрузить</button>
+					<button type="submit" class="btn btn-default" name="newProject">Добавить</button>
 				</form>
 			</div>
 			<div class="modal-footer">
@@ -66,8 +94,3 @@ $contentModel = Model::factory('Content');
 		</div>
 	</div>
 </div>
-<form id="remove_img" method="post">
-	<input type="hidden" id="removeimg" name="removeimg" value="0">
-	<input type="hidden" name="id" value="<?=Arr::get($get, 'id', 0);?>">
-	<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
-</form>

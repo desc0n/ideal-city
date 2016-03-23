@@ -93,16 +93,24 @@ class Controller_Admin extends Controller {
 						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'redactpage'), Arr::get($_POST, 'slug')));
 					}
 
+					if (isset($_POST['newProject'])) {
+						$id = $adminModel->addPortfolioProject($this->request->post('id'), $this->request->post('title'));
+
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=project', $id));
+					}
+
 					$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
 					$filename=Arr::get($_FILES, 'imgname', []);
 
 					if (!empty(Arr::get($_POST, 'loadpageimg', 0)) != '' && !empty($filename)) {
 						$adminModel->loadPortfolioPageImg($_FILES, $_POST['loadpageimg']);
+
 						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
 					}
 
 					if ($removeimg != 0) {
 						$adminModel->removePortfolioPageImg($_POST);
+
 						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
 					}
 
@@ -110,6 +118,27 @@ class Controller_Admin extends Controller {
 						->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPortfolioPage($_GET), 0, []) : [])
 						->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPortfolioPageImgs($_GET) : [])
 						->set('portfolioPages', $contentModel->getPortfolioPage())
+						->set('portfolioProject', [])
+						->set('get', $_GET)
+					;
+				} else if (Arr::get($_GET, 'slug') == 'project') {
+					if (isset($_POST['redactproject'])) {
+						$adminModel->setPageContent('portfolio__projects', $this->request->post('redactproject'), $this->request->post('text'));
+						$adminModel->setPageTitle('portfolio__projects', $this->request->post('redactproject'), $this->request->post('title'));
+
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'redactproject'), Arr::get($_POST, 'slug')));
+					}
+
+					$filename=Arr::get($_FILES, 'imgname', []);
+
+					if (!empty(Arr::get($_POST, 'loadprojectimg', 0)) != '' && !empty($filename)) {
+						$adminModel->loadPortfolioPprojectImg($_FILES, $_POST['loadprojectimg']);
+						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+					}
+
+					$admin_content = View::factory('admin/redact_portfolio_project')
+						->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPageData('portfolio__projects', $_GET['id']), 0, []) : [])
+						->set('pageImgsData', null !== $this->request->get('id') ? $contentModel->getPageImgs(['table' => 'portfolio__projects_imgs', 'id' => $this->request->get('id')]) : [])
 						->set('get', $_GET)
 					;
 				}
