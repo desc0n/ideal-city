@@ -254,5 +254,69 @@ class Model_Content extends Kohana_Model
         return $query->execute()->as_array();
     }
 
+    /**
+     * @param int $page_id
+     * @param int $id
+     * @param string $slug
+     *
+     * @return array
+     *
+     * @throws Kohana_Exception
+     */
+    public function findPortfolioProject($page_id = null, $id = null, $slug = null)
+    {
+        $query = DB::select()
+            ->from('portfolio__projects')
+            ->where('', '', 1)
+        ;
+
+        if($page_id !== null) {
+            $query->and_where('page_id', '=', $page_id);
+        }
+
+        if($id !== null) {
+            $query->and_where('id', '=', $id);
+        }
+
+        if($slug !== null) {
+            $query->and_where('slug', '=', $slug);
+        }
+
+        return $query->execute()->as_array();
+    }
+
+    /**
+     * @param int|null $project_id
+     * @param int|null $id
+     * @param mixed|null $enabled
+     *
+     * @return array
+     */
+    public function findProjectImgs($project_id = null, $id = null, $enabled = null)
+    {
+        $query = DB::select()
+            ->from('portfolio__projects_imgs')
+            ->where('', '', 1)
+        ;
+
+        if ($enabled !== null) {
+            if ($enabled != 'all') {
+                $query->and_where('enabled', '=', $enabled);
+            }
+        } else {
+            $query->and_where('enabled', '=', 1);
+        }
+
+        if ($id !== null) {
+            $query->and_where('id', '=', $id);
+        }
+
+        if ($project_id !== null) {
+            $query->and_where('project_id', '=', $project_id);
+        }
+
+        return $query->execute()->as_array();
+    }
+
 }
 ?>

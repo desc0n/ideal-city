@@ -144,6 +144,15 @@ Route::set('portfolio', 'portfolio/<id>',[
 	])
 ;
 
+Route::set('project', 'project/<id>',[
+		'id' =>'[0-9a-z_]+',
+	])
+	->defaults([
+		'controller' => 'portfolio',
+		'action'     => 'project',
+	])
+;
+
 Route::set('scope', 'scope/<id>',[
 		'id' =>'[0-9a-z_]+',
 	])

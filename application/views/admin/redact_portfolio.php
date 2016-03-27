@@ -42,18 +42,14 @@ $contentModel = Model::factory('Content');
 				<tbody>
 				<?foreach($portfolioProject as $project){?>
 					<tr class="gradeA">
-						<td class="text-center">
-
+						<td class="text-center media-middle">
+							<a href="/project/<?=$project['slug'];?>" target="_blank"> <?=$project['title'];?></a>
 						</td>
 						<td class="text-center">
 							<div class="rowBtn1 btn-row">
-								<?=($project['enabled'] == 1 ? sprintf('
-								<button class="btn btn-warning" onclick="hideProject(%d);">
-									<span class="glyphicon glyphicon-eye-close"></span> Скрыть проект
-								</button>', $project['id']) : sprintf('
-								<button class="btn btn-success" onclick="showProject(%d);">
-									<span class="glyphicon glyphicon-eye-open"></span> Показать проект
-								</button>', $project['id']));?>
+								<a class="btn btn-warning" href="/admin/control_panel/redact_pages/?id=<?=$project['id'];?>&slug=project">
+									<span class="glyphicon glyphicon-eye-close"></span> Редактировать проект
+								</a>
 							</div>
 							<div class="rowBtn2 btn-row">
 								<button class="btn btn-danger" onclick="removeProject(<?=$project['id'];?>);">

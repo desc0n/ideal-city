@@ -118,7 +118,7 @@ class Controller_Admin extends Controller {
 						->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPortfolioPage($_GET), 0, []) : [])
 						->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPortfolioPageImgs($_GET) : [])
 						->set('portfolioPages', $contentModel->getPortfolioPage())
-						->set('portfolioProject', [])
+						->set('portfolioProject', $contentModel->findPortfolioProject(Arr::get($_GET, 'id')))
 						->set('get', $_GET)
 					;
 				} else if (Arr::get($_GET, 'slug') == 'project') {
@@ -137,8 +137,8 @@ class Controller_Admin extends Controller {
 					}
 
 					$admin_content = View::factory('admin/redact_portfolio_project')
-						->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPageData('portfolio__projects', $_GET['id']), 0, []) : [])
-						->set('pageImgsData', null !== $this->request->get('id') ? $contentModel->getPageImgs(['table' => 'portfolio__projects_imgs', 'id' => $this->request->get('id')]) : [])
+						->set('pageData', Arr::get($contentModel->findPortfolioProject(null, $this->request->get('id')), 0, []))
+						->set('pageImgsData', $contentModel->findProjectImgs($this->request->get('id')))
 						->set('get', $_GET)
 					;
 				}

@@ -2,7 +2,7 @@
     <div class="slider center">
         <?foreach ($pagesImgs as $img) {?>
         <div>
-            <img src="/public/img/thumb/<?=$img['src'];?>">
+            <img src="/public/img/<?=(isset($project) ? 'projects/' : null);?>thumb/<?=$img['src'];?>">
         </div>
         <?}?>
     </div>

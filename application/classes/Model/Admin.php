@@ -277,8 +277,7 @@ class Model_Admin extends Kohana_Model
 		return $result[0];
 	}
 
-
-	public function loadPortfolioPprojectImg($filesGlobal, $page_id)
+	public function loadPortfolioPprojectImg($filesGlobal, $project_id)
 	{
 		$filesData = [];
 
@@ -291,7 +290,7 @@ class Model_Admin extends Kohana_Model
 		}
 
 		foreach ($filesData as $files) {
-			$res = DB::insert('portfolio__projects_imgs')->columns(['page_id'])->values([$page_id])->execute();
+			$res = DB::insert('portfolio__projects_imgs')->columns(['project_id'])->values([$project_id])->execute();
 
 			$new_id = Arr::get($res, 0);
 
