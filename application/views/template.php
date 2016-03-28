@@ -138,7 +138,7 @@
                     <?foreach ($news as $newsData) {?>
                         <div class="news-date"><?=Date::convertStrDateToFormat($newsData['date'], 'd.m.Y');?> г.</div>
                         <div class="news-content">
-                            <?=mb_substr(strip_tags($newsData['content']), 0, 100);?>...
+                            <?=mb_substr(strip_tags(trim($newsData['content'])), 0, 100);?>...
                             <a href="/news/<?=$newsData['slug'];?>" class="news-link" target="_blank">Подробнее</a>
                         </div>
                     <?}?>
