@@ -31,3 +31,20 @@ function showImg(id){
         }
     });
 }
+
+function downloadNews(id){
+    $('#downloadNewsBtn' + id)
+        .attr({"class":"btn btn-danger", "disabled":"disabled"})
+        .html('<span class="fa fa-refresh fa-spin"></span> Скачать')
+    ;
+
+    $.ajax({type: 'POST', url: '/ajax/download_news', async: true, data:{id: id},
+        success: function() {
+            $('#downloadNewsBtn' + id)
+                .removeAttr('disabled')
+                .attr({"class":"btn btn-success"})
+                .html('<span class="glyphicon glyphicon-download"></span> Скачать')
+            ;
+        }
+    });
+}

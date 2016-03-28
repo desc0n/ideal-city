@@ -28,6 +28,9 @@ class Controller_Admin extends Controller {
 		/** @var $adminModel Model_Admin */
 		$adminModel = Model::factory('Admin');
 
+		/** @var Model_News $newsModel */
+		$newsModel = Model::factory('News');
+
 		if (Auth::instance()->logged_in() && isset($_POST['logout'])) {
 			Auth::instance()->logout();
 			HTTP::redirect('/');
@@ -86,7 +89,7 @@ class Controller_Admin extends Controller {
 						->set('scopePages', $contentModel->getScopePage())
 						->set('get', $_GET)
 					;
-				} else if (Arr::get($_GET, 'slug') == 'portfolio') {
+				} elseif (Arr::get($_GET, 'slug') == 'portfolio') {
 					if (isset($_POST['redactpage'])) {
 						$adminModel->setPortfolioPage($_POST);
 
@@ -121,7 +124,7 @@ class Controller_Admin extends Controller {
 						->set('portfolioProject', $contentModel->findPortfolioProject(Arr::get($_GET, 'id')))
 						->set('get', $_GET)
 					;
-				} else if (Arr::get($_GET, 'slug') == 'project') {
+				} elseif (Arr::get($_GET, 'slug') == 'project') {
 					if (isset($_POST['redactproject'])) {
 						$adminModel->setPageContent('portfolio__projects', $this->request->post('redactproject'), $this->request->post('text'));
 						$adminModel->setPageTitle('portfolio__projects', $this->request->post('redactproject'), $this->request->post('title'));
@@ -142,6 +145,10 @@ class Controller_Admin extends Controller {
 						->set('get', $_GET)
 					;
 				}
+			} elseif ($page == 'news') {
+				$admin_content = View::factory('admin/download_news')
+					->set('sources', $newsModel->findNewsSources())
+				;
 			}
 		}
 		if (isset($_POST['reg'])) {

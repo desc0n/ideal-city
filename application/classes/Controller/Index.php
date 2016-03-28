@@ -10,10 +10,16 @@ class Controller_Index extends Controller
     /** @var Model_Content */
     private $contentModel;
 
+	/** @var  Model_News */
+	private $newsModel;
+
     public function __construct(Request $request, Response $response)
     {
         parent::__construct($request, $response);
+
         $this->contentModel = Model::factory('Content');
+		$this->newsModel = Model::factory('News');
+
         $this->template = $this->contentModel->getTemplate();
     }
 
@@ -92,6 +98,26 @@ class Controller_Index extends Controller
 
 		$footer = View::factory('footer')
 			->set('pagesImgs', $this->contentModel->getScopePageImgs(['id' => Arr::get($pageData, 'id')]))
+		;
+
+		$this
+			->template
+			->set('content', $content)
+			->set('footer', $footer);
+
+		$this->response->body($this->template);
+	}
+
+	public function action_news()
+	{
+		$slug = $this->request->param('slug');
+
+		$pageData = Arr::get($this->newsModel->findNews(null, null, $slug), 0, []);
+
+		$content = $this->contentModel->getContent('page', $pageData);
+
+		$footer = View::factory('footer')
+			->set('pagesImgs', [])
 		;
 
 		$this

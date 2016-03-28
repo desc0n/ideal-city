@@ -5,11 +5,15 @@ class Controller_Ajax extends Controller
 	/** @var  Model_Admin */
 	private $adminModel;
 
+	/** @var  Model_News */
+	private $newsModel;
+
 	public function __construct(Request $request, Response $response)
 	{
 		parent::__construct($request, $response);
 
 		$this->adminModel = Model::factory('Admin');
+		$this->newsModel = Model::factory('News');
 	}
 
 	public function action_get_typeahead()
@@ -35,5 +39,10 @@ class Controller_Ajax extends Controller
 	public function action_show_img()
 	{
 		$this->response->body($this->adminModel->showImg($_POST));
+	}
+
+	public function action_download_news()
+	{
+		$this->response->body($this->newsModel->downloadNews($this->request->post('id')));
 	}
 }

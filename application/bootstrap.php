@@ -1,6 +1,9 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-// -- Environment setup --------------------------------------------------------
+/**
+ * Composer autoload
+ */
+require(APPPATH.'../vendor/autoload.php');
 
 // Load the core Kohana class
 require SYSPATH.'classes/Kohana/Core'.EXT;
@@ -159,6 +162,15 @@ Route::set('scope', 'scope/<id>',[
 	->defaults([
 		'controller' => 'index',
 		'action'     => 'scope',
+	])
+;
+
+Route::set('news', 'news/<slug>',[
+		'slug' =>'[0-9a-z_]+',
+	])
+	->defaults([
+		'controller' => 'index',
+		'action'     => 'news',
 	])
 ;
 

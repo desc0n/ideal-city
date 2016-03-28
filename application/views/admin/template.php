@@ -69,6 +69,13 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+                    <li class="<?=($page == 'news' ? 'active' : null);?>">
+                        <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> Новости<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/admin/control_panel/news">Загрузка новостей</a></li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
