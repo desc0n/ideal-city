@@ -184,6 +184,7 @@ class Model_Admin extends Kohana_Model
 	 */
 	public function slugify($text)
 	{
+		$text = strip_tags($text);
 		// replace non letter or digits by -
 		$text = preg_replace('~[^\\pL\d]+~u', '_', $text);
 

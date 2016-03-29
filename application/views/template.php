@@ -28,7 +28,7 @@
     <script type="text/javascript" src="/public/js/jquery.rollbar.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.hit, .page').rollbar({zIndex:80});
+            $('.hit, .page, .news-page').rollbar({zIndex:80});
         });
     </script>
     <script type="text/javascript">
@@ -134,7 +134,7 @@
             <div class="container content">
                 <?=$content;?>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 news">
-                    <div class="news-title">Новости</div>
+                    <div class="news-title"><a class="news-title" href="/news/all">Новости</a></div>
                     <?foreach ($news as $newsData) {?>
                         <div class="news-date"><?=Date::convertStrDateToFormat($newsData['date'], 'd.m.Y');?> г.</div>
                         <div class="news-content">

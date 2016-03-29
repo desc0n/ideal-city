@@ -112,9 +112,9 @@ class Controller_Index extends Controller
 	{
 		$slug = $this->request->param('slug');
 
-		$pageData = Arr::get($this->newsModel->findNews(null, null, $slug), 0, []);
+		$pageData = $this->newsModel->findNews(null, null, $slug == 'all' ? null : $slug, 'all');
 
-		$content = $this->contentModel->getContent('page', $pageData);
+		$content = $this->contentModel->getContent('news', $pageData);
 
 		$footer = View::factory('footer')
 			->set('pagesImgs', [])
