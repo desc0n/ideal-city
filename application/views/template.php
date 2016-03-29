@@ -28,7 +28,9 @@
     <script type="text/javascript" src="/public/js/jquery.rollbar.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.hit, .page, .news-page').rollbar({zIndex:80});
+            $('.hit').rollbar({zIndex:80});
+            $('.page').rollbar({zIndex:80});
+            $('.news-page').rollbar({zIndex:80});
         });
     </script>
     <script type="text/javascript">
