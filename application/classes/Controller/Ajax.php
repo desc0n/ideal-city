@@ -45,4 +45,20 @@ class Controller_Ajax extends Controller
 	{
 		$this->response->body($this->newsModel->downloadNews($this->request->post('id')));
 	}
+
+	public function action_remove_news()
+	{
+		$this->response->body($this->adminModel->removeNews($_POST));
+	}
+
+	public function action_hide_news()
+	{
+		$this->response->body($this->adminModel->hideNews($_POST));
+	}
+
+	public function action_show_news()
+	{
+		$this->response->body($this->adminModel->showNews($_POST));
+	}
+
 }

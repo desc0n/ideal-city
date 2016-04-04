@@ -322,5 +322,55 @@ class Model_Admin extends Kohana_Model
 			}
 		}
 	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function removeNews($params = [])
+	{
+		DB::delete('news')->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function hideNews($params = [])
+	{
+		DB::update('news')->set(['viewed' => 0])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function showNews($params = [])
+	{
+		DB::update('news')->set(['viewed' => 1])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 *
+	 * @return void
+	 */
+	public function setNews($params = [])
+	{
+		DB::update('news')
+			->set([
+				'title' => Arr::get($params, 'title', ''),
+				'content' => Arr::get($params, 'content', '')
+			])
+			->where('id', '=', Arr::get($params, 'redactnews'))
+			->execute()
+		;
+	}
 }
 ?>

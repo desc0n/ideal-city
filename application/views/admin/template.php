@@ -73,6 +73,7 @@
                         <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> Новости<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="/admin/control_panel/news">Загрузка новостей</a></li>
+                            <li><a href="/admin/control_panel/news_list">Редактирование новостей</a></li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>

@@ -149,6 +149,21 @@ class Controller_Admin extends Controller {
 				$admin_content = View::factory('admin/download_news')
 					->set('sources', $newsModel->findNewsSources())
 				;
+			} elseif ($page == 'news_list') {
+				$admin_content = View::factory('admin/news_list')
+					->set('pageNewsData', $newsModel->findNews(null, null, null, 'all'))
+				;
+			} elseif ($page == 'redact_news') {
+				if (isset($_POST['redactnews'])) {
+					$adminModel->setNews($_POST);
+
+					HTTP::redirect($this->request->referrer());
+				}
+
+				$admin_content = View::factory('admin/redact_news')
+					->set('newsData', Arr::get($newsModel->findNews(null, $this->request->get('id'), null, 'all'), 0))
+					->set('get', $_GET)
+				;
 			}
 		}
 		if (isset($_POST['reg'])) {

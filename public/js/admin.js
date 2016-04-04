@@ -48,3 +48,37 @@ function downloadNews(id){
         }
     });
 }
+
+function removeNews(id){
+    $.ajax({type: 'POST', url: '/ajax/remove_news', async: true, data:{id: id},
+        success: function(data) {
+            $('#rowNews' + id).remove();
+        }
+    });
+}
+
+function hideNews(id){
+    $.ajax({type: 'POST', url: '/ajax/hide_news', async: true, data:{id: id},
+        success: function() {
+            var html =
+                '<button class="btn btn-success" onclick="showNews(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-open"></span> Показать новость' +
+                '</button>';
+
+            $('#rowNews' + id + ' .rowBtn1').html(html);
+        }
+    });
+}
+
+function showNews(id){
+    $.ajax({type: 'POST', url: '/ajax/show_news', async: true, data:{id: id},
+        success: function() {
+            var html =
+                '<button class="btn btn-warning" onclick="hideNews(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-close"></span> Скрыть новость' +
+                '</button>';
+
+            $('#rowNews' + id + ' .rowBtn1').html(html);
+        }
+    });
+}
