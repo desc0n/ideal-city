@@ -81,7 +81,7 @@ class Model_News extends Kohana_Model
 
         $sourceLink = Arr::get($source, 'link');
 
-        $mainUrl = substr($sourceLink, 0, (strpos($sourceLink, '.') + 3));
+        $mainUrl = preg_match('/com/', $sourceLink) ? substr($sourceLink, 0, (strpos($sourceLink, '.') + 4)) : substr($sourceLink, 0, (strpos($sourceLink, '.') + 3));
 
         $parser = new \Sunra\PhpSimple\HtmlDomParser();
 
@@ -94,23 +94,13 @@ class Model_News extends Kohana_Model
             $issetNewsSlug[] = $news['slug'];
         }
 
-        if ($id == 1) {
-            $pageNewsLink = $this->findPagesNewsLink($id, $html, $issetNewsSlug);
+        $pageNewsLink = $this->findPagesNewsLink($id, $html, $issetNewsSlug);
 
-            if (null === $pageNewsLink) {
-                return false;
-            }
-
-            $url = $this->findNewsUrl($mainUrl, $pageNewsLink);
-        } elseif ($id == 2) {
-            $pageNewsLink = $this->findPagesNewsLink($id, $html, $issetNewsSlug);
-
-            if (null === $pageNewsLink) {
-                return false;
-            }
-
-            $url = $this->findNewsUrl($mainUrl, $pageNewsLink);
+        if (null === $pageNewsLink) {
+            return false;
         }
+
+        $url = $this->findNewsUrl($mainUrl, $pageNewsLink);
 
         if (null === $url) {
             return false;
@@ -139,6 +129,12 @@ class Model_News extends Kohana_Model
 
         foreach ($imgs as $img) {
             $contentText = str_replace($img->src, sprintf('%s%s', $mainUrl, $img->src), $contentText);
+        }
+
+        $links = $content->find('a');
+
+        foreach ($links as $link) {
+            $contentText = !preg_match('/http/', $link->href) ? str_replace($link->href, sprintf('%s%s', $mainUrl, $link->href), $contentText) : $contentText;
         }
 
         DB::insert('news')
@@ -190,6 +186,48 @@ class Model_News extends Kohana_Model
                     break;
                 }
             }
+        } elseif ($id == 3) {
+            $links = $html->find('.news-list .news-item p a');
+
+            foreach ($links as $link) {
+                $slug = $adminModel->slugify($link->innertext);
+
+                if (in_array($slug, $issetNewsSlug)) {
+                    continue;
+                }
+
+                $pageNewsLink = $link->href;
+
+                break;
+            }
+        } elseif (in_array($id, [4, 5])) {
+            $links = $html->find('div.headline h3.headline_title a');
+
+            foreach ($links as $link) {
+                $slug = $adminModel->slugify($link->innertext);
+
+                if (in_array($slug, $issetNewsSlug)) {
+                    continue;
+                }
+
+                $pageNewsLink = $link->href;
+
+                break;
+            }
+        } elseif ($id == 6) {
+            $links = $html->find('div.news__item a.link');
+
+            foreach ($links as $link) {
+                $slug = $adminModel->slugify($link->innertext);
+
+                if (in_array($slug, $issetNewsSlug)) {
+                    continue;
+                }
+
+                $pageNewsLink = $link->href;
+
+                break;
+            }
         }
 
         return $pageNewsLink;
@@ -226,6 +264,15 @@ class Model_News extends Kohana_Model
         } elseif ($id == 2) {
             $newsData['title'] = $htmlNews->find('div.lside h1', 0);
             $newsData['content'] = $htmlNews->find('div.lside div.fnblk div.fntxt', 0);
+        } elseif ($id == 3) {
+            $newsData['title'] = $htmlNews->find('div#content-middle h1', 0);
+            $newsData['content'] = $htmlNews->find('div#content-middle div[class="simple-content mt15"] div[class="simple-content mt25"]', 0);
+        } elseif (in_array($id, [4, 5])) {
+            $newsData['title'] = $htmlNews->find('div.reader_article h3.reader_article_headline', 0);
+            $newsData['content'] = $htmlNews->find('div.reader_article div.reader_article_body', 0);
+        } elseif ($id == 6) {
+            $newsData['title'] = $htmlNews->find('h2.content__title', 0);
+            $newsData['content'] = $htmlNews->find('div.article__text', 0);
         }
 
         return $newsData;
