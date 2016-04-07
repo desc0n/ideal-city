@@ -612,6 +612,13 @@ body {
     -moz-border-radius: 2px;
 }
 
+.footer-container a,
+.footer-container a:hover,
+.footer-container a:visited {
+    border: none;
+    text-decoration: none;
+}
+
 .logo {
     height: 128px;
 }

@@ -57,13 +57,15 @@ $contentModel = Model::factory('Content');
 		</div>
 		<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 	</form>
-	<div class="row form-row col-md-8 <?=(Arr::get($get, 'id') === null ? 'hide' : '');?>">
+	<div class="row form-row col-md-12 <?=(Arr::get($get, 'id') === null ? 'hide' : '');?>">
 		<h4>Фото</h4>
 		<div class="row">
 			<table class="table table-bordered" id="dataTables-example">
 				<thead>
 					<tr>
 						<td>Изображение</td>
+						<td>Ссылка на проект</td>
+						<td>Ссылка на изображение</td>
 						<td>Действия</td>
 					</tr>
 				</thead>
@@ -74,6 +76,17 @@ $contentModel = Model::factory('Content');
 							<div class="img-link">
 								<img src="/public/img/thumb/<?=$img['src'];?>" >
 							</div>
+						</td>
+						<td class="text-center media-middle">
+							<div class="input-group">
+								<input type="text" data-id="<?=$img['id'];?>" class="form-control project-link" value="<?=$img['project_link'];?>">
+								<div class="input-group-btn">
+									<button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>
+								</div>
+							</div>
+						</td>
+						<td class="text-center media-middle">
+							<?=sprintf('http://%s/public/img/original/%s', $_SERVER['HTTP_HOST'], $img['src']);?>
 						</td>
 						<td class="text-center">
 							<div class="rowBtn1 btn-row">

@@ -76,4 +76,9 @@ class Controller_Ajax extends Controller
 		$this->response->body($this->adminModel->showNews($_POST));
 	}
 
+	public function action_change_project_link()
+	{
+		$this->response->body($this->adminModel->changeProjectLink($_POST));
+	}
+
 }

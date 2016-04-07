@@ -2,7 +2,9 @@
     <div class="slider center">
         <?foreach ($pagesImgs as $img) {?>
         <div>
+            <?=(isset($img['project_link']) ? sprintf('<a href="%s" target="_blank">', $img['project_link']) : '');?>
             <img src="/public/img/<?=(isset($project) ? 'projects/' : null);?>thumb/<?=$img['src'];?>">
+            <?=(isset($img['project_link']) ? '</a>' : '');?>
         </div>
         <?}?>
     </div>

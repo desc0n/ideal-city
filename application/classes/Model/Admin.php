@@ -405,5 +405,16 @@ class Model_Admin extends Kohana_Model
 			->execute()
 		;
 	}
+
+	public function changeProjectLink($params = [])
+	{
+		DB::update('pages__imgs')
+			->set([
+				'project_link' => Arr::get($params, 'link', ''),
+			])
+			->where('id', '=', Arr::get($params, 'id'))
+			->execute()
+		;
+	}
 }
 ?>

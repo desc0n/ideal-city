@@ -116,3 +116,12 @@ function showNews(id){
         }
     });
 }
+
+$(document).ready(function(){
+    $('.project-link').blur(function(){
+        var id = $(this).data('id');
+        var link = $(this).val();
+
+        $.ajax({type: 'POST', url: '/ajax/change_project_link', async: true, data:{id: id, link: link}});
+    });
+});

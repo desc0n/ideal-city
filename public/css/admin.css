@@ -49,3 +49,7 @@
 .btn-row {
     margin: 5px 0;
 }
+
+.project-link {
+    min-width: 150px !important;
+}
