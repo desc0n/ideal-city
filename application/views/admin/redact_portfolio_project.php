@@ -21,13 +21,14 @@ $contentModel = Model::factory('Content');
 		</div>
 		<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
 	</form>
-	<div class="row form-row col-md-8 <?=(Arr::get($get, 'id') === null ? 'hide' : '');?>">
+	<div class="row form-row col-md-12 <?=(Arr::get($get, 'id') === null ? 'hide' : '');?>">
 		<h4>Фото</h4>
 		<div class="row">
 			<table class="table table-bordered" id="dataTables-example">
 				<thead>
 					<tr>
 						<td>Изображение</td>
+						<td>Ссылка на изображение</td>
 						<td>Действия</td>
 					</tr>
 				</thead>
@@ -38,6 +39,9 @@ $contentModel = Model::factory('Content');
 							<div class="img-link">
 								<img src="/public/img/projects/thumb/<?=$img['src'];?>" >
 							</div>
+						</td>
+						<td class="text-center media-middle">
+								<?=sprintf('http://%s/public/img/projects/original/%s', $_SERVER['HTTP_HOST'], $img['src']);?>
 						</td>
 						<td class="text-center">
 							<div class="rowBtn1 btn-row">
