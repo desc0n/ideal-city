@@ -33,7 +33,7 @@ $contentModel = Model::factory('Content');
 				</thead>
 				<tbody>
 					<?foreach($pageImgsData as $img){?>
-					<tr id="rowImg<?=$img['id'];?>" class="gradeA">
+					<tr id="rowProjectImg<?=$img['id'];?>" class="gradeA">
 						<td class="text-center">
 							<div class="img-link">
 								<img src="/public/img/projects/thumb/<?=$img['src'];?>" >

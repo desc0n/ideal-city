@@ -38,7 +38,7 @@
     <!--Bootstrap Typeahead JavaScript-->
     <script src="/public/js/bootstrap3-typeahead.min.js"></script>
     <!--Custom JavaScript-->
-    <script src="/public/js/admin.js"></script>
+    <script src="/public/js/admin.js?v=2"></script>
 </head>
 <body>
 <div id="wrapper">

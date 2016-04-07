@@ -178,6 +178,39 @@ class Model_Admin extends Kohana_Model
 	}
 
 	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function removeProjectImg($params = [])
+	{
+		DB::delete('portfolio__projects_imgs')->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function hideProjectImg($params = [])
+	{
+		DB::update('portfolio__projects_imgs')->set(['enabled' => 0])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function showProjectImg($params = [])
+	{
+		DB::update('portfolio__projects_imgs')->set(['enabled' => 1])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
 	 * @param $text string
 	 *
 	 * @return string

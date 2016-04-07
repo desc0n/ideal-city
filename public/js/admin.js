@@ -32,6 +32,40 @@ function showImg(id){
     });
 }
 
+function removeProjectImg(id){
+    $.ajax({type: 'POST', url: '/ajax/remove_project_img', async: true, data:{id: id},
+        success: function(data) {
+            $('#rowProjectImg' + id).remove();
+        }
+    });
+}
+
+function hideProjectImg(id){
+    $.ajax({type: 'POST', url: '/ajax/hide_project_img', async: true, data:{id: id},
+        success: function() {
+            var html =
+            '<button class="btn btn-success" onclick="showProjectImg(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-open"></span> Показать изображение' +
+            '</button>';
+
+            $('#rowProjectImg' + id + ' .rowBtn1').html(html);
+        }
+    });
+}
+
+function showProjectImg(id){
+    $.ajax({type: 'POST', url: '/ajax/show_project_img', async: true, data:{id: id},
+        success: function() {
+            var html =
+            '<button class="btn btn-warning" onclick="hideProjectImg(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-close"></span> Скрыть изображение' +
+            '</button>';
+
+            $('#rowProjectImg' + id + ' .rowBtn1').html(html);
+        }
+    });
+}
+
 function downloadNews(id){
     $('#downloadNewsBtn' + id)
         .attr({"class":"btn btn-danger", "disabled":"disabled"})
