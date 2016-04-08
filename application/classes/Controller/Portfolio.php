@@ -26,9 +26,10 @@ class Controller_Portfolio extends Controller
 
         $content = $this->contentModel->getContent($view, $pageData);
 
-        $footer = View::factory('footer')
-            ->set('pagesImgs', $this->contentModel->findProjectImgs(Arr::get($pageData, 'id')))
-            ->set('project', true)
+        $footer = ''
+//            View::factory('footer')
+//            ->set('pagesImgs', $this->contentModel->findProjectImgs(Arr::get($pageData, 'id')))
+//            ->set('project', true)
         ;
 
         $this
