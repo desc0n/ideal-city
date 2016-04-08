@@ -391,6 +391,28 @@ class Model_Admin extends Kohana_Model
 
 	/**
 	 * @param array $params
+	 * @return bool
+	 */
+	public function hideListNews($params = [])
+	{
+		DB::update('news')->set(['list_viewed' => 0])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function showListNews($params = [])
+	{
+		DB::update('news')->set(['list_viewed' => 1])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
 	 *
 	 * @return void
 	 */
@@ -406,6 +428,11 @@ class Model_Admin extends Kohana_Model
 		;
 	}
 
+	/**
+	 * @param array $params
+	 *
+	 * @return bool
+	 */
 	public function changeProjectLink($params = [])
 	{
 		DB::update('pages__imgs')
@@ -415,6 +442,8 @@ class Model_Admin extends Kohana_Model
 			->where('id', '=', Arr::get($params, 'id'))
 			->execute()
 		;
+
+		return true;
 	}
 }
 ?>

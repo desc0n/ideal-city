@@ -96,7 +96,7 @@ function hideNews(id){
         success: function() {
             var html =
                 '<button class="btn btn-success" onclick="showNews(' + id + ');">' +
-                '<span class="glyphicon glyphicon-eye-open"></span> Показать новость' +
+                '<span class="glyphicon glyphicon-eye-open"></span> Показать в правом блоке' +
                 '</button>';
 
             $('#rowNews' + id + ' .rowBtn1').html(html);
@@ -109,10 +109,36 @@ function showNews(id){
         success: function() {
             var html =
                 '<button class="btn btn-warning" onclick="hideNews(' + id + ');">' +
-                '<span class="glyphicon glyphicon-eye-close"></span> Скрыть новость' +
+                '<span class="glyphicon glyphicon-eye-close"></span> Скрыть в правом блоке' +
                 '</button>';
 
             $('#rowNews' + id + ' .rowBtn1').html(html);
+        }
+    });
+}
+
+function hideListNews(id){
+    $.ajax({type: 'POST', url: '/ajax/hide_list_news', async: true, data:{id: id},
+        success: function() {
+            var html =
+                '<button class="btn btn-info" onclick="showListNews(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-open"></span> Показать на странице новостей' +
+                '</button>';
+
+            $('#rowNews' + id + ' .rowBtn3').html(html);
+        }
+    });
+}
+
+function showListNews(id){
+    $.ajax({type: 'POST', url: '/ajax/show_list_news', async: true, data:{id: id},
+        success: function() {
+            var html =
+                '<button class="btn btn-primary" onclick="hideListNews(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-close"></span> Скрыть на странице новостей' +
+                '</button>';
+
+            $('#rowNews' + id + ' .rowBtn3').html(html);
         }
     });
 }

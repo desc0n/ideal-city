@@ -27,10 +27,11 @@ class Model_News extends Kohana_Model
      * @param int|null $src_id
      * @param int|null $id
      * @param mixed|null $viewed
+     * @param mixed|null $viewedList
      *
      * @return array
      */
-    public function findNews($src_id = null, $id = null, $slug = null, $viewed = null)
+    public function findNews($src_id = null, $id = null, $slug = null, $viewed = null, $viewedList = null)
     {
         $query = DB::select()
             ->from('news')
@@ -43,6 +44,14 @@ class Model_News extends Kohana_Model
             }
         } else {
             $query->and_where('viewed', '=', 1);
+        }
+
+        if ($viewedList !== null) {
+            if ($viewedList != 'all') {
+                $query->and_where('list_viewed', '=', $viewedList);
+            }
+        } else {
+            $query->and_where('list_viewed', '=', 1);
         }
 
         if ($id !== null) {
@@ -138,8 +147,8 @@ class Model_News extends Kohana_Model
         }
 
         DB::insert('news')
-            ->columns(['title', 'content', 'source_id', 'slug', 'viewed', 'date'])
-            ->values([$newsData['title']->innertext, $contentText, $id, $slug, 0, DB::expr('now()')])
+            ->columns(['title', 'content', 'source_link', 'source_id', 'slug', 'viewed', 'list_viewed', 'date'])
+            ->values([$newsData['title']->innertext, $contentText, $url, $id, $slug, 0, 0, DB::expr('now()')])
             ->execute()
         ;
 

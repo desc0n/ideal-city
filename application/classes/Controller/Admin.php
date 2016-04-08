@@ -141,7 +141,7 @@ class Controller_Admin extends Controller {
 
 					$admin_content = View::factory('admin/redact_portfolio_project')
 						->set('pageData', Arr::get($contentModel->findPortfolioProject(null, $this->request->get('id')), 0, []))
-						->set('pageImgsData', $contentModel->findProjectImgs($this->request->get('id')))
+						->set('pageImgsData', $contentModel->findProjectImgs($this->request->get('id'), null, 'all'))
 						->set('get', $_GET)
 					;
 				}
@@ -151,7 +151,7 @@ class Controller_Admin extends Controller {
 				;
 			} elseif ($page == 'news_list') {
 				$admin_content = View::factory('admin/news_list')
-					->set('pageNewsData', $newsModel->findNews(null, null, null, 'all'))
+					->set('pageNewsData', $newsModel->findNews(null, null, null, 'all', 'all'))
 				;
 			} elseif ($page == 'redact_news') {
 				if (isset($_POST['redactnews'])) {
@@ -161,7 +161,7 @@ class Controller_Admin extends Controller {
 				}
 
 				$admin_content = View::factory('admin/redact_news')
-					->set('newsData', Arr::get($newsModel->findNews(null, $this->request->get('id'), null, 'all'), 0))
+					->set('newsData', Arr::get($newsModel->findNews(null, $this->request->get('id'), null, 'all', 'all'), 0))
 					->set('get', $_GET)
 				;
 			}

@@ -315,6 +315,10 @@ body {
 }
 
 
+.page-content p {
+    margin: 0;
+}
+
 .page-block {
     margin-top: 20px;
 }
