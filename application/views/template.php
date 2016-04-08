@@ -13,6 +13,7 @@
     <link href="/public/css/slick-theme.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/font-awesome.css">
     <link rel="stylesheet" href="/public/css/jquery.rollbar.css">
+    <link rel="stylesheet" href="/public/css/baguetteBox.css">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -26,6 +27,7 @@
     <script src="/public/js/slick.js"></script>
     <script type="text/javascript" src="/public/js/jquery.mousewheel.js"></script>
     <script type="text/javascript" src="/public/js/jquery.rollbar.min.js"></script>
+    <script src="/public/js/baguetteBox.js" async></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.hit, .page, .news-page').rollbar({zIndex:80});

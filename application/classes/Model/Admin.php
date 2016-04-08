@@ -259,6 +259,8 @@ class Model_Admin extends Kohana_Model
 	 */
 	public function setPageContent($table = 'pages__pages', $id = null, $text = '')
 	{
+		$text = str_replace('><img ', ' data-gallery=""><img ', $text);
+
 		DB::update($table)
 			->set(['content' => ':text'])
 			->where('id', '=', ':id')
