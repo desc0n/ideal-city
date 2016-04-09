@@ -34,15 +34,22 @@ class Model_Admin extends Kohana_Model
 
 			$imageName = preg_replace("/[^0-9a-z.]+/i", "0", Arr::get($files,'name',''));
 			$file_name = 'public/img/original/'.$new_id.'_'.$imageName;
+
 			if (copy($files['tmp_name'], $file_name))	{
-				$image=Image::factory($file_name);
-				$image->resize(800, NULL);
-				$image->save($file_name,100);
+				if (preg_match('/(png|jpg|jpeg)/', $file_name)) {
+					Image::factory($file_name)
+						->resize(800, NULL)
+						->save($file_name, 100);
+				}
+
 				$thumb_file_name = 'public/img/thumb/'.$new_id.'_'.$imageName;
 				if (copy($files['tmp_name'], $thumb_file_name))	{
-					$thumb_image=Image::factory($thumb_file_name);
-					$thumb_image->resize(150, NULL);
-					$thumb_image->save($thumb_file_name,100);
+					if (preg_match('/(png|jpg|jpeg)/', $thumb_file_name)) {
+						Image::factory($thumb_file_name)
+							->resize(150, NULL)
+							->save($thumb_file_name, 100);
+					}
+
 					$sql = "update `pages__imgs` set `src` = :src,`enabled` = 1 where `id` = :id";
 					$query=DB::query(Database::UPDATE,$sql);
 					$query->param(':id', $new_id);
@@ -109,18 +116,20 @@ class Model_Admin extends Kohana_Model
 			$imageName = preg_replace("/[^0-9a-z.]+/i", "0", Arr::get($files,'name',''));
 			$file_name = 'public/img/original/'.$new_id.'_'.$imageName;
 			if (copy($files['tmp_name'], $file_name))	{
-				Image::factory($file_name)
-					->resize(800, NULL)
-					->save($file_name,100)
-				;
+				if (preg_match('/(png|jpg|jpeg)/', $file_name)) {
+					Image::factory($file_name)
+						->resize(800, NULL)
+						->save($file_name, 100);
+				}
 
 				$thumb_file_name = 'public/img/thumb/'.$new_id.'_'.$imageName;
 
 				if (copy($files['tmp_name'], $thumb_file_name))	{
-					Image::factory($thumb_file_name)
-						->resize(150, NULL)
-						->save($thumb_file_name,100)
-					;
+					if (preg_match('/(png|jpg|jpeg)/', $thumb_file_name)) {
+						Image::factory($thumb_file_name)
+							->resize(150, NULL)
+							->save($thumb_file_name, 100);
+					}
 
 					DB::update('portfolio__imgs')
 						->set(['src' => sprintf('%s_%s', $new_id, $imageName), 'enabled' => 1])
@@ -334,18 +343,20 @@ class Model_Admin extends Kohana_Model
 			$file_name = 'public/img/projects/original/'.$new_id.'_'.$imageName;
 
 			if (copy($files['tmp_name'], $file_name))	{
-				Image::factory($file_name)
-					->resize(800, NULL)
-					->save($file_name,100)
-				;
+				if (preg_match('/(png|jpg|jpeg)/', $file_name)) {
+					Image::factory($file_name)
+						->resize(800, NULL)
+						->save($file_name, 100);
+				}
 
 				$thumb_file_name = 'public/img/projects/thumb/'.$new_id.'_'.$imageName;
 
 				if (copy($files['tmp_name'], $thumb_file_name))	{
-					Image::factory($thumb_file_name)
-						->resize(150, NULL)
-						->save($thumb_file_name,100)
-					;
+					if (preg_match('/(png|jpg|jpeg)/', $thumb_file_name)) {
+						Image::factory($thumb_file_name)
+							->resize(150, NULL)
+							->save($thumb_file_name, 100);
+					}
 
 					DB::update('portfolio__projects_imgs')
 						->set(['src' => sprintf('%s_%s', $new_id, $imageName), 'enabled' => 1])
