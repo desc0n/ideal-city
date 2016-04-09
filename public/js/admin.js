@@ -66,6 +66,32 @@ function showProjectImg(id){
     });
 }
 
+function hideProjectGalleryImg(id){
+    $.ajax({type: 'POST', url: '/ajax/hide_project_gallery_img', async: true, data:{id: id},
+        success: function() {
+            var html =
+            '<button class="btn btn-info" onclick="showProjectGalleryImg(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-open"></span> Показать в галерее' +
+            '</button>';
+
+            $('#rowProjectImg' + id + ' .rowBtn3').html(html);
+        }
+    });
+}
+
+function showProjectGalleryImg(id){
+    $.ajax({type: 'POST', url: '/ajax/show_project_gallery_img', async: true, data:{id: id},
+        success: function() {
+            var html =
+            '<button class="btn btn-primary" onclick="hideProjectGalleryImg(' + id + ');">' +
+                '<span class="glyphicon glyphicon-eye-close"></span> Скрыть в галерее' +
+            '</button>';
+
+            $('#rowProjectImg' + id + ' .rowBtn3').html(html);
+        }
+    });
+}
+
 function downloadNews(id){
     $('#downloadNewsBtn' + id)
         .attr({"class":"btn btn-danger", "disabled":"disabled"})

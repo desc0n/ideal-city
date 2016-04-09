@@ -14,6 +14,11 @@ class Model_Content extends Kohana_Model
         ;
     }
 
+    /**
+     * @param string $view
+     * @param array $pageData
+     * @return View
+     */
     public function getContent($view, $pageData)
     {
         return View::factory($view)
@@ -289,10 +294,11 @@ class Model_Content extends Kohana_Model
      * @param int|null $project_id
      * @param int|null $id
      * @param mixed|null $enabled
+     * @param mixed|null $galleryViewed
      *
      * @return array
      */
-    public function findProjectImgs($project_id = null, $id = null, $enabled = null)
+    public function findProjectImgs($project_id = null, $id = null, $enabled = null, $galleryViewed = null)
     {
         $query = DB::select()
             ->from('portfolio__projects_imgs')
@@ -305,6 +311,14 @@ class Model_Content extends Kohana_Model
             }
         } else {
             $query->and_where('enabled', '=', 1);
+        }
+
+        if ($galleryViewed !== null) {
+            if ($galleryViewed != 'all') {
+                $query->and_where('gallery_viewed', '=', $galleryViewed);
+            }
+        } else {
+            $query->and_where('gallery_viewed', '=', 1);
         }
 
         if ($id !== null) {

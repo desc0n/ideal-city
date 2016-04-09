@@ -141,7 +141,7 @@ class Controller_Admin extends Controller {
 
 					$admin_content = View::factory('admin/redact_portfolio_project')
 						->set('pageData', Arr::get($contentModel->findPortfolioProject(null, $this->request->get('id')), 0, []))
-						->set('pageImgsData', $contentModel->findProjectImgs($this->request->get('id'), null, 'all'))
+						->set('pageImgsData', $contentModel->findProjectImgs($this->request->get('id'), null, 'all', 'all'))
 						->set('get', $_GET)
 					;
 				}

@@ -220,6 +220,28 @@ class Model_Admin extends Kohana_Model
 	}
 
 	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function hideProjectGalleryImg($params = [])
+	{
+		DB::update('portfolio__projects_imgs')->set(['gallery_viewed' => 0])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
+	 * @param array $params
+	 * @return bool
+	 */
+	public function showProjectGalleryImg($params = [])
+	{
+		DB::update('portfolio__projects_imgs')->set(['gallery_viewed' => 1])->where('id', '=',  Arr::get($params,'id'))->execute();
+
+		return true;
+	}
+
+	/**
 	 * @param $text string
 	 *
 	 * @return string

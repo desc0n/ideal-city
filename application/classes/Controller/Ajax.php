@@ -56,6 +56,16 @@ class Controller_Ajax extends Controller
 		$this->response->body($this->adminModel->showProjectImg($_POST));
 	}
 
+	public function action_hide_project_gallery_img()
+	{
+		$this->response->body($this->adminModel->hideProjectGalleryImg($_POST));
+	}
+
+	public function action_show_project_gallery_img()
+	{
+		$this->response->body($this->adminModel->showProjectGalleryImg($_POST));
+	}
+
 	public function action_download_news()
 	{
 		$this->response->body($this->newsModel->downloadNews($this->request->post('id')));

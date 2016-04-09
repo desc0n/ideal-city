@@ -53,6 +53,15 @@ $contentModel = Model::factory('Content');
 									<span class="glyphicon glyphicon-eye-open"></span> Показать изображение
 								</button>', $img['id']));?>
 							</div>
+							<div class="rowBtn3 btn-row">
+								<?=($img['gallery_viewed'] == 1 ? sprintf('
+								<button class="btn btn-primary" onclick="hideProjectGalleryImg(%d);">
+									<span class="glyphicon glyphicon-eye-close"></span> Скрыть в галерее
+								</button>', $img['id']) : sprintf('
+								<button class="btn btn-info" onclick="showProjectGalleryImg(%d);">
+									<span class="glyphicon glyphicon-eye-open"></span> Показать в галерее
+								</button>', $img['id']));?>
+							</div>
 							<div class="rowBtn2 btn-row">
 								<button class="btn btn-danger" onclick="removeProjectImg(<?=$img['id'];?>);">
 									<span class="glyphicon glyphicon-remove"></span> Удалить изображение
