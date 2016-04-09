@@ -425,6 +425,19 @@ class Model_Admin extends Kohana_Model
 	}
 
 	/**
+	 * @param string $title
+	 *
+	 * @return void
+	 */
+	public function addNews($title)
+	{
+		DB::insert('news', ['title', 'date'])
+			->values([$title, DB::expr('NOW()')])
+			->execute()
+		;
+	}
+
+	/**
 	 * @param array $params
 	 *
 	 * @return void

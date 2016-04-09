@@ -82,6 +82,7 @@ $contentModel = Model::factory('Content');
 					</label>
 					<input type="hidden" name="id" value="<?=Arr::get($get, 'id');?>">
 					<input type="hidden" name="slug" value="<?=Arr::get($get, 'slug');?>">
+					<br />
 					<button type="submit" class="btn btn-default" name="newProject">Добавить</button>
 				</form>
 			</div>

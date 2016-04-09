@@ -150,6 +150,12 @@ class Controller_Admin extends Controller {
 					->set('sources', $newsModel->findNewsSources())
 				;
 			} elseif ($page == 'news_list') {
+				if (isset($_POST['newNews'])) {
+					$adminModel->addNews($this->request->post('title'));
+
+					HTTP::redirect($this->request->referrer());
+				}
+
 				$admin_content = View::factory('admin/news_list')
 					->set('pageNewsData', $newsModel->findNews(null, null, null, 'all', 'all'))
 				;

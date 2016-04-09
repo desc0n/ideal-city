@@ -50,4 +50,29 @@
 			</tbody>
 		</table>
 	</div>
+	<div class="form-row row col-md-12">
+		<button class="btn btn-success" onclick="$('#newNewsModal').modal('toggle');">Добавить новость <span class="glyphicon glyphicon-plus"></span></button>
+	</div>
+</div>
+<div class="modal fade" id="newNewsModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Добавление новости</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" method="post">
+					<label for="title">
+						Заголовок новости
+						<input type="text" name="title" id=title" class="form-control">
+					</label>
+					<br />
+					<button type="submit" class="btn btn-default" name="newNews">Добавить</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+			</div>
+		</div>
+	</div>
 </div>
