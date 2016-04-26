@@ -92,7 +92,7 @@ class Controller_Index extends Controller
 		$id = $this->request->param('id');
 
 		$_GET['id'] = $id;
-		$pageData = Arr::get($this->contentModel->getScopePage($_GET), 0, []);
+		$pageData = Arr::get($this->contentModel->getScopePage($_GET), $id, []);
 
 		$content = $this->contentModel->getContent('page', $pageData);
 

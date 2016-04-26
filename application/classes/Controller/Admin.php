@@ -67,7 +67,7 @@ class Controller_Admin extends Controller {
 							$adminModel->setPage($_POST);
 						}
 
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'redactpage'), Arr::get($_POST, 'slug')));
+						HTTP::redirect($this->request->referrer());
 					}
 
 					$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
@@ -75,31 +75,65 @@ class Controller_Admin extends Controller {
 
 					if (!empty(Arr::get($_POST, 'loadpageimg', 0)) != '' && !empty($filename)) {
 						$adminModel->loadPageImg($_FILES, $_POST['loadpageimg']);
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+
+						HTTP::redirect($this->request->referrer());
 					}
 
 					if ($removeimg != 0) {
 						$adminModel->removePageImg($_POST);
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+
+						HTTP::redirect($this->request->referrer());
 					}
 
 					$admin_content = View::factory('admin/redact_page')
 						->set('pageData', Arr::get($_GET, 'id') !== null ? Arr::get($contentModel->getPage($_GET), 0, []) : [])
 						->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getPageImgs(['slug' => Arr::get($_GET, 'id'), 'enabled' => 'all']) : [])
 						->set('scopePages', $contentModel->getScopePage())
+						->set('pageList', $contentModel->getPage(['editable' => true]))
+						->set('get', $_GET)
+					;
+				} elseif (Arr::get($_GET, 'slug') == 'scope') {
+					if (isset($_POST['redactpage'])) {
+						$adminModel->setScopePage($_POST);
+
+						HTTP::redirect($this->request->referrer());
+					}
+
+					$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
+					$filename=Arr::get($_FILES, 'imgname', []);
+
+					if (!empty(Arr::get($_POST, 'loadpageimg', 0)) != '' && !empty($filename)) {
+						$adminModel->loadPageImg($_FILES, $_POST['loadpageimg']);
+
+						HTTP::redirect($this->request->referrer());
+					}
+
+					if ($removeimg != 0) {
+						$adminModel->removeScopePageImg($_POST);
+
+						HTTP::redirect($this->request->referrer());
+					}
+
+					$pageData = Arr::get($_GET, 'id') !== null ? $contentModel->getScopePage(['slug' => Arr::get($_GET, 'id')]) : [];
+
+					$admin_content = View::factory('admin/redact_page')
+						->set('pageData', count($pageData) ? reset($pageData) : [])
+						->set('pageImgsData', Arr::get($_GET, 'id') ? $contentModel->getScopePageImgs(['slug' => Arr::get($_GET, 'id'), 'enabled' => 'all']) : [])
+						->set('scopePages', $contentModel->getScopePage())
+						->set('pageList', $contentModel->getScopePage(['editable' => true]))
 						->set('get', $_GET)
 					;
 				} elseif (Arr::get($_GET, 'slug') == 'portfolio') {
 					if (isset($_POST['redactpage'])) {
 						$adminModel->setPortfolioPage($_POST);
 
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'redactpage'), Arr::get($_POST, 'slug')));
+						HTTP::redirect($this->request->referrer());
 					}
 
 					if (isset($_POST['newProject'])) {
 						$id = $adminModel->addPortfolioProject($this->request->post('id'), $this->request->post('title'));
 
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=project', $id));
+						HTTP::redirect($this->request->referrer());
 					}
 
 					$removeimg = isset($_POST['removeimg']) ? $_POST['removeimg'] : 0;
@@ -108,13 +142,13 @@ class Controller_Admin extends Controller {
 					if (!empty(Arr::get($_POST, 'loadpageimg', 0)) != '' && !empty($filename)) {
 						$adminModel->loadPortfolioPageImg($_FILES, $_POST['loadpageimg']);
 
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+						HTTP::redirect($this->request->referrer());
 					}
 
 					if ($removeimg != 0) {
 						$adminModel->removePortfolioPageImg($_POST);
 
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+						HTTP::redirect($this->request->referrer());
 					}
 
 					$admin_content = View::factory('admin/redact_portfolio')
@@ -129,14 +163,14 @@ class Controller_Admin extends Controller {
 						$adminModel->setPageContent('portfolio__projects', $this->request->post('redactproject'), $this->request->post('text'));
 						$adminModel->setPageTitle('portfolio__projects', $this->request->post('redactproject'), $this->request->post('title'));
 
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'redactproject'), Arr::get($_POST, 'slug')));
+						HTTP::redirect($this->request->referrer());
 					}
 
 					$filename=Arr::get($_FILES, 'imgname', []);
 
 					if (!empty(Arr::get($_POST, 'loadprojectimg', 0)) != '' && !empty($filename)) {
 						$adminModel->loadPortfolioPprojectImg($_FILES, $_POST['loadprojectimg']);
-						HTTP::redirect(sprintf('/admin/control_panel/redact_pages?id=%s&slug=%s', Arr::get($_POST, 'id'), Arr::get($_POST, 'slug')));
+						HTTP::redirect($this->request->referrer());
 					}
 
 					$admin_content = View::factory('admin/redact_portfolio_project')

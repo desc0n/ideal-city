@@ -73,6 +73,25 @@ class Model_Admin extends Kohana_Model
 		;
 	}
 
+	/**
+	 * @param array $params
+	 */
+	public function setScopePage($params = [])
+	{
+		DB::update('scope__pages')
+			->set(['content' => ':text'])
+			->where('slug', '=', ':id')
+			->parameters([
+				':text' =>  Arr::get($params, 'text', ''),
+				':id' => Arr::get($params, 'redactpage')
+			])
+			->execute()
+		;
+	}
+
+	/**
+	 * @param array $params
+	 */
 	public function setScopePageDescription($params = [])
 	{
 		foreach ($params as $key => $val) {
@@ -140,6 +159,17 @@ class Model_Admin extends Kohana_Model
 				}
 			}
 		}
+	}
+
+	public function removeScopePageImg($params = [])
+	{
+		DB::update('scope__imgs')
+			->set(['enabled' => 0])
+			->where('id', '=', ':id')
+			->param(':id', Arr::get($params,'removeimg'))
+			->execute()
+		;
+
 	}
 
 	public function removePortfolioPageImg($params = [])

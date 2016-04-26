@@ -66,6 +66,7 @@
                         <ul class="nav nav-second-level">
                             <li><a href="/admin/control_panel/redact_pages/?slug=page">Основные страницы</a></li>
                             <li><a href="/admin/control_panel/redact_pages/?slug=portfolio">Портфолио</a></li>
+                            <li><a href="/admin/control_panel/redact_pages/?slug=scope">Сфера деятельности</a></li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>

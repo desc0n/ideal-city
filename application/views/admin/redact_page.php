@@ -9,7 +9,7 @@ $contentModel = Model::factory('Content');
 			<label for="id">Страница:</label>
 			<select class="form-control" name="id" id="id" onchange="$(this).parent('form').submit();">
 				<option value="0">не выбрано</option>
-				<?foreach ($contentModel->getPage(['editable' => true]) as $page) {?>
+				<?foreach ($pageList as $page) {?>
 				<option value="<?=$page['slug'];?>" <?=(Arr::get($get, 'id') == $page['slug'] ? 'selected' : '');?>><?=mb_strtoupper($page['title']);?></option>
 				<?}?>
 			</select>

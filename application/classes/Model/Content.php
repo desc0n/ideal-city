@@ -80,10 +80,16 @@ class Model_Content extends Kohana_Model
 	{
         $data = [];
 
-		$idSql = !empty(Arr::get($params, 'id')) ? 'where `id` = :id' : '';
+		$idSql = !empty(Arr::get($params, 'id')) ? 'and `id` = :id' : '';
+		$slugSql = !empty(Arr::get($params, 'slug')) ? 'and `slug` = :slug' : '';
+        $editableSql = isset($params['editable']) ? 'and `editable` = :editable' : '';
 
-		$res = DB::query(Database::SELECT, "select * from `scope__pages` $idSql")
-			->param(':id', Arr::get($params, 'id'))
+		$res = DB::query(Database::SELECT, "select * from `scope__pages` where 1 $idSql $editableSql $slugSql")
+			->parameters([
+                ':id' => Arr::get($params, 'id'),
+                ':slug' => Arr::get($params, 'slug'),
+                ':editable' => Arr::get($params, 'editable', true),
+            ])
 			->execute()
 			->as_array()
         ;
